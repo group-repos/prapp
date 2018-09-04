@@ -9,7 +9,6 @@ module.exports = {
                 profile_pic: ''
             }
         }
-        console.log(req.session.user);
         next();
     }
 }

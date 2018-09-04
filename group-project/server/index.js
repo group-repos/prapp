@@ -34,7 +34,7 @@ massive(CONNECTION_STRING).then(dbInstance => {
 
 //user
 app.get('/api/user', (req, res) => {
-    console.log(req.session.user);
+    res.status(200).send(req.session.user)
 })
 
 

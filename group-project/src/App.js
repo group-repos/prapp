@@ -7,8 +7,9 @@ import axios from 'axios';
 class App extends Component {
 
   componentDidMount () {
-    axios.get('/api/user').then(() => console.log('cool'))
+    axios.get('/api/user').then((res) => console.log('res.data',res.data))
   }
+
   render() {
     return (
       <div className="App">
