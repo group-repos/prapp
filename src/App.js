@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {HashRouter, Switch, Route} from 'react-router-dom';
 import './App.css';
 
 import axios from 'axios';
@@ -17,15 +17,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to Our Group Project</h1>
-          <h1 className="App-title">SHUT UP RICHARD!</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-          <input placeholder='Gimme dat numbah'/>
-        </p>
+      <h1>Home Component</h1>
+      <HashRouter>
+        <Switch>
+          <Route />
+          <Route />
+          <Route />
+        </Switch>
+      </HashRouter>
         <button onClick={() => this.getRecipes()}>Get Recipes</button>
       </div>
     );
