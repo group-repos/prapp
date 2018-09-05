@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import {HashRouter, Switch, Route} from 'react-router-dom';
 import './App.css';
-
 import axios from 'axios';
+
+import Header from './Components/Header';
+import Home from './Components/Home';
+import SingleRecipePage from './Components/SingleRecipePage';
+import UserProfile from './Components/UserProfile';
 
 class App extends Component {
 
@@ -17,12 +21,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <h1>Home Component</h1>
+      <Header />
+      <br></br>
       <HashRouter>
         <Switch>
-          <Route />
-          <Route />
-          <Route />
+          <Route exact path='/' component={Home} />
+          <Route path='/recipe' component={SingleRecipePage} />
+          <Route path='/profile' component={UserProfile} />
         </Switch>
       </HashRouter>
         <button onClick={() => this.getRecipes()}>Get Recipes</button>

@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 
-export default class RecipeCard extends Component {
+export default class Calendar extends Component {
     render(){
         return(
             <div>
-                <h2>RecipeCards</h2>
+                <h2>Calendar</h2>
             </div>
         )
     }

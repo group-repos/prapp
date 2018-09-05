@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
 
-export default class UserInfo extends Component {
+export default class SingleRecipePage extends Component {
     render(){
         return (
             <div>
-                <h2>
-                    UserInfo
-                </h2>
+                <h1>Single Recipe Page</h1>
             </div>
         )
     }

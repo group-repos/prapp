@@ -1,5 +1,9 @@
 import React from 'react';
 
 export default function NavBar(){
-    <h3>NavBar</h3>
+    return (
+        <div>
+            <h2>Horizontal NavBar</h2>
+        </div>
+    )
 }
