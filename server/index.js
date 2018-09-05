@@ -37,5 +37,16 @@ app.get('/api/user', (req, res) => {
     res.status(200).send(req.session.user)
 })
 
+//recipes
+app.get('/api/recipes', async (req, res) => {
+    const dbInstance = req.app.get('db');
+    let finalRecipe = [];
+    let recipe = await dbInstance.get_recipe_test()
+    let ingredients = await dbInstance.get_ingredient_test();
+    let steps = await dbInstance.get_steps_test();
+    finalRecipe = [...recipe, ingredients, steps]
+    res.status(200).send(finalRecipe);
+})
+
 
 app.listen(SERVER_PORT, () => console.log(`Server running on port: ${SERVER_PORT}.`))

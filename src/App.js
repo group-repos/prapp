@@ -10,6 +10,10 @@ class App extends Component {
     axios.get('/api/user').then((res) => console.log('res.data',res.data))
   }
 
+  getRecipes = () => {
+    axios.get('/api/recipes').then(res => console.log('recipes', res.data));
+  }
+
   render() {
     return (
       <div className="App">
@@ -22,6 +26,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
           <input placeholder='Gimme dat numbah'/>
         </p>
+        <button onClick={() => this.getRecipes()}>Get Recipes</button>
       </div>
     );
   }
