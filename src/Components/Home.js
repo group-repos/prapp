@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-import Header from './Header';
 import Tutorial from './Tutorial';
 import BrowseRecipes from './BrowseRecipes';
 import Contact from './Contact';
@@ -11,7 +10,6 @@ export default class Home extends Component {
         return (
             <div>
                 <h1>Home Component</h1>
-                <Header />
                 <Tutorial />
                 <BrowseRecipes />
                 <Contact />

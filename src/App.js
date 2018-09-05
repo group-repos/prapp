@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import {HashRouter, Switch, Route} from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
 
 import Header from './Components/Header';
-import Home from './Components/Home';
-import SingleRecipePage from './Components/SingleRecipePage';
-import UserProfile from './Components/UserProfile';
+import routes from './Routes'
 
 class App extends Component {
 
@@ -22,14 +19,10 @@ class App extends Component {
     return (
       <div className="App">
       <Header />
+      <div>
+        {routes}
+      </div>
       <br></br>
-      <HashRouter>
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path='/recipe' component={SingleRecipePage} />
-          <Route path='/profile' component={UserProfile} />
-        </Switch>
-      </HashRouter>
         <button onClick={() => this.getRecipes()}>Get Recipes</button>
       </div>
     );
