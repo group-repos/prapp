@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { auth, googleProvider } from './firebase';
 import logo from './logo.svg';
 import './App.css';
 
@@ -14,7 +15,19 @@ class App extends Component {
     axios.get('/api/recipes').then(res => console.log('recipes', res.data));
   }
 
+  googleLogin = () => {
+   auth.signInWithPopup(googleProvider)
+    .then(result => {
+      console.log('user', result.user);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+ 
+
   render() {
+    console.log(process.env.REACT_APP_FBASE_AUTH_DOMAIN);
     return (
       <div className="App">
         <header className="App-header">
@@ -27,6 +40,7 @@ class App extends Component {
           <input placeholder='Gimme dat numbah'/>
         </p>
         <button onClick={() => this.getRecipes()}>Get Recipes</button>
+        <button onClick={() => this.googleLogin()}>Login with Google</button>
       </div>
     );
   }
