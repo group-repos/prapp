@@ -18,7 +18,7 @@ CREATE TABLE recipes (
     servings INTEGER,
     name VARCHAR(120),
     rating INTEGER,
-    r_pic TEXT[]
+    r_pics TEXT[]
 );
 
 -- We used this query to create our favorites table:
@@ -44,4 +44,21 @@ CREATE TABLE weekly_recipes (
     saturday TEXT[],
     sunday TEXT[],
     active BOOLEAN
+);
+
+-- We used this query to create our steps table:
+CREATE TABLE steps (
+    s_id SERIAL PRIMARY KEY,
+    r_id INTEGER REFERENCES recipes(r_id),
+    step INTEGER,
+    description VARCHAR(300)
+);
+
+-- We used this query to create our ingredients table:
+CREATE TABLE ingredients (
+    i_id SERIAL PRIMARY KEY,
+    r_id INTEGER,
+    ingredient VARCHAR(120),
+    quantity FLOAT,
+    unit VARCHAR(30)
 );
