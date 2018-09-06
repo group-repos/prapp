@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 
-export default class RecipeCard extends Component {
+class RecipeCard extends Component {
     render(){
         return(
             <div>
-                <h2>RecipeCards</h2>
+                <h2>{this.props.num}</h2>
             </div>
         )
     }
 }
+
+export default RecipeCard
