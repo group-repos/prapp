@@ -52,6 +52,18 @@ ul {
   margin-left: 60vh;
 }
 
+/* BROWSE RECIPES */
+.categories {
+  display: flex;
+  justify-content: center;
+  background-color: antiquewhite;
+}
+
+.categories > p {
+  padding: 5px 15px;
+  margin: 0;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
