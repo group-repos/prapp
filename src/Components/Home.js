@@ -21,7 +21,15 @@ export default class Home extends Component {
         ))
         return (
             <div>
-                <h1>Home Component</h1>
+                <div className='LandingPage' >
+                    <div className='WordsDiv'>
+                        <p>Meal Planning</p>
+                        <p>Made Simple</p>
+                        <br></br>
+                        <br></br>
+                        <button>Learn More</button>
+                    </div>
+                </div>
                 <Tutorial />
                 <BrowseRecipes />
                 <Contact />
