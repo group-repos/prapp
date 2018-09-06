@@ -15,5 +15,6 @@ firebase.auth().useDeviceLanguage();
 module.exports = {
     auth: firebase.auth(),
     googleProvider: new firebase.auth.GoogleAuthProvider(),
+    facebookProvider: new firebase.auth.FacebookAuthProvider(),
 };
 
