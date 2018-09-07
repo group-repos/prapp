@@ -121,22 +121,21 @@ ul {
 
 .User {
   border: 10px solid white;
-  width: 200px;
+  width: 300px;
   background: white;
   
 }
 
 .PhotoWrapper {
   background-color: white;
-  height: 200px;
+  height: 400px;
   overflow: hidden;
-  width: 200px;
 }
 
 .PhotoWrapper > img {
   object-fit: cover;
-  height: 200px;
-  width: 200px;
+  height: 400px;
+  width: 400px;
 }
 
 .PhotoWrapper > h3 p {
