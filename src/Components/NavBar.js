@@ -1,5 +1,6 @@
 import React from 'react';
 import {HashRouter, Link} from 'react-router-dom';
+import hamburgerImage from '../images/hamburger.png';
 
 export default function NavBar(){
     const home = <HashRouter><Link to='/' >Home</Link></HashRouter>
@@ -7,12 +8,13 @@ export default function NavBar(){
     const profile = <HashRouter><Link to='/profile' >Profile</Link></HashRouter>
     return (
         <div>
-            <h2>Horizontal NavBar</h2>
             <nav>
                 <ul>
+                    <li>Search</li>
                     <li>{home}</li>
                     <li>{recipe}</li>
                     <li>{profile}</li>
+                    <img className='hamburger' src={hamburgerImage} alt='' />
                 </ul>
             </nav>
         </div>
