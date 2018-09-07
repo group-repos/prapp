@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const massive = require('massive');
 const session = require('express-session');
-const firebase = require('firebase');
 require('dotenv').config();
 
 //Controllers
@@ -16,15 +15,6 @@ app.use(bodyParser.json());
 //Destructuring from .env
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET, FBASE_WEB_API_KEY, FBASE_AUTH_DOMAIN } = process.env;
 
-//Firebase Configuration
-var config = {
-    apiKey: FBASE_WEB_API_KEY,
-    authDomain: FBASE_AUTH_DOMAIN
-}
-
-// firebase.initializeApp(config);
-// firebase.auth().useDeviceLanguage();
-
 //Session Setup
 app.use(session({
     secret: SESSION_SECRET,
@@ -36,45 +26,25 @@ app.use(sessionCtrl.create)
 
 
 
-//Massive
+/////////////  Massive  /////////////
 massive(CONNECTION_STRING).then(dbInstance => {
     app.set('db', dbInstance);
     app.listen(SERVER_PORT, () => console.log(`Server running on port: ${SERVER_PORT}.`))
 });
 
-// var googleProvider = new firebase.auth.GoogleAuthProvider();
+/***********************  ENDPOINTS  ***********************/
 
-// module.exports = {
-//     auth: firebase.auth(),
-//     googleProvider: new firebase.auth.GoogleAuthProvider(),
-// }
+/////////////  user  /////////////
 
-//Endpoints
-
-//Google Auth Sign In
-app.get('/api/googleauth', (req, res) => {
-    firebase.auth().signInWithPopup(googleProvider)
-        .then(result => {
-            // This gives you a Google Access Token. You can use it to access the Google API
-            let token = result.credential.accessToken;
-            console.log(token);
-            // The signed-in user info.
-            var user = result.user;
-            console.log('user', user);
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).send(err);
-        })
-});
-
-//user
+//Sends the user fro mthe session to the front
 app.get('/api/user', (req, res) => {
     res.status(200).send(req.session.user)
 })
 
-//recipes
-app.get('/api/recipes', async (req, res) => {
+/////////////  recipes  /////////////
+
+//Test endpoint that gets one recipe
+app.get('/api/recipe', async (req, res) => {
     const dbInstance = req.app.get('db');
     let finalRecipe = [];
     let recipe = await dbInstance.get_recipe_test()
@@ -82,5 +52,21 @@ app.get('/api/recipes', async (req, res) => {
     let steps = await dbInstance.get_steps_test();
     finalRecipe = [...recipe, ingredients, steps]
     res.status(200).send(finalRecipe);
+});
+
+//Gets all recipes
+app.get('/api/getrecipes', async (req, res) => {
+    const dbInstance = req.app.get('db');
+    let ingredients = await dbInstance.get_recipes_w_ingredients();
+    let steps = await dbInstance.get_recipes_w_steps();
+    let recipes = ingredients.map((e, i) => {
+        if (e.r_id === steps[i].r_id) {
+           e.steps = steps[i].steps
+            return e;
+        }
+      })
+    res.status(200).send(recipes);
 })
+
+
 
