@@ -15,7 +15,9 @@ export default class Home extends Component {
     }
     render(){
         let recipeDisplay = this.state.testArr.map((num, i) => (
-            <div key={i} style={{height: '100px', width: '200px', backgroundColor: 'blue', marginTop: '10px'}} >
+            <div className='recipeCards' key={i} 
+            // style={{height: '100px', width: '200px', backgroundColor: 'blue', marginTop: '10px'}} 
+            >
                 <RecipeCard num={num} />
             </div>
         ))
@@ -30,11 +32,12 @@ export default class Home extends Component {
                         <button>Learn More</button>
                     </div>
                 </div>
-                <Tutorial />
                 <BrowseRecipes />
+                <div className='recipeCardsWrapper' >
+                        {recipeDisplay}
+                </div>
                 <Contact />
                 {/* <RecipeCard /> */}
-                <div>{recipeDisplay}</div>
             </div>
         )
     }

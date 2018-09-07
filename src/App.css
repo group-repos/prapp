@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 /* ENTIRE APP */
 .App {
   text-align: center;
+  font-family: 'Roboto';
 }
 
 h1 {
@@ -13,6 +16,7 @@ nav {
   top: 0;
   width: 100%;
   margin: 0px;
+  z-index: 3;
 }
 
 li {
@@ -24,7 +28,7 @@ ul {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background-color: lightblue;
+  background-color: rgb(0,0,0,0.1);
   margin: 0px;
   padding-right: 40px;
 }
@@ -62,6 +66,73 @@ ul {
 .categories > p {
   padding: 5px 15px;
   margin: 0;
+}
+
+.recipeCardsWrapper {
+  background-color: lightgray;
+  padding: 20px 100px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.recipeCards {
+  background-color: lightskyblue;
+  margin: 15px;
+  width: 400px;
+  height: 550px;
+}
+
+/* USER PROFILE */
+.UserWrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.UserHeader {
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+  background-image: linear-gradient(#ff9d2f, #ff6126);
+  transform: skewY(2deg);
+  transform-origin: top right;
+  opacity: 0.7;
+  z-index: 1;
+}
+
+.UserHeader > img {
+  width: 100%;
+  opacity: 0.1;
+  position: relative;
+  bottom: 250%;
+}
+
+/* USER INFO */
+.UserInfoWrapper {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, .1);
+  width: 75vw;
+  height: 800px;
+  position: absolute;
+  top: 10%;
+  z-index: 2;
+}
+
+.User {
+  
+}
+
+.PhotoWrapper {
+  background-color: white;
+  height: 200px;
+  width: 200px;
+}
+
+.PhotoWrapper > img {
+  height: 150px;
 }
 
 @keyframes App-logo-spin {
