@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600,700');
 
 /* ENTIRE APP */
 .App {
-  text-align: center;
-  font-family: 'Roboto';
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
 }
 
 h1 {
@@ -112,7 +111,6 @@ ul {
 /* USER INFO */
 .UserInfoWrapper {
   display: flex;
-  justify-content: center;
   background-color: rgba(0, 0, 0, .1);
   width: 75vw;
   height: 800px;
@@ -122,17 +120,33 @@ ul {
 }
 
 .User {
+  border: 10px solid white;
+  width: 200px;
+  background: white;
   
 }
 
 .PhotoWrapper {
   background-color: white;
   height: 200px;
+  overflow: hidden;
   width: 200px;
 }
 
 .PhotoWrapper > img {
-  height: 150px;
+  object-fit: cover;
+  height: 200px;
+  width: 200px;
+}
+
+.PhotoWrapper > h3 p {
+
+}
+
+.horizontalFlex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 @keyframes App-logo-spin {

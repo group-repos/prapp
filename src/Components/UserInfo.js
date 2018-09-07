@@ -10,7 +10,7 @@ export default class UserInfo extends Component {
                     </div>
                     <h3>About</h3>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                    <div>
+                    <div className='horizontalFlex' >
                         <p>Recipes</p>
                         <p>24</p>
                     </div>
