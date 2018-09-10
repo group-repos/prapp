@@ -15,13 +15,13 @@ export default class BrowseRecipes extends Component {
     }
   }
 
-    //Gets an array of all recipes, ingredients, and steps in the database.
-    componentDidMount() {
-        axios.get('/api/getrecipes')
-            .then(res => {
-                this.setState({recipes: res.data})
-            });
-    };
+  //Gets an array of all recipes, ingredients, and steps in the database.
+  componentDidMount() {
+      axios.get('/api/getrecipes')
+          .then(res => {
+              this.setState({recipes: res.data})
+          });
+  };
 
   handleClick (i){
     this.setState({
