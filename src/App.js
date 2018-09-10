@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { auth, googleProvider, facebookProvider } from './firebase';
+import './reset.css'
 import './App.css';
 import axios from 'axios';
 

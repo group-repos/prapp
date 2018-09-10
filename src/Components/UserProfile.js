@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Calendar from './Calendar';
 import UserInfo from './UserInfo';
 import UserSubmittedRecipes from './UserSubmittedRecipes';
+import './UserProfile.css'
 
 export default class UserProfile extends Component {
     render(){
