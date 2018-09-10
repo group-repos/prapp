@@ -8,7 +8,7 @@ class RecipeCard extends Component {
                 <p>{`${ingredient.ingredient}: ${ingredient.quantity} ${ingredient.unit}`}</p>
             </div>
         ))
-        let step = steps.reverse().map(step => (
+        const step = steps.map(step => (
             <div className='recipe-card__step' key={step.id}>
                 <p>{`Step ${step.step}: ${step.description}`}</p>
             </div>

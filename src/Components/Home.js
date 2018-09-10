@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 
-import Tutorial from './Tutorial';
+// import Tutorial from './Tutorial';
 import BrowseRecipes from './BrowseRecipes';
 import Contact from './Contact';
-import RecipeCard from './RecipeCard';
+// import RecipeCard from './RecipeCard';
+import Login from './Login';
 
 export default class Home extends Component {
     constructor(){
@@ -26,6 +27,7 @@ export default class Home extends Component {
                         <button>Learn More</button>
                     </div>
                 </div>
+                <Login />
                 <BrowseRecipes />
                 <div className='recipeCardsWrapper' >
                         
