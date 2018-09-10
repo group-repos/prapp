@@ -23,32 +23,6 @@ export default class BrowseRecipes extends Component {
             });
     };
 
-    render(){
-        console.table(this.state.recipes);
-        let recipe = this.state.recipes.map((recipe) => (
-            <div key={recipe.r_id}>
-                <RecipeCard recipe={recipe}/>
-            </div>
-        ))
-        return (
-            <div>
-                <div className='categories' >
-                    <p>Freezer Meals</p>
-                    <p>Breakfast</p>
-                    <p>Chicken</p>
-                    <p>Keto</p>
-                </div>
-                {this.state.recipes
-                ? 
-                <div>{recipe}</div>
-                :
-                <div></div>}
-                <CalendarDrawer />
-            </div>
-        )
-    }
-  }
-
   handleClick (i){
     this.setState({
       activeCategory:i
@@ -56,6 +30,11 @@ export default class BrowseRecipes extends Component {
   }
 
   render(){
+    let recipe = this.state.recipes.map((recipe) => (
+      <div key={recipe.r_id}>
+          <RecipeCard recipe={recipe}/>
+      </div>
+  ))
       return (
           <div>
               <div className='categories'>
@@ -69,7 +48,11 @@ export default class BrowseRecipes extends Component {
                       </p>)
                 }):''}
               </div>
-              <RecipeCard />
+              {this.state.recipes
+                ? 
+                <div>{recipe}</div>
+                :
+                <div></div>}
               <CalendarDrawer />
           </div>
       )
