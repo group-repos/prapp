@@ -1,5 +1,10 @@
 import React from 'react';
 import {HashRouter, Link} from 'react-router-dom';
+import NavDrawer from './NavDrawer';
+
+//MATERIAL UI
+import IconButton from '@material-ui/core/IconButton';
+
 import hamburgerImage from '../images/hamburger.png';
 
 export default function NavBar(){
@@ -10,11 +15,14 @@ export default function NavBar(){
         <div>
             <nav>
                 <ul>
+                    <li><NavDrawer /></li>
                     <li>Search</li>
                     <li>{home}</li>
                     <li>{recipe}</li>
                     <li>{profile}</li>
-                    <img className='hamburger' src={hamburgerImage} alt='' />
+                    <IconButton variant='fab' color='default' aria-label='add' >
+                        <img className='hamburger' src={hamburgerImage} alt='' />
+                    </IconButton>
                 </ul>
             </nav>
         </div>
