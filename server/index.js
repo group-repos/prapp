@@ -13,7 +13,7 @@ const app = express();
 app.use(bodyParser.json());
 
 //Destructuring from .env
-const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET, FBASE_WEB_API_KEY, FBASE_AUTH_DOMAIN } = process.env;
+const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
 
 //Session Setup
 app.use(session({
@@ -36,7 +36,7 @@ massive(CONNECTION_STRING).then(dbInstance => {
 
 /////////////  user  /////////////
 
-//Sends the user fro mthe session to the front
+//Sends the user from the session to the front
 app.get('/api/user', (req, res) => {
     res.status(200).send(req.session.user)
 })
