@@ -3,6 +3,7 @@
 /* Variables */
 :root {
   --profile-gradient: linear-gradient(to right, #ae00bf, #cb7167);
+  --default-gradient: linear-gradient(to right, #29abe2, #0071bc);
 }
 
 /* ENTIRE APP */
@@ -39,23 +40,4 @@ ul {
 
 .hamburger {
   height: 30px;
-}
-
-/* LANDING PAGE (HOME COMPONENT) */
-.LandingPage {
-  background-color: aliceblue;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-}
-
-.WordsDiv {
-  display: flex;
-  flex-direction: column;
-  background-color: aqua;
-  align-items: center;
-  width: 200px;
-  height: 200px;
-  margin-top: 30vh;
-  margin-left: 60vh;
 }
