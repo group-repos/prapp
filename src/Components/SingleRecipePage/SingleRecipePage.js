@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
-import {updateRecipe} from '../ducks/reducer';
+import {updateRecipe} from '../../ducks/reducer';
 
 class SingleRecipePage extends Component {
     constructor(){

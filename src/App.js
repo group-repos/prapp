@@ -4,9 +4,9 @@ import './reset.css'
 import './App.css';
 import axios from 'axios';
 
-import _ from 'lodash';
+// import _ from 'lodash';
 
-import Header from './Components/Header';
+import Header from './Components/Header/Header';
 import routes from './Routes'
 
 class App extends Component {

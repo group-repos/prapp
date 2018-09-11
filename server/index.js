@@ -41,6 +41,20 @@ app.get('/api/user', (req, res) => {
     res.status(200).send(req.session.user)
 })
 
+app.post('/api/user', async (req, res) => {
+    const dbInstance = req.app.get('db');
+    const { user } = req.body;
+    // console.log(user);
+    let foundUser = await dbInstance.find_user([user.auth_id])
+    if (foundUser[0]) {
+        req.session.user = foundUser[0];
+        res.status(200).send(req.session.user);
+    } else {
+        let createdUser = await dbInstance.create_user([user.first_name, user.last_name, user.profile_pic, user.email, user.auth_id])
+        req.session.user = createdUser[0];
+    }
+});
+
 /////////////  recipes  /////////////
 
 //Test endpoint that gets one recipe
@@ -59,12 +73,15 @@ app.get('/api/getrecipes', async (req, res) => {
     const dbInstance = req.app.get('db');
     let ingredients = await dbInstance.get_recipes_w_ingredients();
     let steps = await dbInstance.get_recipes_w_steps();
+    steps.forEach(e => {
+        e.steps.reverse();
+    })
     let recipes = ingredients.map((e, i) => {
         if (e.r_id === steps[i].r_id) {
            e.steps = steps[i].steps
             return e;
         }
-      })
+    })
     res.status(200).send(recipes);
 })
 
