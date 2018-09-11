@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
-import RecipeCard from './RecipeCard';
-import CalendarDrawer from './CalendarDrawer';
+import RecipeCard from '../RecipeCard';
+import CalendarDrawer from '../CalendarDrawer/CalendarDrawer';
 
 import './BrowseRecipes.css'
 
@@ -15,13 +15,13 @@ export default class BrowseRecipes extends Component {
     }
   }
 
-    //Gets an array of all recipes, ingredients, and steps in the database.
-    componentDidMount() {
-        axios.get('/api/getrecipes')
-            .then(res => {
-                this.setState({recipes: res.data})
-            });
-    };
+  //Gets an array of all recipes, ingredients, and steps in the database.
+  componentDidMount() {
+      axios.get('/api/getrecipes')
+          .then(res => {
+              this.setState({recipes: res.data})
+          });
+  };
 
   handleClick (i){
     this.setState({
@@ -31,29 +31,27 @@ export default class BrowseRecipes extends Component {
 
   render(){
     let recipe = this.state.recipes.map((recipe) => (
-      <div key={recipe.r_id}>
-          <RecipeCard recipe={recipe}/>
-      </div>
+      <RecipeCard recipe={recipe} key={recipe.r_id}/>
   ))
       return (
-          <div>
+          <div className='BrowseRecipes'>
               <div className='categories'>
                 {this.props.BrowseRecipesMenu ?   
                   this.props.BrowseRecipesMenu.map((e,i) => {
                     let recipeClasses = this.state.activeCategory === i ? 'ActiveRecipe' : ''
                       return (
-                      <p key={i} 
-                        className={recipeClasses} 
-                        onClick={()=> this.handleClick(i)}>{e}
+                      <p key={i}  
+                        onClick={()=> this.handleClick(i)}>{e}<div className={recipeClasses}/>
                       </p>)
                 }):''}
               </div>
-              {this.state.recipes
-                ? 
-                <div>{recipe}</div>
-                :
-                <div></div>}
-              <CalendarDrawer />
+              <div className='recipeCardsWrapper'>
+                {this.state.recipes
+                  ? 
+                  recipe
+                  :
+                  <div></div>}
+              </div>
           </div>
       )
   }

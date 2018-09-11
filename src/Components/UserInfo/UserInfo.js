@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './UserInfo.css'
-import toast from '../images/calum-lewis-390145-unsplash.jpg'
+import toast from '../../images/calum-lewis-390145-unsplash.jpg'
 
 export default class UserInfo extends Component {
   render(){

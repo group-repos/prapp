@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import Calendar from './Calendar';
-import UserInfo from './UserInfo';
-import UserSubmittedRecipes from './UserSubmittedRecipes';
+import Calendar from '../Calendar/Calendar';
+import UserInfo from '../UserInfo/UserInfo';
+import UserSubmittedRecipes from '../UserSubmittedRecipes/UserSubmittedRecipes';
+import BrowseRecipes from '../BrowseRecipes/BrowseRecipes';
+
 import './UserProfile.css'
-import BrowseRecipes from './BrowseRecipes';
 
 export default class UserProfile extends Component {
     constructor(){

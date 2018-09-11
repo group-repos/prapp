@@ -1,0 +1,43 @@
+/* BROWSE RECIPES */
+.BrowseRecipes {
+  margin-top: 25px;
+}
+
+.categories {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  border: 1px solid #80808020;
+  background: #fff;
+}
+
+.ActiveRecipe {
+  border-width: 0 0 2px 0;
+  border-style: solid;
+  border-image: linear-gradient(to right, #29abe2, #0071bc) 1;
+  width: 75%;
+  margin-top: 10px;
+}
+
+.categories > p {
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 300;
+  color: #4d4d4d;
+  padding: 18px 30px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recipeCardsWrapper {
+  background: linear-gradient(to right, #29abe2, #0071bc);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 25px 0;
+}
