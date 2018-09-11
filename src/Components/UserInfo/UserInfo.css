@@ -3,14 +3,14 @@
   display: flex;
   z-index: 2;
   position: relative;
-  margin-top: 100px;
+  margin-top: 110px;
 }
 
 .ProfileLeft {
   border: 10px solid white;
   width: 300px;
   background: white;
-  margin: 0 25px;
+  margin: 0 35px;
   box-shadow: 6px 6px 10px rgba(0,0,0,0.2);
 }
 

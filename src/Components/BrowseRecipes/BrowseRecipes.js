@@ -31,29 +31,27 @@ export default class BrowseRecipes extends Component {
 
   render(){
     let recipe = this.state.recipes.map((recipe) => (
-      <div key={recipe.r_id}>
-          <RecipeCard recipe={recipe}/>
-      </div>
+      <RecipeCard recipe={recipe} key={recipe.r_id}/>
   ))
       return (
-          <div>
+          <div className='BrowseRecipes'>
               <div className='categories'>
                 {this.props.BrowseRecipesMenu ?   
                   this.props.BrowseRecipesMenu.map((e,i) => {
                     let recipeClasses = this.state.activeCategory === i ? 'ActiveRecipe' : ''
                       return (
-                      <p key={i} 
-                        className={recipeClasses} 
-                        onClick={()=> this.handleClick(i)}>{e}
+                      <p key={i}  
+                        onClick={()=> this.handleClick(i)}>{e}<div className={recipeClasses}/>
                       </p>)
                 }):''}
               </div>
-              {this.state.recipes
-                ? 
-                <div>{recipe}</div>
-                :
-                <div></div>}
-              <CalendarDrawer />
+              <div className='recipeCardsWrapper'>
+                {this.state.recipes
+                  ? 
+                  recipe
+                  :
+                  <div></div>}
+              </div>
           </div>
       )
   }
