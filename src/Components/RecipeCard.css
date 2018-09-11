@@ -1,0 +1,117 @@
+.RecipeCards {
+  background-color: white;
+  margin: 15px;
+  width: 300px;
+  padding: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  height: 455px;
+  overflow: hidden;
+}
+
+.RecipePhotoWrapper {
+  overflow: hidden;
+}
+
+.RecipePhotoWrapper > img {
+  object-fit: cover;
+  width: 280px;
+  height: 400px;
+  transition: transform 0.5s ease;
+}
+
+.cardMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 40px;
+  border-bottom: 0 solid white;
+  transition: border-bottom 0.5s ease;
+}
+
+.cardMenuHover {
+  border-bottom: 1px solid #0071bc8a;
+  transition: border-bottom 2s ease;
+}
+
+.RecipePhotoWrapperHover > img {
+  transform: translateY(-250px);
+  transition: transform 0.5s ease;
+}
+
+.cardMenu > img {
+  object-fit: contain;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.favoriteCounter > img {
+  object-fit: contain;
+  width: 25px;
+  height: 25px;
+  margin-right: 6px;
+}
+
+.favoriteCounter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.favoriteCounter > p {
+  color: #0071bc;
+  font-size: 16px;
+  font-weight: 300;
+  position: relative;
+  bottom: 2px;
+}
+
+.recipeQuickView {
+  transform: translateY(0);
+  transition: transform 0.5s ease;
+}
+
+.recipeQuickViewHover {
+  transform: translateY(-250px);
+  transition: transform 0.5s ease;
+}
+
+.quickViewContent {
+  padding: 0 6px;
+}
+
+.quickViewContent > h2 {
+  font-size: 22px;
+  font-weight: 300;
+  margin: 20px 0;
+}
+
+.quickViewContent > p {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 23px;
+  margin-bottom: 16px;
+}
+
+.quickViewContent > p > span {
+  font-weight: 600;
+}
+
+.cardTags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.cardTags > p {
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 5px;
+  background: #0071bc;
+  text-transform: uppercase;
+  margin: 0 3px 5px 0;
+  cursor: pointer;
+}
