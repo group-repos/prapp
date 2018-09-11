@@ -7,7 +7,8 @@ import axios from 'axios';
 // import _ from 'lodash';
 
 import Header from './Components/Header/Header';
-import routes from './Routes'
+import EditUserProfile from './Components/Modals/EditUserProfile/EditUserProfile';
+import routes from './Routes';
 
 class App extends Component {
   constructor() {
@@ -63,10 +64,13 @@ class App extends Component {
         {routes}
       </div>
       <br></br>
+      <div>
         <button onClick={() => this.getRecipes()}>Get Recipes</button>
         <button onClick={() => this.getAllRecipes()}>Get All Recipes</button>
         <button onClick={() => this.googleLogin()}>Login with Google</button>
         <button onClick={() => this.facebookLogin()}>Login with Facebook</button>
+      </div>
+      <EditUserProfile/>
       </div>
     );
   }
