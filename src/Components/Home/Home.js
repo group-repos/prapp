@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 
-// import Tutorial from './Tutorial';
-import BrowseRecipes from './BrowseRecipes';
-import Contact from './Contact';
+// import Tutorial from '../Tutorial/Tutorial';
+import BrowseRecipes from '../BrowseRecipes/BrowseRecipes';
+import Contact from '../Contact/Contact';
 // import RecipeCard from './RecipeCard';
-import Login from './Login';
+import Login from '../Login/Login';
 
 export default class Home extends Component {
     constructor(){
