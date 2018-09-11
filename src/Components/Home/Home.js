@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 
 // import Tutorial from '../Tutorial/Tutorial';
 import BrowseRecipes from '../BrowseRecipes/BrowseRecipes';
-import Contact from '../Contact/Contact';
 // import RecipeCard from './RecipeCard';
 import Login from '../Login/Login';
 
@@ -32,7 +31,6 @@ export default class Home extends Component {
                 <div className='recipeCardsWrapper' >
                         
                 </div>
-                <Contact />
                 {/* <RecipeCard /> */}
             </div>
         )
