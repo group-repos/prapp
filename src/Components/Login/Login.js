@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { auth, googleProvider, facebookProvider } from '../firebase';
-import { connect } from 'react-redux'
+import { auth, googleProvider, facebookProvider } from '../../firebase';
+import { connect } from 'react-redux';
 
-import { updateUser } from '../ducks/reducer';
+import { updateUser } from '../../ducks/reducer';
 
 
 class Login extends Component {

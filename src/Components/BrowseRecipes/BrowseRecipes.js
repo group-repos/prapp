@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
-import RecipeCard from './RecipeCard';
-import CalendarDrawer from './CalendarDrawer';
+import RecipeCard from '../RecipeCard';
+import CalendarDrawer from '../CalendarDrawer/CalendarDrawer';
 
 import './BrowseRecipes.css'
 

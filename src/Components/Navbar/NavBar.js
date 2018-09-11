@@ -1,6 +1,6 @@
 import React from 'react';
 import {HashRouter, Link} from 'react-router-dom';
-import hamburgerImage from '../images/hamburger.png';
+import hamburgerImage from '../../images/hamburger.png';
 
 export default function NavBar(){
     const home = <HashRouter><Link to='/' >Home</Link></HashRouter>
