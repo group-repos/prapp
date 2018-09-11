@@ -2,6 +2,16 @@ import React from 'react';
 // import { mailFolderListItems, otherMailFolderListItems } from './tileData';
 import hamburgerImage from '../../images/hamburger.png';
 import {Link} from 'react-router-dom';
+import './NavDrawer.css';
+
+//IMAGES
+import Icon1 from '../../images/Asset 1.svg';
+import Icon2 from '../../images/Asset 2.svg';
+import Icon3 from '../../images/Asset 3.svg';
+import Icon5 from '../../images/Asset 5.svg';
+import fbIcon from '../../images/Facebook.svg';
+import instagramIcon from '../../images/Instagram.svg';
+import twitterIcon from '../../images/Twitter.svg';
 
 //MATERIAL-UI
 import PropTypes from 'prop-types';
@@ -68,11 +78,22 @@ class NavDrawer extends React.Component {
               <h3>First Last</h3>
               <p>@username</p>
             </div>
-            {sideList}
-            <MenuItem component={home} >Home</MenuItem>
-            <MenuItem component={recipe} >Browse Recipes</MenuItem>
-            <MenuItem component={about} >About</MenuItem>
-            <MenuItem component={contact} >Contact</MenuItem>
+            <hr></hr>
+            {/* {sideList} */}
+            <MenuItem component={home}><img src={Icon1} alt='' style={{width: '35px'}} />Home</MenuItem>
+            <MenuItem component={recipe}><img src={Icon5} alt='' style={{width: '35px'}} />Browse Recipes</MenuItem>
+            <MenuItem component={about}><img src={Icon2} alt='' style={{width: '35px'}} />About</MenuItem>
+            <MenuItem component={contact}><img src={Icon3} alt='' style={{width: '35px'}} />Contact</MenuItem>
+          </div>
+          <hr></hr>
+          <div>
+            <img src={fbIcon} alt='' style={{width: '20px'}} />
+            <img src={twitterIcon} alt='' style={{width: '20px'}} />
+            <img src={instagramIcon} alt='' style={{width: '20px'}} />
+          </div>
+          <div>
+            <p>© ThatWasLegitness, Inc</p>
+            <p>All rights reserved. Privacy Policy</p>
           </div>
         </Drawer>
       </div>
