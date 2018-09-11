@@ -1,11 +1,11 @@
 import React from 'react';
 import {HashRouter, Link} from 'react-router-dom';
-import NavDrawer from './NavDrawer';
+import NavDrawer from '../NavDrawer/NavDrawer';
 
 //MATERIAL UI
 import IconButton from '@material-ui/core/IconButton';
 
-import hamburgerImage from '../images/hamburger.png';
+import hamburgerImage from '../../images/hamburger.png';
 
 export default function NavBar(){
     const home = <HashRouter><Link to='/' >Home</Link></HashRouter>
