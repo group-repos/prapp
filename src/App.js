@@ -60,17 +60,7 @@ class App extends Component {
     return (
       <div className="App">
       <Header />
-      <div>
-        {routes}
-      </div>
-      <br></br>
-      <div>
-        <button onClick={() => this.getRecipes()}>Get Recipes</button>
-        <button onClick={() => this.getAllRecipes()}>Get All Recipes</button>
-        <button onClick={() => this.googleLogin()}>Login with Google</button>
-        <button onClick={() => this.facebookLogin()}>Login with Facebook</button>
-      </div>
-      <EditUserProfile/>
+      {routes}
       </div>
     );
   }
