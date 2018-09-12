@@ -4,35 +4,34 @@ import React, {Component} from 'react';
 import BrowseRecipes from '../BrowseRecipes/BrowseRecipes';
 // import RecipeCard from './RecipeCard';
 import Login from '../Login/Login';
+import './Home.css'
 
 export default class Home extends Component {
-    constructor(){
-        super()
+  constructor(){
+      super()
 
-        this.state = {
-            
-        }
-    }
-    render(){
-        
-        return (
-            <div>
-                <div className='LandingPage' >
-                    <div className='WordsDiv'>
-                        <p>Meal Planning</p>
-                        <p>Made Simple</p>
-                        <br></br>
-                        <br></br>
-                        <button>Learn More</button>
-                    </div>
+      this.state = {
+        recipeMenu: ['Keto', 'Breakfast', 'Bananas']
+      }
+  }
+  render(){
+      return (
+          <div>
+              <div className='LandingPage'>
+                <div className='WordsDiv'>
+                  <h1>Meal Planning</h1>
+                  <h2>Made Simple</h2>
+                  <br></br>
+                  <br></br>
+                  <button>Learn More</button>
                 </div>
-                <Login />
-                <BrowseRecipes />
-                <div className='recipeCardsWrapper' >
-                        
-                </div>
-                {/* <RecipeCard /> */}
-            </div>
-        )
-    }
+              </div>
+              <BrowseRecipes BrowseRecipesMenu={this.state.recipeMenu}/>
+              <div className='recipeCardsWrapper' >
+                      
+              </div>
+              {/* <RecipeCard /> */}
+          </div>
+      )
+  }
 }

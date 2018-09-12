@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const massive = require('massive');
 const session = require('express-session');
+const AWS = require('aws-sdk');
 require('dotenv').config();
 
 //Controllers
@@ -9,11 +10,23 @@ const sessionCtrl = require('./controllers/session_controller');
 
 const app = express();
 
-//Middleware
-app.use(bodyParser.json());
-
 //Destructuring from .env
-const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
+const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION, AWS_BUCKET} = process.env;
+
+/////////////  AWS Setup  /////////////
+AWS.config.update({
+    accessKeyId: AWS_ACCESS_KEY_ID,
+    secretAccessKey: AWS_SECRET_ACCESS_KEY,
+    region: AWS_REGION
+})
+
+const S3 = new AWS.S3();
+
+//Middleware
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+
+
 
 //Session Setup
 app.use(session({
@@ -25,7 +38,6 @@ app.use(session({
 app.use(sessionCtrl.create)
 
 
-
 /////////////  Massive  /////////////
 massive(CONNECTION_STRING).then(dbInstance => {
     app.set('db', dbInstance);
@@ -33,6 +45,34 @@ massive(CONNECTION_STRING).then(dbInstance => {
 });
 
 /***********************  ENDPOINTS  ***********************/
+
+/////////////  Amazon S3  /////////////
+app.post('/api/s3', (req, res) => {
+    const photo = req.body;
+
+    const buf = new Buffer(photo.file.replace(/^data:image\/\w+;base64,/, ''), 'base64');
+
+    const params = {
+        Bucket: AWS_BUCKET,
+        Body: buf,
+        Key: photo.filename,
+        ContentType: photo.filetype,
+        ACL: 'public-read'
+    };
+
+    S3.upload(params, (err, data) => {
+        let response, code;
+        if (err) {
+            response = err;
+            code = 500;
+        } else {
+            response = data;
+            code = 200;
+        }
+
+        res.status(code).send(response);
+    });
+});
 
 /////////////  user  /////////////
 

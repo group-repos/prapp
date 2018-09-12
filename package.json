@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^3.0.2",
     "@material-ui/icons": "^3.0.1",
+    "aws-sdk": "^2.313.0",
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
@@ -14,8 +15,8 @@
     "firebase": "^5.4.2",
     "lodash": "^4.17.10",
     "massive": "^5.2.0",
-    "npm": "^6.4.1",
     "material-design-icons": "^3.0.1",
+    "npm": "^6.4.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-material-ui": "0.0.1",
