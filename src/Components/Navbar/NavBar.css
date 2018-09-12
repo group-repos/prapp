@@ -1,0 +1,16 @@
+.searchWrapperHidden {
+    width: 200px;
+    overflow: hidden;
+}
+
+.searchWrapper {
+    display: flex;
+    align-items: center;
+    transform: translateX(0);
+    transition: transform 0.5s ease-in-out;
+}
+
+.searchWrapperTransform {
+    transform: translateX(150px);
+    transition: transform 0.5s ease-in-out;
+}
