@@ -1,0 +1,96 @@
+.SingleRecipePage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--default-gradient); 
+}
+
+.SingleRecipe {
+  width: 1200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 55px);
+  margin-top: 55px;
+  box-shadow: 0 15px 60px rgba(0,0,0,0.3);
+}
+
+.SingleRecipePhotoWrapper {
+  width: 50%;
+  overflow: hidden;
+  border: 10px solid #f9f9f9;
+  height: 100%;
+}
+
+.SingleRecipePhotoWrapper > img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.SingleRecipeContent {
+  width: 50%;
+  height: 100%;
+  padding: 35px; 
+  background: white;
+  overflow: scroll;
+}
+
+.SingleRecipeContent > h1{
+  font-size: 58px;
+  font-weight: 400;
+  color: #4d4d4d;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 20px 0;
+}
+
+.SingleRecipeContent > p{
+  font-size: 16px;
+  font-weight: 300;
+  color: #666;
+  line-height: 27px;
+  margin: 20px 0;
+  width: 75%;
+  font-style: italic;
+}
+
+.SmallH1Bar{
+  background: var(--default-gradient);
+  width: 6px;
+  height: 60px;
+  position: relative;
+  float: left;
+  top: 0px;
+  left: -35px;
+}
+
+.FlexRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.FlexList {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+.FlexList > h2{
+  font-size: 16px;
+  font-weight: 700;
+  color: #4d4d4d;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 20px 0;
+}
+
+.FlexList > p{
+  font-size: 16px;
+  font-weight: 300;
+  color: #4d4d4d;
+  margin: 9px 0;
+  line-height: 27px;
+}
