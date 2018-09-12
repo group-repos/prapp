@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import NavDrawer from '../NavDrawer/NavDrawer';
-import magnifyingGlass from '../../images/Asset 5.svg'
+import magnifyingGlass from '../../images/magnifyingGlass.svg'
 
 //MATERIAL-UI
 import TextField from '@material-ui/core/TextField';
