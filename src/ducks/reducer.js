@@ -2,7 +2,8 @@ const initialState = {
     recipe: [],
     recipes: [],
     user: {},
-    modalOpen: false
+    modalOpen: false,
+    componentName: ''
 }
 
 //Action Descriptors
@@ -20,7 +21,7 @@ function reducer(state = initialState, action){
             return {...state, user: action.payload}
         
         case UPDATE_MODAL_OPEN:
-            return {...state, modalOpen: action.payload}
+            return {...state, modalOpen: action.payload.open, componentName: action.payload.componentName}
      
         case UPDATE_MODAL_CLOSED:
             return {...state, modalOpen: action.payload}
@@ -44,10 +45,13 @@ export function updateUser (user) {
     };
 };
 
-export function updateModalOpen (){
+export function updateModalOpen (componentName){
     return {
         type: UPDATE_MODAL_OPEN,
-        payload: true
+        payload: {
+            open: true,
+            componentName: componentName
+        }
     }
 }
 

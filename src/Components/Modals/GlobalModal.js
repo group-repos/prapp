@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
+import Login from '../Login/Login'
 // import Button from '@material-ui/core/Button';
 
 //REDUX
@@ -56,7 +57,7 @@ class SimpleModal extends React.Component {
 
   render() {
     const { classes } = this.props;
-
+    let ComponentName = this.props.componentName
     return (
       <div>
         {/* <Button onClick={this.handleOpen}>Open Modal</Button> */}
@@ -67,13 +68,7 @@ class SimpleModal extends React.Component {
           onClose={this.handleClose}
         >
           <div style={getModalStyle()} className={classes.paper}>
-            <Typography variant="title" id="modal-title">
-              Text in a modal
-            </Typography>
-            <Typography variant="subheading" id="simple-modal-description">
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
-            {/* <SimpleModalWrapped /> */}
+            <Login/>
           </div>
         </Modal>
       </div>
@@ -90,7 +85,8 @@ const SimpleModalWrapped = withStyles(styles)(SimpleModal);
 
 function mapStateToProps(state){
   return {
-    modalOpen: state.modalOpen
+    modalOpen: state.modalOpen,
+    componentName: state.componentName
   }
 }
 
