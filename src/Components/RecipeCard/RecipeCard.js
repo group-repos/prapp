@@ -9,6 +9,11 @@ import GlobalModal from '../Modals/GlobalModal';
 
 //MATERIAL-UI
 import IconButton from '@material-ui/core/IconButton';
+import Favorite from '@material-ui/icons/Favorite';
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
+import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 //REDUX
 import {connect} from 'react-redux';
@@ -16,12 +21,20 @@ import {updateModalOpen} from '../../ducks/reducer';
 import {updateModalClosed} from '../../ducks/reducer';
 
 
+const materialUiTheme = createMuiTheme({
+    palette: {
+        primary: {main: '#0071BC'},
+        secondary: {main: '#0071BC'}
+    }
+})
+
 class RecipeCard extends Component {
 constructor(){
     super()
     this.state = {
         hover:false,
-        tags: ['drinks', 'breakfast', 'chicken', 'lunch', 'keto', 'tag', 'food']
+        tags: ['drinks', 'breakfast', 'chicken', 'lunch', 'keto', 'tag', 'food'],
+        favoriteChecked: false
     }
 }
 mouseEnter(){
@@ -41,6 +54,10 @@ openModal(Login){
         hover: false
     })
     this.props.updateModalOpen(Login)
+}
+
+handleFavoriteChange = name => event => {
+    this.setState({[name]: event.target.checked})
 }
 
 render(){
@@ -76,9 +93,11 @@ render(){
                         <GlobalModal />
                     </IconButton>
                     <div className='favoriteCounter'>
-                        <IconButton variant='fab' color='primary'>
-                            <img src={favoriteIcon} alt="" style={iconButtonStyling}/>
-                        </IconButton>
+                        <MuiThemeProvider theme={materialUiTheme} >
+                            <FormControlLabel 
+                                control={<Checkbox onChange={this.handleFavoriteChange('favoriteChecked')} icon={<FavoriteBorder color='primary' />} checked={this.state.favoriteChecked} checkedIcon={<Favorite />} value='favoriteChecked' />}
+                            />
+                        </MuiThemeProvider>
                         <p>{this.props.recipe.rating}</p>
                     </div>
                 </div>
