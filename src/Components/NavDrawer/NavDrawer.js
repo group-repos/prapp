@@ -21,7 +21,7 @@ import Drawer from '@material-ui/core/Drawer';
 // import Button from '@material-ui/core/Button';
 // import List from '@material-ui/core/List';
 // import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
+// import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 
 const styles = {
@@ -35,7 +35,7 @@ const styles = {
 
 const home = props => <Link to='/' {...props}></Link>
 const recipe = props => <Link to='/recipe' {...props}></Link>
-const profile = props => <Link to='/profile' {...props}></Link>
+// const profile = props => <Link to='/profile' {...props}></Link>
 const about = props => <Link to='/about' {...props}></Link>
 const contact = props => <Link to='/contact' {...props}></Link>
 
@@ -74,7 +74,6 @@ class NavDrawer extends React.Component {
                 <p>@username</p>
               </div>
             </div>
-            <hr/>
 
             <div className='MenuItems'>
               <MenuItem component={home}><img src={Icon1} alt='' style={{width: '35px'}} />Home</MenuItem>
@@ -83,16 +82,16 @@ class NavDrawer extends React.Component {
               <MenuItem component={contact}><img src={Icon3} alt='' style={{width: '35px'}} />Contact</MenuItem>
             </div>
           
-            <div className='footer'>
+            <div className='Footer'>
               <hr/>
-              <div>
+              <div className='FooterIcons'>
                 <img src={fbIcon} alt='' style={{width: '20px'}} />
                 <img src={twitterIcon} alt='' style={{width: '20px'}} />
                 <img src={instagramIcon} alt='' style={{width: '20px'}} />
               </div>
-              <div>
+              <div className='FooterLegal'>
                 <p className='Copyright'>© ThatWasLegitness, Inc</p>
-                <p className='PrivacyPolicy'>All rights reserved. <a href='#'>Privacy Policy</a></p>
+                <p className='PrivacyPolicy'>All rights reserved. <a href=''>Privacy Policy</a></p>
               </div>
             </div>
           </div>

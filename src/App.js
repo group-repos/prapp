@@ -8,6 +8,8 @@ import axios from 'axios';
 
 import Header from './Components/Header/Header';
 import routes from './Routes';
+import GlobalModal from './Components/Modals/GlobalModal';
+
 
 class App extends Component {
   constructor() {
@@ -59,6 +61,7 @@ class App extends Component {
       <div className="App">
       <Header />
       {routes}
+      <GlobalModal />
       </div>
     );
   }
