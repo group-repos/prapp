@@ -15,31 +15,7 @@ h1 {
   margin: 0px;
 }
 
-/* NAVBAR */
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  margin: 0px;
-  z-index: 3;
-}
-
-li {
-  list-style-type: none;
-  padding: 10px;
-}
-
-ul {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  background-color: rgb(255,255,255,1);
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  margin: 0px;
-  padding-right: 40px;
-  /* border-bottom: 1px solid #80808080 */
-}
-
-.hamburger {
-  height: 30px;
+a {
+  text-decoration: none;
+  color: #333
 }

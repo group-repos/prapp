@@ -1,6 +1,6 @@
 import React from 'react';
 // import { mailFolderListItems, otherMailFolderListItems } from './tileData';
-import hamburgerImage from '../../images/hamburger.png';
+import hamburgerImage from '../../images/hamburger.svg';
 import {Link} from 'react-router-dom';
 import './NavDrawer.css';
 
@@ -12,6 +12,7 @@ import Icon5 from '../../images/Asset 5.svg';
 import fbIcon from '../../images/Facebook.svg';
 import instagramIcon from '../../images/Instagram.svg';
 import twitterIcon from '../../images/Twitter.svg';
+import profilePic from '../../images/alexandru-zdrobau-98438-unsplash.jpg'
 
 //MATERIAL-UI
 import PropTypes from 'prop-types';
@@ -52,38 +53,48 @@ class NavDrawer extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.toggleDrawer('right', true)} >
-          <img className='hamburger' src={hamburgerImage} alt='' />
+        <button onClick={this.toggleDrawer('right', true)} className='hamburger'>
+          <img src={hamburgerImage} alt='' />
         </button>
 
         <Drawer anchor="right" open={this.state.right} onClose={this.toggleDrawer('right', false)}>
           <div
+            className='NavDrawer'
             tabIndex={0}
             role="button"
             onClick={this.toggleDrawer('right', false)}
             onKeyDown={this.toggleDrawer('right', false)}
           >
-            <div>
-              <IconButton color='secondary' component={profile} ></IconButton>
-              <h3>First Last</h3>
-              <p>@username</p>
+            <div className='NavDrawerProfile'>
+              <div className='ProfilePicWrapper'>
+                <img src={profilePic} alt=""/>
+              </div>
+              <div className='UserInfoContainer'>
+                <h3>First Last</h3>
+                <p>@username</p>
+              </div>
             </div>
-            <hr></hr>
-            {/* {sideList} */}
-            <MenuItem component={home}><img src={Icon1} alt='' style={{width: '35px'}} />Home</MenuItem>
-            <MenuItem component={recipe}><img src={Icon5} alt='' style={{width: '35px'}} />Browse Recipes</MenuItem>
-            <MenuItem component={about}><img src={Icon2} alt='' style={{width: '35px'}} />About</MenuItem>
-            <MenuItem component={contact}><img src={Icon3} alt='' style={{width: '35px'}} />Contact</MenuItem>
-          </div>
-          <hr></hr>
-          <div>
-            <img src={fbIcon} alt='' style={{width: '20px'}} />
-            <img src={twitterIcon} alt='' style={{width: '20px'}} />
-            <img src={instagramIcon} alt='' style={{width: '20px'}} />
-          </div>
-          <div>
-            <p>© ThatWasLegitness, Inc</p>
-            <p>All rights reserved. Privacy Policy</p>
+            <hr/>
+
+            <div className='MenuItems'>
+              <MenuItem component={home}><img src={Icon1} alt='' style={{width: '35px'}} />Home</MenuItem>
+              <MenuItem component={recipe}><img src={Icon5} alt='' style={{width: '35px'}} />Browse Recipes</MenuItem>
+              <MenuItem component={about}><img src={Icon2} alt='' style={{width: '35px'}} />About</MenuItem>
+              <MenuItem component={contact}><img src={Icon3} alt='' style={{width: '35px'}} />Contact</MenuItem>
+            </div>
+          
+            <div className='footer'>
+              <hr/>
+              <div>
+                <img src={fbIcon} alt='' style={{width: '20px'}} />
+                <img src={twitterIcon} alt='' style={{width: '20px'}} />
+                <img src={instagramIcon} alt='' style={{width: '20px'}} />
+              </div>
+              <div>
+                <p className='Copyright'>© ThatWasLegitness, Inc</p>
+                <p className='PrivacyPolicy'>All rights reserved. <a href='#'>Privacy Policy</a></p>
+              </div>
+            </div>
           </div>
         </Drawer>
       </div>

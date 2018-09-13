@@ -32,7 +32,7 @@ class SingleRecipePage extends Component {
         // Conditional Render for ComponentDidMount//
           <div className='SingleRecipe'>
             <div className='SingleRecipePhotoWrapper'>
-              <img src={recipe.r_pics[0]} alt=""/>
+              <img src={recipe.r_pics} alt=""/>
             </div>
             <div className='SingleRecipeContent'>
               <h1><div className='SmallH1Bar'/>{recipe.r_name}</h1>

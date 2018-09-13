@@ -1,3 +1,31 @@
+/* NAVBAR */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(255,255,255,1);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 0px;
+    padding: 0 40px;
+}
+
+.LogoWrapper > img{
+    width: 57px;
+}
+
+.RightSide {
+    display: flex;
+    flex-direction: row;
+}
+
+.hamburger {
+height: 30px;
+}
+
 .searchWrapperHidden {
     width: 200px;
     overflow: hidden;
