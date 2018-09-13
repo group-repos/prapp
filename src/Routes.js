@@ -1,5 +1,5 @@
 import React from 'react'
-import {HashRouter, Switch, Route} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 import Home from './Components/Home/Home';
 import SingleRecipePage from './Components/SingleRecipePage/SingleRecipePage';
 import UserProfile from './Components/UserProfile/UserProfile';
@@ -8,7 +8,6 @@ import Contact from './Components/Contact/Contact';
 import Test from './Components/Test';
 
 export default (
-    <HashRouter>
         <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/recipe' component={SingleRecipePage} />
@@ -17,5 +16,4 @@ export default (
             <Route path='/contact' component={Contact} />
             <Route path='/test' component={Test}/>
         </Switch>
-    </HashRouter>
 )
