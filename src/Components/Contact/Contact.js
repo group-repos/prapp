@@ -3,11 +3,8 @@ import './Contact.css';
 import PropTypes from 'prop-types';
 
 //MATERIAL UI
-import purple from '@material-ui/core/colors/purple';
 import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-// import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
-import {  } from '@material-ui/core/styles';
 
 const styles = theme => ({
   container: {
@@ -23,17 +20,6 @@ const styles = theme => ({
   menu: {
     width: 200,
   },
-  cssLabel: {
-      '&$cssFocused': {
-          color: purple[500]
-      }
-  },
-  cssFocused: {},
-  cssUnderline: {
-      '&:after': {
-          borderBottomColor: purple[500]
-      }
-  }
 });
 
 const materialUiTheme = createMuiTheme({
