@@ -45,17 +45,6 @@ openModal(Login){
 
 render(){
     let iconButtonStyling = {width: '20px'}
-    let { ingredients, steps } = this.props.recipe;
-    let ingredient = ingredients.map((ingredient) => (
-        <div className='recipe-card__ingredient' key={ingredient.id}>
-            <p>{`${ingredient.ingredient}: ${ingredient.quantity} ${ingredient.unit}`}</p>
-        </div>
-    ))
-    let step = steps.reverse().map(step => (
-        <div className='recipe-card__step' key={step.id}>
-            <p>{`Step ${step.step}: ${step.description}`}</p>
-        </div>
-    ))
     let RecipePhotoWrapperClass = this.state.hover ? 'RecipePhotoWrapper RecipePhotoWrapperHover' : 'RecipePhotoWrapper'
     let RecipeQuickViewClass = this.state.hover ? 'recipeQuickView recipeQuickViewHover' : 'recipeQuickView'
     let cardMenuClass = this.state.hover ? 'cardMenu cardMenuHover' : 'cardMenu'

@@ -111,18 +111,41 @@ app.get('/api/recipe', async (req, res) => {
 //Gets all recipes
 app.get('/api/getrecipes', async (req, res) => {
     const dbInstance = req.app.get('db');
-    let ingredients = await dbInstance.get_recipes_w_ingredients();
-    let steps = await dbInstance.get_recipes_w_steps();
-    steps.forEach(e => {
-        e.steps.reverse();
-    })
-    let recipes = ingredients.map((e, i) => {
-        if (e.r_id === steps[i].r_id) {
-           e.steps = steps[i].steps
-            return e;
-        }
-    })
+    let recipes = await dbInstance.get_all_recipes();
     res.status(200).send(recipes);
+    // console.log(recipes);
+    // let ingredients = await dbInstance.get_recipes_w_ingredients();
+    // console.log(ingredients);
+    // let newRecipes = await recipes.map(e => e.r_id);
+    // console.log('newRecipes: ', newRecipes);
+
+    // recipes.map((recipe, i) => {
+    //     let index = ingredients.findIndex()
+    //     if (recipe.r_id === ingredients[i].r_id) {
+    //         recipe.ingredients = ingredients.ingredients;
+    //         return recipe;
+    //     }
+    // })
+    // let steps = await dbInstance.get_recipes_w_steps();
+    // steps.forEach(e => {
+    //     e.steps.reverse();
+    // })
+    // let allRecipes = ingredients.map((e, i) => {
+    //     if (e.r_id === steps[i].r_id) {
+    //         e.steps = steps[i].steps
+    //         return e;
+    //     }
+    // })
+})
+
+//Gets ingredients from one recipe
+app.get('/api/ingredients/:id', async (req, res) => {
+    const dbInstance = req.app.get();
+    let ingredients = await dbInstance.get_ingredients_for_one_recipe([req.params.r_id]);
+    if (!ingredients[0]) {
+        res.status(200).send('No ingredients added yet!');
+    }
+    res.status(200).send(ingredients);
 })
 
 //Adds a Recipe to the Recipes table
@@ -138,6 +161,19 @@ app.post('/api/recipes', (req, res) => {
             res.status(200).send('Unable to add recipe');
         })
 });
+
+//Adds an ingredient to the ingredients table;
+app.post('/api/ingredients', (req, res) => {
+    const dbInstance = req.app.get('db');
+    const { r_id, ingredient, quantity, unit } = req.body;
+    dbInstance.add_ingredient([r_id, ingredient, quantity, unit])
+        .then(res.sendStatus(200))
+        .catch(err => {
+            console.log(err);
+            res.status(500).send('Unable to add ingredient');
+        });
+})
+
 
 
 
