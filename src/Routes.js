@@ -5,16 +5,15 @@ import SingleRecipePage from './Components/SingleRecipePage/SingleRecipePage';
 import UserProfile from './Components/UserProfile/UserProfile';
 import About from './Components/About/About';
 import Contact from './Components/Contact/Contact';
+import Test from './Components/Test';
 
-const routes = (
-    <Switch>
-        <Route exact path='/' component={Home} />
-        <Route path='/recipe' component={SingleRecipePage} />
-        <Route path='/profile' component={UserProfile} />
-        <Route path='/about' component={About} />
-        <Route path='/contact' component={Contact} />
-    </Switch>
-
+export default (
+        <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/recipe' component={SingleRecipePage} />
+            <Route path='/profile' component={UserProfile} />
+            <Route path='/about' component={About} />
+            <Route path='/contact' component={Contact} />
+            <Route path='/test' component={Test}/>
+        </Switch>
 )
-
-export default routes

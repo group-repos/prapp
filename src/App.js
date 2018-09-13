@@ -7,7 +7,6 @@ import axios from 'axios';
 // import _ from 'lodash';
 
 import Header from './Components/Header/Header';
-import EditUserProfile from './Components/Modals/EditUserProfile/EditUserProfile';
 import routes from './Routes';
 
 class App extends Component {
@@ -56,7 +55,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.recipes);
     return (
       <div className="App">
       <Header />

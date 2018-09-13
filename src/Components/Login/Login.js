@@ -95,18 +95,18 @@ class Login extends Component {
         return (
             <div>
                 <div>Login</div>
-                <form className='login__account-creation'>
+                <div className='login__account-creation'>
                     <div>Create an account</div>
                     <input placeholder='Email' name='email' onChange={this.handleChange}/>
                     <input placeholder='Password' name='email' onChange={this.handleChange} type='password'/>
                     <button onClick={() => this.createAccount()}>Create Account</button>
-                </form>
-                <form className='login__email-login'>
+                </div>
+                <div className='login__email-login'>
                     <div>Sign In</div>
                     <input placeholder='Email' name='email' onChange={this.handleChange}/>
                     <input placeholder='Password' name='password' onChange={this.handleChange} type='password'/>
                     <button onClick={() => this.emailLogin()}>Sign In</button>
-                </form>
+                </div>
                 <div>
                     <button onClick={() => this.googleLogin()}>Login with Google</button>
                     <button onClick={() => this.facebookLogin()}>Login with Facebook</button>
