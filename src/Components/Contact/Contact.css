@@ -1,0 +1,32 @@
+.wrapper {
+    height: 100vh;
+    width: 100%;
+    padding-top: 100px;
+}
+
+.title {
+    font-size: 40px;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    margin: auto;
+    width: 50%;
+    /* background: lightgreen; */
+}
+
+.button {
+    margin: 6px 0;
+    padding: 14px 18px;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    color: white;
+    background: var(--default-gradient);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-left: 76%;
+    margin-top: 7%;
+  }

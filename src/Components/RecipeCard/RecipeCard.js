@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 
 import './RecipeCard.css'
 
-import favoriteIcon from '../../images/Asset6.svg'
 import addRecipeIcon from '../../images/Asset8.svg'
 import editRecipeIcon from '../../images/Asset7.svg'
 import GlobalModal from '../Modals/GlobalModal';
