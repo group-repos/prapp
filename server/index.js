@@ -148,6 +148,16 @@ app.get('/api/ingredients/:id', async (req, res) => {
     res.status(200).send(ingredients);
 })
 
+//Gets steps from one recipe
+app.get('/api/steps/:id', async (req, res) => {
+    const dbInstance = req.app.get();
+    let steps = await dbInstance.get_steps_for_one_recipe([req.params.r_id]);
+    if (!steps[0]) {
+        res.status(200).send('No steps added yet');
+    }
+    res.status(200).send(steps);
+})
+
 //Adds a Recipe to the Recipes table
 app.post('/api/recipes', (req, res) => {
     const dbInstance = req.app.get('db');
@@ -162,7 +172,7 @@ app.post('/api/recipes', (req, res) => {
         })
 });
 
-//Adds an ingredient to the ingredients table;
+//Adds an ingredient to the ingredients table.
 app.post('/api/ingredients', (req, res) => {
     const dbInstance = req.app.get('db');
     const { r_id, ingredient, quantity, unit } = req.body;
@@ -174,6 +184,17 @@ app.post('/api/ingredients', (req, res) => {
         });
 })
 
+//Adds a step to the steps table.
+app.post('/api/steps', (req, res) => {
+    const dbInstance = req.app.get('db');
+    const { r_id, step, description } = req.body;
+    dbInstance.add_steps([r_id, step, description])
+        .then(res.sendStatus(200))
+        .catch(err => {
+            console.log(err);
+            res.status(500).send('Unable to add step');
+        })
+})
 
 
 

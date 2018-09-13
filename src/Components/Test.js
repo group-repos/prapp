@@ -4,6 +4,7 @@ import axios from 'axios';
 import Login from './Login/Login';
 import AddRecipe from './Modals/AddRecipe/AddRecipe';
 import AddIngredients from './Modals/AddIngredients/AddIngredients';
+import AddSteps from './Modals/AddSteps/AddSteps';
 
 class Test extends Component {
     state = {
@@ -15,8 +16,9 @@ class Test extends Component {
             <div style={{marginTop: '100px'}}>
                 <div>Test</div>
                 <Login />
-                {/* <AddRecipe /> */}
-                {/* <AddIngredients /> */}
+                <AddRecipe />
+                <AddIngredients />
+                <AddSteps />
             </div>
         )
     }
