@@ -16,7 +16,7 @@ import profilePic from '../../images/alexandru-zdrobau-98438-unsplash.jpg'
 
 //MATERIAL-UI
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 // import Button from '@material-ui/core/Button';
 // import List from '@material-ui/core/List';
@@ -32,6 +32,16 @@ const styles = {
     width: 'auto',
   },
 };
+
+const materialUiTheme = createMuiTheme({
+  overrides: {
+    MuiMenuItem: {
+      root: {
+        color: 'white',
+      }
+    }
+  }
+})
 
 const home = props => <Link to='/' {...props}></Link>
 const recipe = props => <Link to='/recipe' {...props}></Link>
@@ -76,10 +86,12 @@ class NavDrawer extends React.Component {
             </div>
 
             <div className='MenuItems'>
-              <MenuItem component={home}><img src={Icon1} alt='' style={{width: '35px'}} />Home</MenuItem>
-              <MenuItem component={recipe}><img src={Icon5} alt='' style={{width: '35px'}} />Browse Recipes</MenuItem>
-              <MenuItem component={about}><img src={Icon2} alt='' style={{width: '35px'}} />About</MenuItem>
-              <MenuItem component={contact}><img src={Icon3} alt='' style={{width: '35px'}} />Contact</MenuItem>
+              <MuiThemeProvider theme={materialUiTheme}>
+                <MenuItem component={home}><img src={Icon1} alt='' style={{width: '35px'}} />Home</MenuItem>
+                <MenuItem component={recipe}><img src={Icon5} alt='' style={{width: '35px'}} />Browse Recipes</MenuItem>
+                <MenuItem component={about}><img src={Icon2} alt='' style={{width: '35px'}} />About</MenuItem>
+                <MenuItem component={contact}><img src={Icon3} alt='' style={{width: '35px'}} />Contact</MenuItem>
+              </MuiThemeProvider>
             </div>
           
             <div className='Footer'>
