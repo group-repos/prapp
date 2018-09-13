@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
+import { updateNewRecipe } from '../../../ducks/reducer';
+
 class AddRecipe extends Component {
     state = {       
         img: {
@@ -50,6 +52,7 @@ class AddRecipe extends Component {
         axios.post('/api/recipes',{u_id: this.state.u_id, servings: this.state.servings, r_name: this.state.r_name, r_pics: this.state.r_pics, r_description: this.state.r_description})
             .then(res => {
                 console.log(res.data);
+                this.props.updateNewRecipe(res.data[0]);
             })
     }
 
@@ -60,7 +63,7 @@ class AddRecipe extends Component {
             // ?
                 <div>
                     <div>AddRecipe</div>
-                    <form>
+                    <div>
                         <div>
                             <p>Recipe Name: </p>
                             <input name='r_name' onChange={this.handleChange}/>
@@ -87,7 +90,7 @@ class AddRecipe extends Component {
                             <hr/>
                         </div>
                         <button onClick={this.addRecipe}>Add Recipe</button>
-                    </form>
+                    </div>
 
                 </div>
             // :
@@ -103,4 +106,4 @@ function mapStateToProps (state) {
     }
 }
 
-export default connect(mapStateToProps)(AddRecipe);
+export default connect(mapStateToProps, { updateNewRecipe })(AddRecipe);
