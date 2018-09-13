@@ -7,9 +7,6 @@ import axios from 'axios';
 // import _ from 'lodash';
 
 import Header from './Components/Header/Header';
-import EditUserProfile from './Components/Modals/EditUserProfile/EditUserProfile';
-import Login from './Components/Login/Login';
-import AddRecipe from './Components/Modals/AddRecipe/AddRecipe';
 import routes from './Routes';
 
 class App extends Component {
