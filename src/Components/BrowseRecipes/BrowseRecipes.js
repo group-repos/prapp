@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 import RecipeCard from '../RecipeCard/RecipeCard';
-import CalendarDrawer from '../CalendarDrawer/CalendarDrawer';
 
 import './BrowseRecipes.css'
 
@@ -40,9 +39,12 @@ export default class BrowseRecipes extends Component {
                   this.props.BrowseRecipesMenu.map((e,i) => {
                     let recipeClasses = this.state.activeCategory === i ? 'ActiveRecipe' : ''
                       return (
-                      <p key={i}  
-                        onClick={()=> this.handleClick(i)}>{e}<div className={recipeClasses}/>
-                      </p>)
+                      <div key={i}  
+                        onClick={()=> this.handleClick(i)}
+                        className='categoryWrapper'>
+                          <p>{e}</p>
+                          <div className={recipeClasses}/>
+                      </div>)
                 }):''}
               </div>
               <div className='recipeCardsWrapper'>
