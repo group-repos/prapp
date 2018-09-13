@@ -36,11 +36,11 @@ mouseExit(){
     })
 }
 
-openModal(){
+openModal(Login){
     this.setState({
         hover: false
     })
-    this.props.updateModalOpen()
+    this.props.updateModalOpen(Login)
 }
 
 render(){
@@ -72,7 +72,7 @@ render(){
                         <img src={editRecipeIcon} alt="" style={iconButtonStyling}/>
                     </IconButton>
                     <IconButton  variant='fab' color='primary'>
-                        <img onClick={() => this.openModal()} src={addRecipeIcon} alt="" style={iconButtonStyling}/>
+                        <img onClick={() => this.openModal('Login')} src={addRecipeIcon} alt="" style={iconButtonStyling}/>
                         <GlobalModal />
                     </IconButton>
                     <div className='favoriteCounter'>
