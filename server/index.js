@@ -125,5 +125,19 @@ app.get('/api/getrecipes', async (req, res) => {
     res.status(200).send(recipes);
 })
 
+//Adds a Recipe to the Recipes table
+app.post('/api/recipes', (req, res) => {
+    const dbInstance = req.app.get('db');
+    const {u_id, servings, r_name, r_pics, r_description} = req.body;
+    dbInstance.add_recipe([u_id, servings, r_name, r_pics, r_description])
+        .then(recipe => {
+            res.status(200).send(recipe);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(200).send('Unable to add recipe');
+        })
+});
+
 
 

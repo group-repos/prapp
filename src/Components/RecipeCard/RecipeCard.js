@@ -58,9 +58,9 @@ render(){
                     <p><span>Servings:</span> {this.props.recipe.servings} individuals</p>
                 </div>
                 <div className='cardTags'>
-                {this.state.tags.map(e => {
+                {this.state.tags.map((e, i) => {
                     return(
-                    <p>{e}</p>
+                    <p key={i}>{e}</p>
                     )
                 })}
                 </div>

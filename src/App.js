@@ -8,6 +8,8 @@ import axios from 'axios';
 
 import Header from './Components/Header/Header';
 import EditUserProfile from './Components/Modals/EditUserProfile/EditUserProfile';
+import Login from './Components/Login/Login';
+import AddRecipe from './Components/Modals/AddRecipe/AddRecipe';
 import routes from './Routes';
 
 class App extends Component {
@@ -56,21 +58,13 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.recipes);
     return (
       <div className="App">
       <Header />
       <div>
         {routes}
       </div>
-      <br></br>
-      <div>
-        <button onClick={() => this.getRecipes()}>Get Recipes</button>
-        <button onClick={() => this.getAllRecipes()}>Get All Recipes</button>
-        <button onClick={() => this.googleLogin()}>Login with Google</button>
-        <button onClick={() => this.facebookLogin()}>Login with Facebook</button>
-      </div>
-      <EditUserProfile/>
+      <br></br>      
       </div>
     );
   }
