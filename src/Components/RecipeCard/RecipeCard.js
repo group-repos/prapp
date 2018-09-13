@@ -99,7 +99,7 @@ render(){
                             <FormControlLabel 
                                 control={<Checkbox onChange={this.handleFavoriteChange('favoriteChecked')} icon={<FavoriteBorder color='primary' />} checked={this.state.favoriteChecked} checkedIcon={<Favorite />} value='favoriteChecked' />}
                             />
-                        </MuiThemeProvider
+                        </MuiThemeProvider>
                     <p>{this.props.recipe.rating}</p>
                 </div>
             </div>
