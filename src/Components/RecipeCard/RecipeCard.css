@@ -6,6 +6,7 @@
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   height: 455px;
   overflow: hidden;
+  position: relative;
 }
 
 .RecipePhotoWrapper {
@@ -19,54 +20,12 @@
   transition: transform 0.5s ease;
 }
 
-.cardMenu {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 10px 40px;
-  border-bottom: 0 solid white;
-  transition: border-bottom 0.5s ease;
-}
-
-.cardMenuHover {
-  border-bottom: 1px solid #0071bc8a;
-  transition: border-bottom 2s ease;
-}
-
 .RecipePhotoWrapperHover > img {
   transform: translateY(-250px);
   transition: transform 0.5s ease;
 }
 
-.cardMenu > img {
-  object-fit: contain;
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
-}
-
-.favoriteCounter > img {
-  object-fit: contain;
-  width: 25px;
-  height: 25px;
-  margin-right: 6px;
-}
-
-.favoriteCounter {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  cursor: pointer;
-}
-
-.favoriteCounter > p {
-  color: #0071bc;
-  font-size: 16px;
-  font-weight: 300;
-  position: relative;
-  bottom: 2px;
-}
-
+/* Moving Recipe Quick View */
 .recipeQuickView {
   transform: translateY(0);
   transition: transform 0.5s ease;
@@ -114,4 +73,53 @@
   text-transform: uppercase;
   margin: 0 3px 5px 0;
   cursor: pointer;
+}
+
+
+/* Card Menu */
+.cardMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 0 10px;
+  border-bottom: 0 solid white;
+  position: relative;
+  bottom: 268px;
+  background: white;
+  z-index: 1000;
+  transition: border-bottom 0.5s ease;
+}
+
+.cardMenuHover {
+  border-bottom: 1px solid #0071bc8a;
+  transition: border-bottom 2s ease;
+}
+
+.cardMenu > img {
+  object-fit: contain;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.favoriteCounter > img {
+  object-fit: contain;
+  width: 25px;
+  height: 25px;
+  margin-right: 6px;
+}
+
+.favoriteCounter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.favoriteCounter > p {
+  color: #0071bc;
+  font-size: 16px;
+  font-weight: 300;
+  position: relative;
+  bottom: 2px;
 }

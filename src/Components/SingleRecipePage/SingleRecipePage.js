@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {connect} from 'react-redux';
+// import {connect} from 'react-redux';
 
 import './SingleRecipe.css'
 
@@ -41,14 +41,14 @@ class SingleRecipePage extends Component {
                 <div className='FlexList'>
                   <h2>Ingredients</h2>
                   {this.state.recipe[1].map(e => {
-                    return(<p>{e.quantity} {e.unit} of {e.ingredient}</p>)
+                    return(<p key={e.i_id} >{e.quantity} {e.unit} of {e.ingredient}</p>)
                   })}
                 </div>
                 <div className='FlexList'>
                   <h2>Steps</h2>
                   {this.state.recipe[2].map(e => {
                     return(
-                      <p>{e.description}</p>
+                      <p key={e.s_id}>{e.description}</p>
                       )
                     })}
                 </div>

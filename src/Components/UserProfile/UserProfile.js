@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Calendar from '../Calendar/Calendar';
 import UserInfo from '../UserInfo/UserInfo';
 import UserSubmittedRecipes from '../UserSubmittedRecipes/UserSubmittedRecipes';
 import BrowseRecipes from '../BrowseRecipes/BrowseRecipes';

@@ -1,15 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
-import Login from '../Login/Login'
 // import Button from '@material-ui/core/Button';
 
 //REDUX
 import {connect} from 'react-redux';
-import {updateModalClosed, updateModalOpen} from '../../ducks/reducer';
+import {updateModalClosed} from '../../ducks/reducer';
 
+// Modal Components
+import Login from '../Login/Login'
+import Calendar from '../Calendar/Calendar'
+
+// Modal Descriptors
+const LOGIN = 'Login'
+const CALENDAR = 'Calendar'
 
 function getModalStyle() {
   const top = 50
@@ -55,9 +60,20 @@ class SimpleModal extends React.Component {
     }
   }
 
+  modalSwitcher = (componentName) => {
+    switch (componentName){
+      case LOGIN: 
+        return(<Login/>)
+
+      case CALENDAR: 
+        return(<Calendar/>)
+
+      default: return(<div/>)
+    }
+  }
+
   render() {
     const { classes } = this.props;
-    let ComponentName = this.props.componentName
     return (
       <div>
         {/* <Button onClick={this.handleOpen}>Open Modal</Button> */}
@@ -68,7 +84,7 @@ class SimpleModal extends React.Component {
           onClose={this.handleClose}
         >
           <div style={getModalStyle()} className={classes.paper}>
-            <Login/>
+            {this.modalSwitcher(this.props.componentName)}
           </div>
         </Modal>
       </div>
