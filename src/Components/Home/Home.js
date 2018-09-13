@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 // import Tutorial from '../Tutorial/Tutorial';
 import BrowseRecipes from '../BrowseRecipes/BrowseRecipes';
 // import RecipeCard from './RecipeCard';
-import Login from '../Login/Login';
+// import Login from '../Login/Login';
 import './Home.css'
 
 export default class Home extends Component {

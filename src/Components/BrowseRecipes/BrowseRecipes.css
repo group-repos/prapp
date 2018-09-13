@@ -14,11 +14,18 @@
   border-width: 0 0 2px 0;
   border-style: solid;
   border-image: var(--default-gradient) 1;
-  width: 75%;
-  margin-top: 10px;
+  width: 55%;
+  position: relative;
+  top: -10px;
 }
 
-.categories > p {
+.categoryWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.categoryWrapper > p {
   font-size: 18px;
   letter-spacing: 2px;
   font-weight: 300;
