@@ -53,8 +53,8 @@ class NavDrawer extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.toggleDrawer('right', true)} >
-          <img className='hamburger' src={hamburgerImage} alt='' />
+        <button onClick={this.toggleDrawer('right', true)} className='hamburger'>
+          <img src={hamburgerImage} alt='' />
         </button>
 
         <Drawer anchor="right" open={this.state.right} onClose={this.toggleDrawer('right', false)}>

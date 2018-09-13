@@ -1,5 +1,11 @@
 .hamburger {
-  width:29px;
+  width:30px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 
 .NavDrawer {
