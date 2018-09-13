@@ -1,3 +1,7 @@
+:root {
+  --quickViewHeight: -300px;
+}
+
 .RecipeCards {
   background-color: white;
   margin: 15px;
@@ -11,6 +15,7 @@
 
 .RecipePhotoWrapper {
   overflow: hidden;
+  height: 400px;
 }
 
 .RecipePhotoWrapper > img {
@@ -21,7 +26,7 @@
 }
 
 .RecipePhotoWrapperHover > img {
-  transform: translateY(-250px);
+  transform: translateY(var(--quickViewHeight));
   transition: transform 0.5s ease;
 }
 
@@ -29,10 +34,12 @@
 .recipeQuickView {
   transform: translateY(0);
   transition: transform 0.5s ease;
+  height: 300px;
+  overflow: scroll;
 }
 
 .recipeQuickViewHover {
-  transform: translateY(-250px);
+  transform: translateY(var(--quickViewHeight));
   transition: transform 0.5s ease;
 }
 
@@ -83,8 +90,9 @@
   justify-content: space-evenly;
   padding: 0 10px;
   border-bottom: 0 solid white;
-  position: relative;
-  bottom: 268px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   background: white;
   z-index: 1000;
   transition: border-bottom 0.5s ease;
