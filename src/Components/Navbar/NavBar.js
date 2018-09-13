@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import NavDrawer from '../NavDrawer/NavDrawer';
+import Logo from '../../images/Logo.svg'
 import magnifyingGlass from '../../images/magnifyingGlass.svg'
+
 
 //MATERIAL-UI
 import TextField from '@material-ui/core/TextField';
@@ -31,9 +33,12 @@ export default class NavBar extends Component {
     render() {
         let searchWrapperClass = this.state.show ? 'searchWrapper': 'searchWrapper searchWrapperTransform'
     return (
-        <div>
             <nav>
-                <ul>
+                <div className='LogoWrapper'>
+                    <img src={Logo} alt=""/>
+                    <h1>PRAPP</h1>
+                </div>
+                <div className='RightSide'>
                     <div className='searchWrapperHidden'>
                         <div className={searchWrapperClass}>
                             <IconButton
@@ -46,10 +51,9 @@ export default class NavBar extends Component {
                             {/* {this.state.show ? inputField: false} */}
                         </div>
                     </div>
-                    <li><NavDrawer /></li>
-                </ul>
+                <NavDrawer />
+                </div>
             </nav>
-        </div>
     )
 }
 }
