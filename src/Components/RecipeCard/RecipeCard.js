@@ -38,9 +38,8 @@ mouseExit(){
 
 render(){
     let iconButtonStyling = {width: '20px'}
+    let RecipePhotoWrapperClass = this.state.hover === 'open' ? 'RecipePhotoWrapper RecipePhotoWrapperHover' : 'RecipePhotoWrapper'
     let RecipeQuickViewClass = this.state.hover === 'open' ? 'recipeQuickView recipeQuickViewHover' : 'recipeQuickView'
-    let RecipePhotoWrapperClass = this.state.hover ? 'RecipePhotoWrapper RecipePhotoWrapperHover' : 'RecipePhotoWrapper'
-
     return(
         <div>
         <div className='RecipeCards' 
@@ -71,9 +70,8 @@ render(){
                 <IconButton variant='fab' color='primary'>
                     <img src={editRecipeIcon} alt="" style={iconButtonStyling}/>
                 </IconButton>
-                <IconButton  variant='fab' color='primary'>
-                    <img 
-                        onClick={() =>      this.props.updateModalOpen('Calendar')} 
+                <IconButton  variant='fab' color='primary' onClick={() => this.props.updateModalOpen('Calendar')}>
+                    <img  
                         src={addRecipeIcon} 
                         alt="" 
                         style={iconButtonStyling}
