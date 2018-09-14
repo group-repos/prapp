@@ -8,7 +8,7 @@ import timboSlice from '../../images/TimboSlice.jpg';
 
 export default function About() {
     return(
-        <div>
+        <div className='About'>
             <h2>About</h2>
             <p>In our opinion, meal tracking apps in today's market are a super-adequacy. Too many apps allow you to add a recipe, but none of them allow you to plan your week. Here at Prapp, our goal is to empower goal-oriented people to easily plan their food each week by choosing a recipe and having an already populated shopping list when their planning is complete.</p>
             <h3>Meet the developers</h3>
