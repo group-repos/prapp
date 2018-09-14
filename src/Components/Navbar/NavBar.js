@@ -2,18 +2,31 @@ import React, {Component} from 'react';
 import NavDrawer from '../NavDrawer/NavDrawer';
 import Logo from '../../images/Logo.svg'
 import magnifyingGlass from '../../images/magnifyingGlass.svg'
+import {Link} from 'react-router-dom';
 
 
 //MATERIAL-UI
 import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
 
 import './NavBar.css';
 
-let inputField = <TextField 
+const materialUiTheme = createMuiTheme({
+    palette: {
+        primary: {main: '#0071BC'},
+        // secondary: {main: '#FF0040'}
+    }
+})
+
+let inputField = <MuiThemeProvider theme={materialUiTheme}>
+    <TextField 
     type='search' 
     placeholder='Search...' 
-    color='default' />
+    color='default' /></MuiThemeProvider>
+
+    
 
 export default class NavBar extends Component {
     constructor() {
@@ -34,10 +47,13 @@ export default class NavBar extends Component {
         let searchWrapperClass = this.state.show ? 'searchWrapper': 'searchWrapper searchWrapperTransform'
     return (
             <nav>
-                <div className='LogoWrapper'>
-                    {/* <img src={Logo} alt=""/> */}
-                    <h1>PR<span>APP</span></h1>
-                </div>
+                <Link to='/'>
+                <button className='logoButton'>
+                    <div className='LogoWrapper' >
+                        <h1>PR<span>APP</span></h1>
+                    </div>
+                </button>
+                </Link>
                 <div className='RightSide'>
                     <div className='searchWrapperHidden'>
                         <div className={searchWrapperClass}>
