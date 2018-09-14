@@ -41,5 +41,6 @@
   background: var(--default-gradient);
   text-transform: uppercase;
   letter-spacing: 1px;
+  min-width: 200px;
 }
 
