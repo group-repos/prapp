@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Login from './Login/Login';
 import AddRecipe from './Modals/AddRecipe/AddRecipe';
 import AddIngredients from './Modals/AddIngredients/AddIngredients';
-import AddSteps from './Modals/AddSteps/AddSteps';
+// import AddSteps from './Modals/AddSteps/AddSteps';
 
 class Test extends Component {
     state = {
@@ -18,7 +18,7 @@ class Test extends Component {
                 <Login />
                 <AddRecipe />
                 <AddIngredients />
-                <AddSteps />
+                {/* <AddSteps /> */}
             </div>
         )
     }

@@ -10,16 +10,14 @@ class AddSteps extends Component {
         description: '',
     };
 
-    async componentDidMount () {
-        await this.setState({r_id: this.props.newRecipe.r_id});
-        await this.getSteps(this.state.r_id);
-    };
-
-    componentDidUpdate(prevProps) {
-        if (this.props.newRecipe.r_id !== prevProps.newRecipe.r_id) {
-            this.componentDidMount();
-        };
-    };
+    componentDidUpdate (prevProps, prevState) {
+        if (this.props.newRecipe !== prevProps.newRecipe) {
+            this.setState({r_id: this.props.newRecipe.r_id})
+        }
+        if (this.state.steps !== prevState.steps) {
+            this.setState({steps: this.state.steps})
+        }
+    }
 
     getSteps = (r_id) => {
         axios.get(`/api/steps/${r_id}`)
@@ -37,13 +35,18 @@ class AddSteps extends Component {
     addStep = () => {
         axios.post('/api/steps', {r_id: this.state.r_id, step: this.state.step, description: this.state.description})
             .then(() => {
-                this.setState({step: ++this.state.step})
+                this.setState({step: this.state.step + 1})
                 this.componentDidMount();
             })
     }
 
     render () {
         console.log(this.state)
+        let step = this.state.steps.map(e => (
+            <div key={e.s_id}>
+                <p>{`Step ${e.step}: ${e.description}`}</p>
+            </div>
+        ))
         return (
             <div>
                 <div>AddSteps</div>
@@ -53,11 +56,7 @@ class AddSteps extends Component {
                 </div>
                 {this.state.steps[0]
                 ?
-                this.state.steps.map(e => (
-                    <div key={e.s_id}>
-                        <p>{`Step ${e.step}: ${e.description}`}</p>
-                    </div>
-                ))
+                <div>{step}</div>
                 :
                 <div>Add Steps!</div>}
             </div>

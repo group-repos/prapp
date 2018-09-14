@@ -139,18 +139,21 @@ app.get('/api/getrecipes', async (req, res) => {
 })
 
 //Gets ingredients from one recipe
-app.get('/api/ingredients/:id', async (req, res) => {
-    const dbInstance = req.app.get();
-    let ingredients = await dbInstance.get_ingredients_for_one_recipe([req.params.r_id]);
-    if (!ingredients[0]) {
-        res.status(200).send('No ingredients added yet!');
-    }
-    res.status(200).send(ingredients);
+app.post('/api/ingredients', (req, res) => {
+    const dbInstance = req.app.get('db');
+    dbInstance.get_ingredients_for_one_recipe([req.body.r_id])
+        .then(ingredients => {
+            res.status(200).send(ingredients);
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).send('Pull your head out of your ass!');
+        })
 })
 
 //Gets steps from one recipe
-app.get('/api/steps/:id', async (req, res) => {
-    const dbInstance = req.app.get();
+app.get('/api/steps/:r_id', async (req, res) => {
+    const dbInstance = req.app.get('db');
     let steps = await dbInstance.get_steps_for_one_recipe([req.params.r_id]);
     if (!steps[0]) {
         res.status(200).send('No steps added yet');
@@ -173,7 +176,7 @@ app.post('/api/recipes', (req, res) => {
 });
 
 //Adds an ingredient to the ingredients table.
-app.post('/api/ingredients', (req, res) => {
+app.post('/api/ingredient', (req, res) => {
     const dbInstance = req.app.get('db');
     const { r_id, ingredient, quantity, unit } = req.body;
     dbInstance.add_ingredient([r_id, ingredient, quantity, unit])
