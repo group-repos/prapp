@@ -19,39 +19,38 @@ class AddSteps extends Component {
         }
     }
 
-    getSteps = (r_id) => {
-        axios.get(`/api/steps/${r_id}`)
-            .then(res => {
-                this.setState({steps: res.data});
-            });
-    };
 
     handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
         });
     };
+    
+    getSteps = () => {
+        axios.post(`/api/steps`, {r_id: this.state.r_id})
+            .then(res => {
+                console.log(res.data);
+                this.setState({steps: res.data});
+            });
+    };
 
     addStep = () => {
-        axios.post('/api/steps', {r_id: this.state.r_id, step: this.state.step, description: this.state.description})
+        axios.post('/api/step', {r_id: this.state.r_id, step: this.state.step, description: this.state.description})
             .then(() => {
-                this.setState({step: this.state.step + 1})
-                this.componentDidMount();
+                this.getSteps();
             })
     }
 
     render () {
         console.log(this.state)
         let step = this.state.steps.map(e => (
-            <div key={e.s_id}>
-                <p>{`Step ${e.step}: ${e.description}`}</p>
-            </div>
+                <p key={e.s_id}>{`Step ${e.step}: ${e.description}`}</p>
         ))
         return (
             <div>
                 <div>AddSteps</div>
                 <div>
-                    <p>Step {this.state.step}: <input name='description' onChange={this.handleChange}/></p>
+                    <p>Step <input name='step' type='number'/>: <input name='description' onChange={this.handleChange}/></p>
                     <button onClick={this.addStep}>Add Step</button>
                 </div>
                 {this.state.steps[0]

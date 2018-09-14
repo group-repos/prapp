@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
 
-import Login from './Login/Login';
 import AddRecipe from './Modals/AddRecipe/AddRecipe';
 import AddIngredients from './Modals/AddIngredients/AddIngredients';
-// import AddSteps from './Modals/AddSteps/AddSteps';
+import AddSteps from './Modals/AddSteps/AddSteps';
 
 class Test extends Component {
     state = {
@@ -14,10 +13,10 @@ class Test extends Component {
     render () {
         return (
             <div style={{marginTop: '100px', border:'1px solid black'}}>
-                <Login />
+                {/* <Login /> */}
                 <AddRecipe />
                 <AddIngredients />
-                {/* <AddSteps /> */}
+                <AddSteps />
             </div>
         )
     }

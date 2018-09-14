@@ -45,12 +45,6 @@ class AddIngredient extends Component {
             this.getIngredients();
         })
     }
-
-    getIngredientsAgain = () => {
-        axios.post('/api/ingredients', {r_id: 4})
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err));
-    }
     
     render () {
         console.log(this.state);
@@ -71,7 +65,6 @@ class AddIngredient extends Component {
                 <div>{ingredientsList}</div>
                 :
                 <p>Add ingredients!</p>}
-                <button onClick={this.getIngredientsAgain}>Get One Recipe</button>
             </div>
         )
     }

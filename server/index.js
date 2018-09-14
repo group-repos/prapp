@@ -147,18 +147,21 @@ app.post('/api/ingredients', (req, res) => {
         })
         .catch(err => {
             console.log(err)
-            res.status(500).send('Pull your head out of your ass!');
+            res.status(500).send("It didn't work.");
         })
 })
 
 //Gets steps from one recipe
-app.get('/api/steps/:r_id', async (req, res) => {
+app.post('/api/steps/', (req, res) => {
     const dbInstance = req.app.get('db');
-    let steps = await dbInstance.get_steps_for_one_recipe([req.params.r_id]);
-    if (!steps[0]) {
-        res.status(200).send('No steps added yet');
-    }
-    res.status(200).send(steps);
+    dbInstance.get_steps_for_one_recipe([req.body.r_id])
+        .then(steps => {
+            res.status(200).send(steps);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).send("It didn't work.")
+        })
 })
 
 //Adds a Recipe to the Recipes table
@@ -188,10 +191,10 @@ app.post('/api/ingredient', (req, res) => {
 })
 
 //Adds a step to the steps table.
-app.post('/api/steps', (req, res) => {
+app.post('/api/step', (req, res) => {
     const dbInstance = req.app.get('db');
     const { r_id, step, description } = req.body;
-    dbInstance.add_steps([r_id, step, description])
+    dbInstance.add_step([r_id, step, description])
         .then(res.sendStatus(200))
         .catch(err => {
             console.log(err);
