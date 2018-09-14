@@ -9,6 +9,7 @@
 /* ENTIRE APP */
 body {
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  width: 100vw;
 }
 
 h1 {

@@ -16,7 +16,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 //REDUX
 import {connect} from 'react-redux';
-import {updateModalOpen} from '../../ducks/reducer';
+import {updateModalOpen, updateRecipe} from '../../ducks/reducer';
 // import {updateModalClosed} from '../../ducks/reducer';
 
 
@@ -31,8 +31,8 @@ class RecipeCard extends Component {
 constructor(){
     super()
     this.state = {
-        hover:false,
-        tags: ['drinks', 'breakfast', 'chicken', 'lunch', 'keto', 'tag', 'food'],
+        hover:'closed',
+        tags: ['drinks', 'breakfast', 'chicken', 'lunch', 'keto', 'tag', 'food', 'ketchup', 'grapes', 'mustard'],
         favoriteChecked: false
     }
 }
@@ -50,6 +50,11 @@ mouseExit(){
 
 handleFavoriteChange = name => event => {
     this.setState({[name]: event.target.checked})
+}
+
+handleAddRecipe = (componentName) => {
+    this.props.updateModalOpen(componentName)
+    this.props.updateRecipe(this.props.recipe)
 }
 
 render(){
@@ -87,7 +92,7 @@ render(){
                 <IconButton variant='fab' color='primary'>
                     <img src={editRecipeIcon} alt="" style={iconButtonStyling}/>
                 </IconButton>
-                <IconButton  variant='fab' color='primary' onClick={() => this.props.updateModalOpen('Calendar')}>
+                <IconButton  variant='fab' color='primary' onClick={() => this.handleAddRecipe('Calendar')}>
                     <img  
                         src={addRecipeIcon} 
                         alt="" 
@@ -111,4 +116,4 @@ render(){
 }
 }
 
-export default connect(null, {updateModalOpen})(RecipeCard)
+export default connect(null, {updateModalOpen,updateRecipe})(RecipeCard)
