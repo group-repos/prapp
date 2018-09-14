@@ -6,7 +6,11 @@ import BrowseRecipes from '../BrowseRecipes/BrowseRecipes';
 // import Login from '../Login/Login';
 import './Home.css'
 
-export default class Home extends Component {
+//REDUX
+import {connect} from 'react-redux';
+import {updateModalOpen} from '../../ducks/reducer';
+
+class Home extends Component {
   constructor(){
       super()
 
@@ -23,7 +27,7 @@ export default class Home extends Component {
                   <h2>Made Simple</h2>
                   <br></br>
                   <br></br>
-                  <button>Learn More</button>
+                  <button onClick={() => this.props.updateModalOpen('Login')}>Log In</button>
                 </div>
               </div>
               <BrowseRecipes BrowseRecipesMenu={this.state.recipeMenu}/>
@@ -35,3 +39,5 @@ export default class Home extends Component {
       )
   }
 }
+
+export default connect(null, {updateModalOpen})(Home)

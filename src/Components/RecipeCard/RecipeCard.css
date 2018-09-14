@@ -23,6 +23,7 @@
   width: 280px;
   height: 400px;
   transition: transform 0.5s ease;
+  cursor: pointer;
 }
 
 .RecipePhotoWrapperHover > img {
@@ -51,6 +52,7 @@
   font-size: 22px;
   font-weight: 300;
   margin: 20px 0;
+  cursor: pointer;
 }
 
 .quickViewContent > p {

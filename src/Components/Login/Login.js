@@ -4,6 +4,10 @@ import { auth, googleProvider, facebookProvider } from '../../firebase';
 import { connect } from 'react-redux';
 
 import { updateUser } from '../../ducks/reducer';
+import './Login.css'
+
+import facebook from '../../images/facebook-small.svg'
+import google from '../../images/google.svg'
 
 
 class Login extends Component {
@@ -52,7 +56,6 @@ class Login extends Component {
         await this.addUser();
     }
 
- 
     //Facebook Auth
     facebookLogin = async () => {
         let facebookInfo = await auth.signInWithPopup(facebookProvider);
@@ -93,23 +96,31 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
-                <div>Login</div>
-                <div className='login__account-creation'>
-                    <div>Create an account</div>
-                    <input placeholder='Email' name='email' onChange={this.handleChange}/>
-                    <input placeholder='Password' name='email' onChange={this.handleChange} type='password'/>
-                    <button onClick={() => this.createAccount()}>Create Account</button>
-                </div>
-                <div className='login__email-login'>
-                    <div>Sign In</div>
-                    <input placeholder='Email' name='email' onChange={this.handleChange}/>
-                    <input placeholder='Password' name='password' onChange={this.handleChange} type='password'/>
-                    <button onClick={() => this.emailLogin()}>Sign In</button>
-                </div>
-                <div>
-                    <button onClick={() => this.googleLogin()}>Login with Google</button>
-                    <button onClick={() => this.facebookLogin()}>Login with Facebook</button>
+            <div className='Login'>
+                <div className='LoginBackground'>
+                    <div className='Left'>
+                        <div className='login__email-login'>
+                            <h1>Welcome.</h1>
+                            <h2>Please Log in to Continue.</h2>
+                            <p>Email</p>
+                            <input name='email' onChange={this.handleChange}/>
+                            <p>Password</p>
+                            <input name='password' onChange={this.handleChange} type='password'/>
+                            <button onClick={() => this.emailLogin()}>Sign In</button>
+                        </div>
+                        <div className='SocialLoginWrapper'>
+                            <button onClick={() => this.googleLogin()} id='google'><img src={google} alt='' />Login with Google</button>
+                            <button onClick={() => this.facebookLogin()}id='facebook'><img src={facebook} alt='' />Login with Facebook</button>
+                        </div>
+                    </div>
+                    <div className='Right'>
+                        <div className='login__account-creation'>
+                            <h2>Or <strong>create an account</strong></h2>
+                            <input placeholder='Email' name='email' onChange={this.handleChange}/>
+                            <input placeholder='Password' name='email' onChange={this.handleChange} type='password'/>
+                            <button onClick={() => this.createAccount()}>Next</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

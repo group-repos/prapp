@@ -12,8 +12,7 @@ class Test extends Component {
 
     render () {
         return (
-            <div style={{marginTop: '100px'}}>
-                <div>Test</div>
+            <div style={{marginTop: '100px', border:'1px solid black'}}>
                 <Login />
                 {/* <AddRecipe /> */}
                 {/* <AddIngredients /> */}
