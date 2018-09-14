@@ -47,16 +47,13 @@ export default class NavBar extends Component {
         let searchWrapperClass = this.state.show ? 'searchWrapper': 'searchWrapper searchWrapperTransform'
     return (
             <nav>
-                <div>
                 <Link to='/'>
                 <button className='logoButton'>
                     <div className='LogoWrapper' >
-                        <img src={Logo} alt=""/>
-                        <h1>PRAPP</h1>
+                        <h1>PR<span>APP</span></h1>
                     </div>
                 </button>
                 </Link>
-                </div>
                 <div className='RightSide'>
                     <div className='searchWrapperHidden'>
                         <div className={searchWrapperClass}>

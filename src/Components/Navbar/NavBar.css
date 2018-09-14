@@ -21,8 +21,13 @@ nav {
     cursor: pointer;
 }
 
-.LogoWrapper > img{
-    width: 60px;
+.LogoWrapper > h1 {
+    font-size: 30px;
+    color: #4d4d4d
+}
+
+.LogoWrapper > h1 > span {
+    color: #0071bc;
 }
 
 .RightSide {
