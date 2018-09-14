@@ -13,6 +13,14 @@ nav {
     padding: 0 40px;
 }
 
+.logoButton {
+    background: transparent;
+    border: none;
+    margin: 4px 0;
+    outline: none;
+    cursor: pointer;
+}
+
 .LogoWrapper > h1 {
     font-size: 30px;
     color: #4d4d4d
@@ -20,10 +28,6 @@ nav {
 
 .LogoWrapper > h1 > span {
     color: #0071bc;
-}
-
-.LogoWrapper > img{
-    width: 57px;
 }
 
 .RightSide {
