@@ -63,13 +63,14 @@ render(){
             onMouseLeave={() => this.mouseExit()}
             >
 
-            <div className={RecipePhotoWrapperClass}>
+            <div className={RecipePhotoWrapperClass}
+                onClick={() => this.props.updateModalOpen('SingleRecipePage')}>
                 <img src={this.props.recipe.r_pics} alt=""/>
             </div>
             
             <div className={RecipeQuickViewClass}>
                 <div className='quickViewContent'>
-                    <h2>{this.props.recipe.r_name}</h2>
+                    <h2 onClick={() => this.props.updateModalOpen('SingleRecipePage')}>{this.props.recipe.r_name}</h2>
                     <p>{this.props.recipe.r_description}</p>
                     <p><span>Servings:</span> {this.props.recipe.servings} individuals</p>
                 </div>

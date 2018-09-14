@@ -10,11 +10,13 @@ import {updateModalClosed} from '../../ducks/reducer';
 
 // Modal Components
 import Login from '../Login/Login'
-import Calendar from '../Calendar/Calendar'
+import Calendar from '../Modals/Calendar/Calendar'
+import SingleRecipePage from '../SingleRecipePage/SingleRecipePage'
 
 // Modal Descriptors
 const LOGIN = 'Login'
 const CALENDAR = 'Calendar'
+const SINGLERECIPEPAGE = 'SingleRecipePage'
 
 function getModalStyle() {
   const top = 50
@@ -30,10 +32,10 @@ function getModalStyle() {
 const styles = theme => ({
   paper: {
     position: 'absolute',
-    width: theme.spacing.unit * 50,
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing.unit * 4,
+    // backgroundColor: theme.palette.background.paper,
+    // boxShadow: theme.shadows[5],
+    // padding: theme.spacing.unit ,
+    outline: 'none'
   },
 });
 
@@ -67,6 +69,9 @@ class SimpleModal extends React.Component {
 
       case CALENDAR: 
         return(<Calendar/>)
+
+      case SINGLERECIPEPAGE: 
+        return(<SingleRecipePage/>)
 
       default: return(<div/>)
     }

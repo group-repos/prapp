@@ -35,8 +35,8 @@ export default class NavBar extends Component {
     return (
             <nav>
                 <div className='LogoWrapper'>
-                    <img src={Logo} alt=""/>
-                    <h1>PRAPP</h1>
+                    {/* <img src={Logo} alt=""/> */}
+                    <h1>PR<span>APP</span></h1>
                 </div>
                 <div className='RightSide'>
                     <div className='searchWrapperHidden'>
