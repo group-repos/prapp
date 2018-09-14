@@ -13,8 +13,16 @@ nav {
     padding: 0 40px;
 }
 
+.logoButton {
+    background: transparent;
+    border: none;
+    margin: 4px 0;
+    outline: none;
+    cursor: pointer;
+}
+
 .LogoWrapper > img{
-    width: 57px;
+    width: 60px;
 }
 
 .RightSide {
