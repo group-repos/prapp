@@ -230,8 +230,21 @@ app.post('/api/weeklyrecipe', async (req, res) => {
 app.post('/api/weeklyplan', async (req, res) => {
     const dbInstance = req.app.get('db');
     let recipeString = await dbInstance.get_weekly_recipes([req.body.u_id]);
-    let parsedString = await JSON.parse(recipeString[0].recipes);
-    res.status(200).send(parsedString);
+    if (recipeString[0]) {
+        let parsedString = await JSON.parse(recipeString[0].recipes);
+        res.status(200).send(parsedString);
+    } else {
+        let weeklyDefault = [
+            {day:'Monday',recipes:[]},
+            {day:'Tuesday',recipes:[]},
+            {day:'Wednesday',recipes:[]},
+            {day:'Thursday',recipes:[]},
+            {day:'Friday',recipes:[]},
+            {day:'Saturday',recipes:[]},
+            {day:'Sunday',recipes:[]}
+        ]
+        res.status(200).send(weeklyDefault);
+    }
 })
 
 

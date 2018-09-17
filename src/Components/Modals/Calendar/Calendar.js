@@ -73,12 +73,12 @@ class Calendar extends Component {
       {day:Saturday.day,recipes:Saturday.recipes}, 
       {day:Sunday.day,recipes:Sunday.recipes}]
     // console.log(weekArr)
-    this.props.updateCalendar(weekArr)
+    this.sendToDB(weekArr)
   }
 
-  sendToDB = () => {
-    axios.post('/api/weeklyrecipe', {weekly_string: this.props.weekArr})
-      .then(res => console.log(res.data));
+  sendToDB = (weekArr) => {
+    axios.post('/api/weeklyrecipe', {weekly_string: weekArr})
+      .then(res => this.props.updateCalendar(res.data));
   }
 
   getOneWeeklyRecipe = () => {
