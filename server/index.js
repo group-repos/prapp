@@ -92,6 +92,7 @@ app.post('/api/user', async (req, res) => {
     } else {
         let createdUser = await dbInstance.create_user([user.first_name, user.last_name, user.profile_pic, user.email, user.auth_id])
         req.session.user = createdUser[0];
+        res.status(200).send(req.session.user);
     }
 });
 
