@@ -92,6 +92,7 @@ app.post('/api/user', async (req, res) => {
     } else {
         let createdUser = await dbInstance.create_user([user.first_name, user.last_name, user.profile_pic, user.email, user.auth_id])
         req.session.user = createdUser[0];
+        res.status(200).send(req.session.user);
     }
 });
 
@@ -230,8 +231,21 @@ app.post('/api/weeklyrecipe', async (req, res) => {
 app.post('/api/weeklyplan', async (req, res) => {
     const dbInstance = req.app.get('db');
     let recipeString = await dbInstance.get_weekly_recipes([req.body.u_id]);
-    let parsedString = await JSON.parse(recipeString[0].recipes);
-    res.status(200).send(parsedString);
+    if (recipeString[0]) {
+        let parsedString = await JSON.parse(recipeString[0].recipes);
+        res.status(200).send(parsedString);
+    } else {
+        let weeklyDefault = [
+            {day:'Monday',recipes:[]},
+            {day:'Tuesday',recipes:[]},
+            {day:'Wednesday',recipes:[]},
+            {day:'Thursday',recipes:[]},
+            {day:'Friday',recipes:[]},
+            {day:'Saturday',recipes:[]},
+            {day:'Sunday',recipes:[]}
+        ]
+        res.status(200).send(weeklyDefault);
+    }
 })
 
 
