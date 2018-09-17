@@ -202,5 +202,38 @@ app.post('/api/step', (req, res) => {
         })
 })
 
+//Adds weekly recipe string to DB
+app.post('/api/weeklyrecipe', async (req, res) => {
+    const dbInstance = req.app.get('db');
+    if (req.session.user.u_id) {
+        let singleStringify = await JSON.stringify(req.body.weekly_string);
+        let doubleStringify = await JSON.stringify(singleStringify);
+        let weeklyPlan = await dbInstance.get_weekly_recipes([req.session.user.u_id]);
+        if (weeklyPlan[0]) {
+            let updatedPlan = await dbInstance.update_weekly_plan([req.session.user.u_id, doubleStringify])
+            let singleParse = await JSON.parse(updatedPlan[0].recipes)
+            res.status(200).send(singleParse);
+        } else {
+            let returnString = await dbInstance.add_weekly_recipe([req.session.user.u_id, doubleStringify])
+            let singleParse = await JSON.parse(returnString[0].recipes);
+            // console.log(singleParse);   
+            res.status(200).send(singleParse);
+        }
+        
+    } else {
+        res.status(403).send('Please sign in to add a weekly plan.')
+    }
+    
+})
+
+//Gets a weekly recipe and then parses it into an array
+app.post('/api/weeklyplan', async (req, res) => {
+    const dbInstance = req.app.get('db');
+    let recipeString = await dbInstance.get_weekly_recipes([req.body.u_id]);
+    let parsedString = await JSON.parse(recipeString[0].recipes);
+    res.status(200).send(parsedString);
+})
+
+
 
 
