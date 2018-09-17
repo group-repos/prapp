@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "891270c9-2ad4-4687-baf1-77e4cc1a5732",
+		"name": "Meal Prep App Postman Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Tests on /getrecipes endpoint.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "41f7e54c-b9d1-4058-83b2-287d1358ea42",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"",
+							"pm.test(\"Is not an error\", function () {",
+							"    pm.response.to.not.be.error;",
+							"});",
+							"",
+							"pm.test(\"Response should be okay to process\", () => {",
+							"    pm.response.to.have.jsonBody(\"\")",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/api/getrecipes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"getrecipes"
+					]
+				},
+				"description": "This tests the /getrecipes endpoint."
+			},
+			"response": []
+		}
+	]
+}

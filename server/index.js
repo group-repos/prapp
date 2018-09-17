@@ -139,13 +139,29 @@ app.get('/api/getrecipes', async (req, res) => {
 })
 
 //Gets ingredients from one recipe
-app.get('/api/ingredients/:id', async (req, res) => {
-    const dbInstance = req.app.get();
-    let ingredients = await dbInstance.get_ingredients_for_one_recipe([req.params.r_id]);
-    if (!ingredients[0]) {
-        res.status(200).send('No ingredients added yet!');
-    }
-    res.status(200).send(ingredients);
+app.post('/api/ingredients', (req, res) => {
+    const dbInstance = req.app.get('db');
+    dbInstance.get_ingredients_for_one_recipe([req.body.r_id])
+        .then(ingredients => {
+            res.status(200).send(ingredients);
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).send("It didn't work.");
+        })
+})
+
+//Gets steps from one recipe
+app.post('/api/steps/', (req, res) => {
+    const dbInstance = req.app.get('db');
+    dbInstance.get_steps_for_one_recipe([req.body.r_id])
+        .then(steps => {
+            res.status(200).send(steps);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).send("It didn't work.")
+        })
 })
 
 //Adds a Recipe to the Recipes table
@@ -162,8 +178,8 @@ app.post('/api/recipes', (req, res) => {
         })
 });
 
-//Adds an ingredient to the ingredients table;
-app.post('/api/ingredients', (req, res) => {
+//Adds an ingredient to the ingredients table.
+app.post('/api/ingredient', (req, res) => {
     const dbInstance = req.app.get('db');
     const { r_id, ingredient, quantity, unit } = req.body;
     dbInstance.add_ingredient([r_id, ingredient, quantity, unit])
@@ -172,6 +188,50 @@ app.post('/api/ingredients', (req, res) => {
             console.log(err);
             res.status(500).send('Unable to add ingredient');
         });
+})
+
+//Adds a step to the steps table.
+app.post('/api/step', (req, res) => {
+    const dbInstance = req.app.get('db');
+    const { r_id, step, description } = req.body;
+    dbInstance.add_step([r_id, step, description])
+        .then(res.sendStatus(200))
+        .catch(err => {
+            console.log(err);
+            res.status(500).send('Unable to add step');
+        })
+})
+
+//Adds weekly recipe string to DB
+app.post('/api/weeklyrecipe', async (req, res) => {
+    const dbInstance = req.app.get('db');
+    if (req.session.user.u_id) {
+        let singleStringify = await JSON.stringify(req.body.weekly_string);
+        let doubleStringify = await JSON.stringify(singleStringify);
+        let weeklyPlan = await dbInstance.get_weekly_recipes([req.session.user.u_id]);
+        if (weeklyPlan[0]) {
+            let updatedPlan = await dbInstance.update_weekly_plan([req.session.user.u_id, doubleStringify])
+            let singleParse = await JSON.parse(updatedPlan[0].recipes)
+            res.status(200).send(singleParse);
+        } else {
+            let returnString = await dbInstance.add_weekly_recipe([req.session.user.u_id, doubleStringify])
+            let singleParse = await JSON.parse(returnString[0].recipes);
+            // console.log(singleParse);   
+            res.status(200).send(singleParse);
+        }
+        
+    } else {
+        res.status(403).send('Please sign in to add a weekly plan.')
+    }
+    
+})
+
+//Gets a weekly recipe and then parses it into an array
+app.post('/api/weeklyplan', async (req, res) => {
+    const dbInstance = req.app.get('db');
+    let recipeString = await dbInstance.get_weekly_recipes([req.body.u_id]);
+    let parsedString = await JSON.parse(recipeString[0].recipes);
+    res.status(200).send(parsedString);
 })
 
 

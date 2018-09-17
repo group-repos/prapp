@@ -23,8 +23,29 @@ class Calendar extends Component {
       Friday: {day:'Friday',recipes:[]},
       Saturday: {day:'Saturday',recipes:[]},
       Sunday:{day:'Sunday',recipes:[]},
-      weekArr: []
+      weekArr: [],
+      u_id: ''
   };
+
+  componentDidMount() {
+    axios.post('/api/weeklyplan', {u_id: this.props.user.u_id})
+      .then(res => this.props.updateCalendar(res.data));
+  }
+
+  componentDidUpdate (prevProps) {
+    if (this.props.weekArr !== prevProps.weekArr) {
+      this.setState({
+        weekArr: this.props.weekArr,
+        Monday: this.props.weekArr[0],
+        Tuesday: this.props.weekArr[1],
+        Wednesday: this.props.weekArr[2],
+        Thursday: this.props.weekArr[3],
+        Friday: this.props.weekArr[4],
+        Saturday: this.props.weekArr[5],
+        Sunday: this.props.weekArr[6]
+      });
+    }
+  }
 
   setDay = async (recipe,day) => {
     await this.setState({
@@ -44,13 +65,25 @@ class Calendar extends Component {
       Saturday, 
       Sunday} = this.state
     let weekArr = [
-      {day:Monday.day,recipes:Monday.recipes}, {day:Tuesday.day,recipes:Tuesday.recipes}, {day:Wednesday.day,recipes:Wednesday.recipes}, 
+      {day:Monday.day,recipes:Monday.recipes},
+      {day:Tuesday.day,recipes:Tuesday.recipes},
+      {day:Wednesday.day,recipes:Wednesday.recipes}, 
       {day:Thursday.day,recipes:Thursday.recipes}, 
       {day:Friday.day,recipes:Friday.recipes}, 
       {day:Saturday.day,recipes:Saturday.recipes}, 
       {day:Sunday.day,recipes:Sunday.recipes}]
     // console.log(weekArr)
     this.props.updateCalendar(weekArr)
+  }
+
+  sendToDB = () => {
+    axios.post('/api/weeklyrecipe', {weekly_string: this.props.weekArr})
+      .then(res => console.log(res.data));
+  }
+
+  getOneWeeklyRecipe = () => {
+    axios.post('/api/weeklyplan', {u_id: 6})
+      .then(res => console.log(res.data));
   }
 
   render () {
@@ -65,7 +98,7 @@ class Calendar extends Component {
         </div>
         <div className='CalendarScroller'>
         {/* {console.log('weekArr',this.props.weekArr)} */}
-        {this.props.weekArr.map((day,i) => {
+        {this.state.weekArr.map((day,i) => {
           return(
             <div className='CalendarDays' key={i}>
               <h2>{day.day}</h2>
@@ -74,13 +107,18 @@ class Calendar extends Component {
               {/* {console.log('weekArr day',this.state[day.day])} */}
 
                 {this.state[day.day].recipes.map(recipe => (
-                  <h2>{recipe.r_name}</h2>
+                  <div>
+                    <h2>{recipe.r_name}</h2>
+                    <h3>{recipe.r_description}</h3>
+                  </div>
                 ))}
               </div>
               <button onClick={() => this.setDay(this.props.recipe,day.day)}>+ </button>
             </div>
           )
         })}
+        <button onClick={this.sendToDB}>Send to DB</button>
+        <button onClick={this.getOneWeeklyRecipe}>Get One Weekly Recipe</button>
         </div>
       </div>
     )
@@ -90,7 +128,8 @@ class Calendar extends Component {
 function mapStateToProps(state){
   return{
     recipe: state.recipe,
-    weekArr: state.weekArr
+    weekArr: state.weekArr,
+    user: state.user
   }
 }
 
