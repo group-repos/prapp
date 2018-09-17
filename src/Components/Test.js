@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 import AddRecipe from './Modals/AddRecipe/AddRecipe';
 import AddIngredients from './Modals/AddIngredients/AddIngredients';
 import AddSteps from './Modals/AddSteps/AddSteps';
+import Calendar from './Modals/Calendar/Calendar';
+import BrowseRecipes from './BrowseRecipes/BrowseRecipes'
 
 class Test extends Component {
     state = {
@@ -12,11 +14,11 @@ class Test extends Component {
 
     render () {
         return (
-            <div style={{marginTop: '100px', border:'1px solid black'}}>
-                {/* <Login /> */}
-                <AddRecipe />
-                <AddIngredients />
-                <AddSteps />
+            <div style={{marginTop: '50px'}}>
+                <Calendar />
+                <BrowseRecipes />
+                {/* <AddRecipe /> */}
+                {/* <AddIngredients /> */}
             </div>
         )
     }

@@ -36,6 +36,9 @@
   transform: translateY(0);
   transition: transform 0.5s ease;
   height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   overflow: scroll;
 }
 
@@ -46,6 +49,7 @@
 
 .quickViewContent {
   padding: 0 6px;
+  height: 300px;
 }
 
 .quickViewContent > h2 {
