@@ -233,6 +233,7 @@ app.post('/api/weeklyplan', async (req, res) => {
     let recipeString = await dbInstance.get_weekly_recipes([req.body.u_id]);
     if (recipeString[0]) {
         let parsedString = await JSON.parse(recipeString[0].recipes);
+        console.log(parsedString);
         res.status(200).send(parsedString);
     } else {
         let weeklyDefault = [
