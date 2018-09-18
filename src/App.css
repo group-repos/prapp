@@ -4,6 +4,7 @@
 :root {
   --profile-gradient: linear-gradient(to right, #ae00bf, #cb7167);
   --default-gradient: linear-gradient(to right, #29abe2, #0071bc);
+  --calendar-gradient: linear-gradient(to right, #70d185, #0071bc)
 }
 
 /* ENTIRE APP */

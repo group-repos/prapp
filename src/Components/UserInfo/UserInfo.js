@@ -2,13 +2,18 @@ import React, {Component} from 'react';
 import './UserInfo.css'
 import toast from '../../images/calum-lewis-390145-unsplash.jpg'
 
-export default class UserInfo extends Component {
+//REDUX
+import {connect} from 'react-redux';
+import {updateUser} from '../../ducks/reducer';
+
+class UserInfo extends Component {
   render(){
+      const {user} = this.props
       return (
           <div className='UserProfileWrapper' >
               <div className='ProfileLeft' >
                   <div className='PhotoWrapper'>
-                      <img src='https://images.unsplash.com/photo-1529932260967-af9d3bbd8138?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b3e872d900875102bc21577a8f6f1345&auto=format&fit=crop&w=634&q=80' alt='' />
+                      <img src={user.profile_pic} alt='' />
                   </div>
                   <div className='UserData'>
                       <h3>About</h3>
@@ -25,8 +30,8 @@ export default class UserInfo extends Component {
                   </div>
               </div>
               <div className='ProfileRight'>
-                <h1>Ashley Rogers</h1>
-                <p>@TrinaBernstein</p>
+                <h1>{user.first_name} {user.last_name}</h1>
+                <p>{user.username}</p>
                 <div className='plannedMeals'>
                     <div className='plannedMealsImg'>
                       <img src={toast} alt=""/>
@@ -45,3 +50,11 @@ export default class UserInfo extends Component {
       )
   }
 }
+
+function mapStateToProps(state){
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps, {updateUser})(UserInfo);

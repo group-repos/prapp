@@ -12,7 +12,6 @@ import Icon5 from '../../images/Asset 5.svg';
 import fbIcon from '../../images/Facebook.svg';
 import instagramIcon from '../../images/Instagram.svg';
 import twitterIcon from '../../images/Twitter.svg';
-import profilePic from '../../images/alexandru-zdrobau-98438-unsplash.jpg'
 
 //MATERIAL-UI
 import PropTypes from 'prop-types';
@@ -23,6 +22,12 @@ import Drawer from '@material-ui/core/Drawer';
 // import Divider from '@material-ui/core/Divider';
 // import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
+import Button from '@material-ui/core/Button';
+import LogOut from '@material-ui/icons/ExitToApp';
+
+//REDUX
+import {connect} from 'react-redux';
+import {updateUser, updateModalOpen} from '../../ducks/reducer';
 
 const styles = {
   list: {
@@ -45,7 +50,6 @@ const materialUiTheme = createMuiTheme({
 
 const home = props => <Link to='/' {...props}></Link>
 const recipe = props => <Link to='/recipe' {...props}></Link>
-// const profile = props => <Link to='/profile' {...props}></Link>
 const about = props => <Link to='/about' {...props}></Link>
 const contact = props => <Link to='/contact' {...props}></Link>
 
@@ -61,6 +65,7 @@ class NavDrawer extends React.Component {
   };
 
   render() {
+    const {user} = this.props
     return (
       <div>
         <button onClick={this.toggleDrawer('right', true)} className='hamburger'>
@@ -75,15 +80,24 @@ class NavDrawer extends React.Component {
             onClick={this.toggleDrawer('right', false)}
             onKeyDown={this.toggleDrawer('right', false)}
           >
-            <div className='NavDrawerProfile'>
-              <div className='ProfilePicWrapper'>
-                <img src={profilePic} alt=""/>
+            { user.first_name ?
+              <div className='NavDrawerProfile'>
+                <Link to='/profile'>
+                  <div className='ProfilePicWrapper'>
+                    <img src={user.profile_pic} alt=""/>
+                  </div>
+                  <div className='UserInfoContainer'>
+                    <h3>{user.first_name} {user.last_name}</h3>
+                    <p>{user.username}</p>
+                  </div>
+                </Link>
+                <Button type='text' >
+                  <LogOut style={{color: '#666'}} />
+                </Button>
               </div>
-              <div className='UserInfoContainer'>
-                <h3>First Last</h3>
-                <p>@username</p>
-              </div>
-            </div>
+            :
+            <button onClick={() => this.props.updateModalOpen('Login')} >Log In</button>
+            }
 
             <div className='MenuItems'>
               <MuiThemeProvider theme={materialUiTheme}>
@@ -113,8 +127,14 @@ class NavDrawer extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  }
+}
+
 NavDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(NavDrawer);
+export default withStyles(styles)(connect(mapStateToProps, {updateUser, updateModalOpen})(NavDrawer));
