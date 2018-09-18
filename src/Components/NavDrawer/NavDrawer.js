@@ -12,7 +12,6 @@ import Icon5 from '../../images/Asset 5.svg';
 import fbIcon from '../../images/Facebook.svg';
 import instagramIcon from '../../images/Instagram.svg';
 import twitterIcon from '../../images/Twitter.svg';
-import profilePic from '../../images/alexandru-zdrobau-98438-unsplash.jpg'
 
 //MATERIAL-UI
 import PropTypes from 'prop-types';
@@ -82,20 +81,20 @@ class NavDrawer extends React.Component {
             onKeyDown={this.toggleDrawer('right', false)}
           >
             { user.first_name ?
-            <Link to='/profile'>
               <div className='NavDrawerProfile'>
-                <div className='ProfilePicWrapper'>
-                  <img src={user.profile_pic} alt=""/>
-                </div>
-                <div className='UserInfoContainer'>
-                  <h3>{user.first_name} {user.last_name}</h3>
-                  <p>{user.username}</p>
-                  <Button type='text' >
-                    <LogOut style={{color: '#666'}} />
-                  </Button>
-                </div>
+                <Link to='/profile'>
+                  <div className='ProfilePicWrapper'>
+                    <img src={user.profile_pic} alt=""/>
+                  </div>
+                  <div className='UserInfoContainer'>
+                    <h3>{user.first_name} {user.last_name}</h3>
+                    <p>{user.username}</p>
+                  </div>
+                </Link>
+                <Button type='text' >
+                  <LogOut style={{color: '#666'}} />
+                </Button>
               </div>
-            </Link>
             :
             <button onClick={() => this.props.updateModalOpen('Login')} >Log In</button>
             }
