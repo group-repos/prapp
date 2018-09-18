@@ -38,7 +38,7 @@
 .CalendarDays {
   background: rgba(255,255,255,0.75);
   margin: 0 4px;
-  border: 1px solid rgba(0,0,0,0.2)
+  border: 1px solid rgba(0,0,0,0.2);
 }
 
 .CalendarDays > h2 {
@@ -60,6 +60,7 @@
   padding: 0 8px;
   width: 350px;
   height: 450px;
+  overflow-y: scroll;
 }
 
 .CalendarDays > button {

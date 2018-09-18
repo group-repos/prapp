@@ -4,6 +4,7 @@ import UserSubmittedRecipes from '../UserSubmittedRecipes/UserSubmittedRecipes';
 import BrowseRecipes from '../BrowseRecipes/BrowseRecipes';
 
 import './UserProfile.css'
+import Calendar from '../Modals/Calendar/Calendar';
 
 export default class UserProfile extends Component {
     constructor(){
@@ -19,6 +20,7 @@ export default class UserProfile extends Component {
                     <img src='https://images.unsplash.com/photo-1529932260967-af9d3bbd8138?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b3e872d900875102bc21577a8f6f1345&auto=format&fit=crop&w=634&q=80' alt='' />
                 </header>
                 <UserInfo />
+                <Calendar />
                 <BrowseRecipes BrowseRecipesMenu={ this.state.BrowseRecipesMenu}/>
                 <UserSubmittedRecipes />
             </div>

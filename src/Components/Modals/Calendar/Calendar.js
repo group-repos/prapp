@@ -8,6 +8,10 @@ import logo from '../../../images/LogoWhite.svg'
 // Import Action Builder
 import {updateCalendar} from '../../../ducks/reducer'
 
+// Import Components
+import CalendarCard from './CalendarCard/CalendarCard'
+
+//CSS
 import './Calendar.css';
 
 class Calendar extends Component {
@@ -86,7 +90,13 @@ class Calendar extends Component {
       .then(res => console.log(res.data));
   }
 
+  deleteRecipe = (day, id) => {
+    console.log('day',day, 'id',id)
+    
+  }
+
   render () {
+    let count = 0
     // console.log('Monday',this.state.Monday)
     // console.log('Tuesday',this.state.Tuesday)
     return (
@@ -106,19 +116,23 @@ class Calendar extends Component {
               <div className='DragonDrop'>
               {/* {console.log('weekArr day',this.state[day.day])} */}
 
-                {this.state[day.day].recipes.map(recipe => (
-                  <div>
-                    <h2>{recipe.r_name}</h2>
-                    <h3>{recipe.r_description}</h3>
-                  </div>
-                ))}
+                {this.state[day.day].recipes.map((recipe,i) => {
+                  let calendarCardId = count += 1
+                  // console.log(day.day,calendarCardId)
+                  return (
+                  <CalendarCard 
+                    recipe={recipe} 
+                    key={calendarCardId} 
+                    deleteRecipeFn={this.deleteRecipe}
+                    day={this.state[day.day]}
+                    calendarCardId={calendarCardId}/>
+                  )
+                })}
               </div>
               <button onClick={() => this.setDay(this.props.recipe,day.day)}>+ </button>
             </div>
           )
         })}
-        <button onClick={this.sendToDB}>Send to DB</button>
-        <button onClick={this.getOneWeeklyRecipe}>Get One Weekly Recipe</button>
         </div>
       </div>
     )
