@@ -21,6 +21,10 @@ class ShoppingList extends Component {
         if (this.state.unChecked !== prevState.unChecked) {
             this.setState({
                 unChecked: this.state.unChecked,
+            })
+        }
+        if (this.state.checked !== prevState.checked) {
+            this.setState({
                 checked: this.state.checked
             })
         }
@@ -31,7 +35,7 @@ class ShoppingList extends Component {
         let checked = [...this.state.checked];
         let index = unChecked.findIndex(e => e.i_id === i_id);
         let item = unChecked.splice(index, 1);
-        checked.push(item);
+        checked.push(item[0]);
         this.setState({
             unChecked: unChecked,
             checked: checked
@@ -43,7 +47,7 @@ class ShoppingList extends Component {
         let checked = [...this.state.checked];
         let index = checked.findIndex(e => e.i_id === i_id);
         let item = checked.splice(index, 1);
-        unChecked.push(item);
+        unChecked.push(item[0]);
         this.setState({
             unChecked: unChecked,
             checked: checked
@@ -74,6 +78,32 @@ class ShoppingList extends Component {
         return (
             <div>
                 <div>ShoppingList</div>
+                <div>
+                {this.state.unChecked[0]
+                ?
+                this.state.unChecked.map((e, i) => (
+                    <div key={i}>
+                        <p>{e.ingredient}: {e.quantity} {e.unit}</p>
+                        <button onClick={this.checkOff}>done</button>
+                    </div>
+                ))
+                :
+                <div></div>}
+                </div>
+                <div>
+                    {this.state.checked[0]
+                    ?
+                    <div>
+                        {this.state.checked.map((e, i) => (
+                            <div key={i}>
+                                <p>{e.ingredient}: {e.quantity} {e.unit}</p>
+                                <button onClick={this.unCheck}>Undo</button>
+                            </div>
+                        ))}
+                    </div>
+                    :
+                    <div>No Items checked off yet.</div>}
+                </div>
             </div>
         )
     }
