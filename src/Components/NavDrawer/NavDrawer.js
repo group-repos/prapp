@@ -24,6 +24,10 @@ import Drawer from '@material-ui/core/Drawer';
 // import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 
+//REDUX
+import {connect} from 'react-redux';
+import {updateUser} from '../../ducks/reducer';
+
 const styles = {
   list: {
     width: 250,
@@ -59,6 +63,10 @@ class NavDrawer extends React.Component {
       [side]: open,
     });
   };
+
+  getUserInfo = () => {
+    
+  }
 
   render() {
     return (
