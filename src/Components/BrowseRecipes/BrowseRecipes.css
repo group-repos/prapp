@@ -39,7 +39,7 @@
 }
 
 .recipeCardsWrapper {
-  background: var(--default-gradient);
+  background: var(--calendar-gradient);
   width: 100%;
   display: flex;
   flex-direction: row;
