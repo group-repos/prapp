@@ -1,3 +1,13 @@
+.CalendarMaterialCard {
+  margin: 10px 0;
+}
+
+.MaterialButtons > button{
+  display: flex;
+  flex-direction: row;
+
+}
+
 .CalendarCard {
   display: flex;
   flex-direction: row;
