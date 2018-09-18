@@ -47,7 +47,7 @@ class Calendar extends Component {
   }
 
   render () {
-    console.log('weeklyPlan', this.state.weeklyPlan);
+    // console.log('weeklyPlan', this.state.weeklyPlan);
     return (
       <div className='Calendar'>
         <div className='CalendarHeader'>
