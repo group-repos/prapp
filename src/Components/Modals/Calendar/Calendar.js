@@ -63,12 +63,13 @@ class Calendar extends Component {
               <hr/>
               <div className='DragonDrop'>
                 {day.map((recipe, i) => (
+                  recipe.r_name ? 
                   <CalendarCard
                     key={recipe.wr_id}
                     recipe={recipe}
                     deleteFromPlan={this.deleteFromPlan}
                     duplicateRecipe={this.duplicateRecipe}
-                    />
+                    /> : ''
                 ))}
               </div>
               <button onClick={() => this.addToPlan(day[0].day)}>+ {day[0].day}</button>

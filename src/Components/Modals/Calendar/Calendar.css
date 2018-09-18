@@ -1,5 +1,5 @@
 .Calendar {
-  background: linear-gradient(to right, #70d185, #0071bc);
+  background: var(--calendar-gradient);
   padding: 20px;
   width: 1200px;
   border: 10px solid #f9f9f9;
@@ -57,7 +57,7 @@
 }
 
 .DragonDrop {
-  padding: 0 8px;
+  /* padding: 0 8px; */
   width: 350px;
   height: 450px;
   overflow-y: scroll;
