@@ -1,4 +1,5 @@
-const firebase = require('firebase');
+const firebase = require('firebase/app');
+require('firebase/auth')
 
 let { REACT_APP_FBASE_AUTH_DOMAIN, REACT_APP_FBASE_WEB_API_KEY } = process.env;
 

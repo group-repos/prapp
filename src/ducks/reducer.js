@@ -5,15 +5,6 @@ const initialState = {
     modalOpen: false,
     componentName: '',
     newRecipe: {},
-    weekArr: [
-        {day:'Monday',recipes:[]},
-        {day:'Tuesday',recipes:[]},
-        {day:'Wednesday',recipes:[]},
-        {day:'Thursday',recipes:[]},
-        {day:'Friday',recipes:[]},
-        {day:'Saturday',recipes:[]},
-        {day:'Sunday',recipes:[]}
-    ]
 }
 
 //Action Descriptors
@@ -22,7 +13,6 @@ const UPDATE_USER = 'UPDATE_USER';
 const UPDATE_MODAL_OPEN = 'UPDATE_MODAL_OPEN';
 const UPDATE_MODAL_CLOSED = 'UPDATE_MODAL_CLOSED';
 const UPDATE_NEWRECIPE = 'UPDATE_NEWRECIPE';
-const UPDATE_CALENDAR = 'UPDATE_CALENDAR'
 
 function reducer(state = initialState, action){
     switch( action.type ){
@@ -40,9 +30,6 @@ function reducer(state = initialState, action){
 
         case UPDATE_NEWRECIPE:
             return {...state, newRecipe: action.payload};
-
-        case UPDATE_CALENDAR:
-            return {...state, weekArr: action.payload}
      
         default: return state
     }
@@ -84,13 +71,6 @@ export function updateNewRecipe (recipe) {
     return {
         type: UPDATE_NEWRECIPE,
         payload: recipe
-    }
-}
-
-export function updateCalendar (weekArr) {
-    return {
-        type: UPDATE_CALENDAR,
-        payload: weekArr
     }
 }
 
