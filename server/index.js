@@ -228,25 +228,76 @@ app.post('/api/weeklyrecipe', async (req, res) => {
 })
 
 //Gets a weekly recipe and then parses it into an array
+// app.post('/api/weeklyplan', async (req, res) => {
+//     const dbInstance = req.app.get('db');
+//     let recipeString = await dbInstance.get_weekly_recipes([req.body.u_id]);
+//     if (recipeString[0]) {
+//         let parsedString = await JSON.parse(recipeString[0].recipes);
+//         console.log(parsedString);
+//         res.status(200).send(parsedString);
+//     } else {
+//         let weeklyDefault = [
+//             {day:'Monday',recipes:[]},
+//             {day:'Tuesday',recipes:[]},
+//             {day:'Wednesday',recipes:[]},
+//             {day:'Thursday',recipes:[]},
+//             {day:'Friday',recipes:[]},
+//             {day:'Saturday',recipes:[]},
+//             {day:'Sunday',recipes:[]}
+//         ]
+//         res.status(200).send(weeklyDefault);
+//     }
+// })
+
 app.post('/api/weeklyplan', async (req, res) => {
     const dbInstance = req.app.get('db');
-    let recipeString = await dbInstance.get_weekly_recipes([req.body.u_id]);
-    if (recipeString[0]) {
-        let parsedString = await JSON.parse(recipeString[0].recipes);
-        console.log(parsedString);
-        res.status(200).send(parsedString);
-    } else {
-        let weeklyDefault = [
-            {day:'Monday',recipes:[]},
-            {day:'Tuesday',recipes:[]},
-            {day:'Wednesday',recipes:[]},
-            {day:'Thursday',recipes:[]},
-            {day:'Friday',recipes:[]},
-            {day:'Saturday',recipes:[]},
-            {day:'Sunday',recipes:[]}
-        ]
-        res.status(200).send(weeklyDefault);
+    let Monday = await dbInstance.get_weekly_plan(req.body.u_id, 'Monday')
+    if (!Monday[0]) {
+        Monday = [{day: 'Monday'}]
     }
+    let Tuesday = await dbInstance.get_weekly_plan(req.body.u_id, 'Tuesday')
+    if (!Tuesday[0]) {
+        Tuesday = [{day: 'Tuesday'}]
+    }
+    let Wednesday = await dbInstance.get_weekly_plan(req.body.u_id, 'Wednesday')
+    if (!Wednesday[0]) {
+        Wednesday = [{day: 'Wednesday'}]
+    }
+    let Thursday = await dbInstance.get_weekly_plan(req.body.u_id, 'Thursday')
+    if (!Thursday[0]) {
+        Thursday = [{day: 'Thursday'}]
+    }
+    let Friday = await dbInstance.get_weekly_plan(req.body.u_id, 'Friday')
+    if (!Friday[0]) {
+        Friday = [{day: 'Friday'}]
+    }
+    let Saturday = await dbInstance.get_weekly_plan(req.body.u_id, 'Saturday')
+    if (!Saturday[0]) {
+        Saturday = [{day: 'Saturday'}]
+    }
+    let Sunday = await dbInstance.get_weekly_plan(req.body.u_id, 'Sunday')
+    if (!Sunday[0]) {
+        Sunday = [{day: 'Sunday'}]
+    }
+    let weeklyPlan = [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday];
+    await res.status(200).send(weeklyPlan);
+})
+
+app.post('/api/addtoplan', async (req, res) => {
+    const dbInstance = req.app.get('db');
+    const { u_id, r_id, day } = req.body;
+    await dbInstance.add_to_plan([u_id, r_id, day])
+    await res.sendStatus(200);
+})
+
+app.delete('/api/weeklyplan/:wr_id', (req, res) => {
+    const dbInstance = req.app.get('db');
+    dbInstance.delete_from_plan([req.params.wr_id])
+        .then(() => res.sendStatus(200))
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send('You messed up');
+        });
 })
 
 
