@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
+//TESTS
+import { getNewRecipe, getNewRecipeId, getNewRecipeName, getNewRecipeDescription, getNewRecipeServings } from '../../../Logic/logic';
+
 class AddIngredient extends Component {
     state = {
         ingredients: [],
@@ -53,6 +56,11 @@ class AddIngredient extends Component {
         ))
         return (
             <div>
+                {getNewRecipe(this.props.newRecipe)}  
+                {getNewRecipeId(this.props.newRecipe.r_id)}
+                {getNewRecipeName(this.props.newRecipe.r_name)}
+                {getNewRecipeDescription(this.props.newRecipe.r_description)}
+                {getNewRecipeServings(this.props.newRecipe.servings)}
                 <div>AddIngredient</div>
                 <div>
                     <input name='ingredient' onChange={this.handleChange} placeholder='ingredient'/>

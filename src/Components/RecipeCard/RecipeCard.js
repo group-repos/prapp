@@ -24,6 +24,9 @@ import {connect} from 'react-redux';
 import {updateModalOpen, updateRecipe} from '../../ducks/reducer';
 // import {updateModalClosed} from '../../ducks/reducer';
 
+//TESTS
+import { getRecipe, getRecipeId, getRecipeName, getRecipeDescription, getRecipeServings } from '../../Logic/logic';
+
 const styles = theme => ({
     width: {
         width: '100%',
@@ -84,6 +87,11 @@ render(){
     const { classes } = this.props;
     return(
         <div>
+            {getRecipe(this.props.recipe)}
+            {getRecipeId(this.props.recipe.r_id)}
+            {getRecipeName(this.props.recipe.r_name)}
+            {getRecipeDescription(this.props.recipe.r_description)}
+            {getRecipeServings(this.props.recipe.servings)}
         <div className='RecipeCards' 
             onMouseOver={() => this.mouseEnter()} 
             onMouseLeave={() => this.mouseExit()}
