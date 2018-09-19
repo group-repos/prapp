@@ -1,10 +1,10 @@
 :root {
-  --quickViewHeight: -175px;
+  --quickViewHeight: -300px;
 }
 
 .RecipeCards {
   background-color: white;
-  margin: 10px;
+  margin: 15px;
   width: 300px;
   border: 10px solid white;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
@@ -15,13 +15,13 @@
 
 .RecipePhotoWrapper {
   overflow: hidden;
-  height: 275px;
+  height: 400px;
 }
 
 .RecipePhotoWrapper > img {
   object-fit: cover;
-  width: 100%;
-  height: 100%;
+  width: 280px;
+  height: 400px;
   transition: transform 0.5s ease;
   cursor: pointer;
 }
@@ -53,11 +53,10 @@
 }
 
 .quickViewContent > h2 {
-  font-size: 16px;
-  font-weight: 600;
-  margin: 10px 0;
+  font-size: 22px;
+  font-weight: 300;
+  margin: 20px 0;
   cursor: pointer;
-  color: #464646
 }
 
 .quickViewContent > p {
@@ -65,7 +64,6 @@
   font-weight: 300;
   line-height: 23px;
   margin-bottom: 16px;
-  color: #707070;
 }
 
 .quickViewContent > p > span {

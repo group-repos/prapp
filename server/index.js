@@ -203,8 +203,6 @@ app.post('/api/step', (req, res) => {
         })
 })
 
-/////////////  calendar  /////////////
-
 //Adds weekly recipe string to DB
 app.post('/api/weeklyrecipe', async (req, res) => {
     const dbInstance = req.app.get('db');
@@ -285,7 +283,6 @@ app.post('/api/weeklyplan', async (req, res) => {
     await res.status(200).send(weeklyPlan);
 })
 
-//Adds one recipe to the weekly_plan table
 app.post('/api/addtoplan', async (req, res) => {
     const dbInstance = req.app.get('db');
     const { u_id, r_id, day } = req.body;
@@ -293,7 +290,6 @@ app.post('/api/addtoplan', async (req, res) => {
     await res.sendStatus(200);
 })
 
-//Deletes one recipe from the weekly_plan table
 app.delete('/api/weeklyplan/:wr_id', (req, res) => {
     const dbInstance = req.app.get('db');
     dbInstance.delete_from_plan([req.params.wr_id])
@@ -304,9 +300,6 @@ app.delete('/api/weeklyplan/:wr_id', (req, res) => {
         });
 })
 
-/////////////  shopping list  /////////////
-app.post('/api/shoppinglist', async (req, res) => {
-    const dbInstance = req.app.get('db');
-    let ingredientList = await dbInstance.get_weekly_recipes_w_ingredients([req.body.u_id]);
-    await res.status(200).send(ingredientList)
-})
+
+
+

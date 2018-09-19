@@ -29,9 +29,9 @@ const styles = theme => ({
         width: '100%',
         borderRadius: 0,
         boxShadow: 0,
-        // background: '#333',
-        // color: 'rgba(0,0,0,0.5)',
-        // fontSize: '20px',
+        background: '#0071bc',
+        color: 'rgba(0,0,0,0.5)',
+        fontSize: '20px',
         letterSpacing: '2px',
         // marginTop: '10px'
     },
@@ -42,7 +42,7 @@ const styles = theme => ({
 
 const materialUiTheme = createMuiTheme({
     palette: {
-        primary: {main: '#333'},
+        primary: {main: '#0071BC'},
         secondary: {main: red[500]}
     }
 })
@@ -111,12 +111,12 @@ render(){
             <div className='cardMenu'>
                 <MuiThemeProvider theme={materialUiTheme}>
                     <Button 
-                        variant="text" 
+                        variant="contained" 
                         color='primary' 
                         className={classNames(classes.width)}
                         onClick={() => this.handleAddRecipe('Calendar')}
                         >
-                        <PlaylistAdd className={classNames(classes.icon)}/>Add to Calendar
+                        <PlaylistAdd className={classNames(classes.icon)}/>Calendar
                     </Button>
                 </MuiThemeProvider>
             </div>

@@ -6,7 +6,6 @@ import AddIngredients from './Modals/AddIngredients/AddIngredients';
 import AddSteps from './Modals/AddSteps/AddSteps';
 import Calendar from './Modals/Calendar/Calendar';
 import BrowseRecipes from './BrowseRecipes/BrowseRecipes'
-import ShopppingList from './ShoppingList/ShoppingList';
 
 class Test extends Component {
     state = {
@@ -16,7 +15,6 @@ class Test extends Component {
     render () {
         return (
             <div style={{marginTop: '50px'}}>
-                <ShopppingList />
                 <Calendar />
                 <BrowseRecipes />
                 {/* <AddRecipe /> */}
