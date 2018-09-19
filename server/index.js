@@ -300,6 +300,9 @@ app.delete('/api/weeklyplan/:wr_id', (req, res) => {
         });
 })
 
-
-
-
+/////////////  shopping list  /////////////
+app.post('/api/shoppinglist', async (req, res) => {
+    const dbInstance = req.app.get('db');
+    let ingredientList = await dbInstance.get_weekly_recipes_w_ingredients([req.body.u_id]);
+    await res.status(200).send(ingredientList)
+})
