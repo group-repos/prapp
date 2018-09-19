@@ -9,6 +9,7 @@ require('dotenv').config();
 const sessionCtrl = require('./controllers/session_controller');
 
 const app = express();
+app.use( express.static( `${__dirname}/../build`) );
 
 //Destructuring from .env
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION, AWS_BUCKET} = process.env;
