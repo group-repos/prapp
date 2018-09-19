@@ -6,7 +6,12 @@ import BrowseRecipes from '../BrowseRecipes/BrowseRecipes';
 import './UserProfile.css'
 import Calendar from '../Modals/Calendar/Calendar';
 
-export default class UserProfile extends Component {
+//REDUX
+import {connect} from 'react-redux';
+import {updateUser} from '../../ducks/reducer';
+
+
+class UserProfile extends Component {
     constructor(){
         super()
         this.state = {
@@ -14,10 +19,11 @@ export default class UserProfile extends Component {
         }
     }
     render(){
+        const {user} = this.props
         return (
             <div className='UserWrapper'>
                 <header className='UserHeader'>
-                    <img src='https://images.unsplash.com/photo-1529932260967-af9d3bbd8138?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b3e872d900875102bc21577a8f6f1345&auto=format&fit=crop&w=634&q=80' alt='' />
+                    <img src={user.profile_pic} alt='' />
                 </header>
                 <UserInfo />
                 <Calendar />
@@ -27,3 +33,11 @@ export default class UserProfile extends Component {
         )
     }
 }
+
+function mapStateToProps(state){
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps, {updateUser})(UserProfile);
