@@ -99,12 +99,12 @@ app.post('/api/user', async (req, res) => {
 /////////////  recipes  /////////////
 
 //Test endpoint that gets one recipe
-app.get('/api/recipe', async (req, res) => {
+app.post('/api/recipe', async (req, res) => {
     const dbInstance = req.app.get('db');
     let finalRecipe = [];
-    let recipe = await dbInstance.get_recipe_test()
-    let ingredients = await dbInstance.get_ingredient_test();
-    let steps = await dbInstance.get_steps_test();
+    let recipe = await dbInstance.get_recipe_test([req.body.r_id])
+    let ingredients = await dbInstance.get_ingredient_test([req.body.r_id]);
+    let steps = await dbInstance.get_steps_test([req.body.r_id]);
     finalRecipe = [...recipe, ingredients, steps]
     res.status(200).send(finalRecipe);
 });

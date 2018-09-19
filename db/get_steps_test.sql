@@ -1,3 +1,3 @@
 SELECT * FROM steps
-WHERE r_id = 4
+WHERE r_id = $1
 ORDER BY step;

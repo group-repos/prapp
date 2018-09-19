@@ -1,2 +1,2 @@
 SELECT * FROM ingredients
-WHERE r_id = 4;
+WHERE r_id = $1;

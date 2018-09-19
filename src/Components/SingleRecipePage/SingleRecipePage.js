@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-// import {connect} from 'react-redux';
+
+//REDUX
+import {connect} from 'react-redux';
+
+//TESTS
+import {getRecipe} from '../../Logic/logic';
 
 import './SingleRecipe.css'
 
@@ -15,7 +20,7 @@ class SingleRecipePage extends Component {
   }
 
   componentDidMount(){
-    axios.get('/api/recipe').then(res => {
+    getRecipe(this.props.recipe.r_id).then(res => {
       this.setState({
         recipe: res.data,
         loading: false
@@ -61,4 +66,10 @@ class SingleRecipePage extends Component {
 }
 }
 
-export default SingleRecipePage
+function mapStateToProps(state) {
+  return {
+    recipe: state.recipe
+  }
+}
+
+export default connect(mapStateToProps)(SingleRecipePage)
