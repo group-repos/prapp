@@ -18,6 +18,26 @@
   height: 275px;
 }
 
+.favoriteWrapper {
+  position: absolute;
+  /* right: 0; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: #0071bc;
+  color: white;
+  z-index: 20;
+  margin-left: 20px;
+  margin-top: 20px;
+  /* border: 5px solid white; */
+}
+
+.favoriteWrapper > p {
+  margin-left: 5px;
+}
+
 .RecipePhotoWrapper > img {
   object-fit: cover;
   width: 100%;
@@ -126,10 +146,13 @@
 }
 
 .favoriteCounter {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: center; */
   cursor: pointer;
+  background: pink;
+  position: absolute;
+
 }
 
 .favoriteCounter > p {

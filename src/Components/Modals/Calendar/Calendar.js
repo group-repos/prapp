@@ -53,7 +53,7 @@ class Calendar extends Component {
         <div className='CalendarHeader'>
           <img src={logo} alt=""/>
           <h1>Meal Planner</h1>
-          <p>Sept 10 - Sept 16</p>
+          <p>Scroll Right to See the Full Week</p>
         </div>
         <div className='CalendarScroller'>
         {this.state.weeklyPlan.map((day,i) => {

@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 
 import { updateNewRecipe } from '../../../ducks/reducer';
 
+// CSS
+import './AddRecipe.css'
+
 class AddRecipe extends Component {
     state = {       
         img: {
@@ -61,7 +64,7 @@ class AddRecipe extends Component {
             // <div>
             // {this.props.user.u_id 
             // ?
-                <div>
+                <div className='AddRecipe'>
                     <div>AddRecipe</div>
                     <div>
                         <div>
