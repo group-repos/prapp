@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "891270c9-2ad4-4687-baf1-77e4cc1a5732",
+		"_postman_id": "62ed0fcf-db96-4c51-a2ca-13aff48efbf3",
 		"name": "Meal Prep App Postman Tests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,9 +11,11 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "41f7e54c-b9d1-4058-83b2-287d1358ea42",
+						"id": "162c5c03-4628-4a14-9c26-0e40f70eb28a",
 						"type": "text/javascript",
 						"exec": [
+							"//Dylan's Tests",
+							"",
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
@@ -40,7 +42,10 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://localhost:3000/api/getrecipes",
 					"protocol": "http",
@@ -54,6 +59,123 @@
 					]
 				},
 				"description": "This tests the /getrecipes endpoint."
+			},
+			"response": []
+		},
+		{
+			"name": "Tests on /api/ingredients endpoint",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b1b9d5d7-55b6-4fab-b486-3963c7758e54",
+						"type": "text/javascript",
+						"exec": [
+							"// Tim's Tests",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code has a string\", () => {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"Body is correct\", function () {",
+							"    pm.response.to.have.body('[{\"i_id\":4,\"r_id\":3,\"ingredient\":\"Tortillas\",\"quantity\":4,\"unit\":\"Tortillas\"},{\"i_id\":5,\"r_id\":3,\"ingredient\":\"Beef\",\"quantity\":2,\"unit\":\"Lbs\"},{\"i_id\":7,\"r_id\":3,\"ingredient\":\"Lechuga\",\"quantity\":1,\"unit\":\"Head\"}]');",
+							"});",
+							"",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", () => {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200)",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"r_id\": 3\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3004/api/ingredients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"api",
+						"ingredients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tests on /api/user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "12b4c354-bc48-4b72-ac42-0a45e524ba6c",
+						"type": "text/javascript",
+						"exec": [
+							"// Spencer's Tests",
+							"",
+							"const people = pm.response.json()",
+							"",
+							"pm.test('Gets status of 200', () => {",
+							"   pm.response.to.have.status(200)",
+							"})",
+							"",
+							"pm.test('Response is an object', () => {",
+							"   pm.expect(Object.isObject(people)).to.equal(true)",
+							"})",
+							"",
+							"pm.globals.set('length', people.length)",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"   pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"   pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"   pm.expect(pm.response.text()).to.include(\"username\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:3004/api/user",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"api",
+						"user"
+					]
+				}
 			},
 			"response": []
 		}
