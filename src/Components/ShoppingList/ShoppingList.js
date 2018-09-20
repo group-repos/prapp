@@ -78,34 +78,43 @@ class ShoppingList extends Component {
 
     render () {
         return (
-            <div>
-                <div>ShoppingList</div>
+            <div className='ShoppingList'>
+                <div className='shoppingHeader'>
+                    <h1>Shopping List</h1>
+                    {/* <h2>{this.props.user.r_name}</h2> */}
+                </div>
                 <div>
-                <div>Unchecked Array</div>
-                {this.state.unChecked[0]
-                ?
-                this.state.unChecked.map((e) => (
-                    <div key={e.i_id}>
-                        <p>{e.ingredient}: {e.quantity} {e.unit}</p>
-                        <button onClick={() => this.checkOff(e.i_id)}>done</button>
-                    </div>
-                ))
-                :
-                <div></div>}
+                    {this.state.unChecked[0]
+                    ?
+                    this.state.unChecked.map((e) => (
+                        <div key={e.i_id} className='ingredientCheckbox'>
+                            <button onClick={() => this.checkOff(e.i_id)}></button>
+                            <div>
+                                <p id='ingredient'>{e.ingredient}</p>
+                                <p id='qty'>{e.quantity} {e.unit}</p>
+                            </div>
+                        </div>
+                    ))
+                    :
+                    <div></div>}
                 <div>
                 {this.state.checked[0]
                     ?
-                    <div>
-                        <div>Checked Array</div>
+                    <div className='completed'>
+                        <h2>Completed</h2>
                         {this.state.checked.map((e) => (
-                            <div key={e.i_id}>
-                                <p>{e.ingredient}: {e.quantity} {e.unit}</p>
-                                <button onClick={() => this.unCheck(e.i_id)}>Undo</button>
+                            <div key={e.i_id} className='ingredientChecked'>
+                                <button onClick={() => this.unCheck(e.i_id)}>
+                                </button>
+                                <div>
+                                    <p id='ingredient'>{e.ingredient}</p>
+                                    <p id='qty'>{e.quantity} {e.unit}</p>
+                                </div>
                             </div>
                         ))}
                     </div>
                     :
-                    <div>No Items checked off yet.</div>}
+                    <div></div>}
                 </div>
                 </div>
             </div>

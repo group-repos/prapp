@@ -22,8 +22,8 @@ class Test extends Component {
                 <br></br>
                 <br></br>
                 <ShoppingList/>
-                <Calendar />
-                <BrowseRecipes />
+                {/* <Calendar /> */}
+                {/* <BrowseRecipes /> */}
                 {/* <AddRecipe /> */}
                 {/* <AddIngredients /> */}
             </div>

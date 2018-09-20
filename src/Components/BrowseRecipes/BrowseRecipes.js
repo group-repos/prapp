@@ -84,7 +84,7 @@ class BrowseRecipes extends Component {
                     color="secondary" 
                     // aria-label="Add" 
                     className={classes.button}
-                    onClick={() => this.props.updateModalOpen('AddRecipe')}>
+                    onClick={() => this.props.updateModalOpen('AddFullRecipe')}>
                     <AddIcon />
                   </Button>
                 </MuiThemeProvider>

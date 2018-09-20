@@ -1,0 +1,84 @@
+.ShoppingList {
+  background: white;
+  width: 80vw;
+  height: 80vh;
+  overflow-y: scroll;
+  border: 10px white solid;
+}
+
+.shoppingHeader {
+  background: url('../../images/shopping-header.svg');
+  background-color: var(--profile-gradient);
+  background-repeat: repeat-x;
+  /* background-size: cover; */
+  background-position: center;
+}
+
+.shoppingHeader > h1 {
+  font-size: 46px;
+  color: white;
+  font-weight: 300;
+  padding-top: 60px;
+  padding-bottom: 25px;
+  padding-left: 20px;
+}
+
+.completed > h2 {
+  font-size: 24px;
+  font-weight: 300;
+  color: #4d4d4d;
+  padding: 12px;
+  margin-top: 24px;
+}
+
+.ingredientCheckbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #666;
+  letter-spacing: 1.5px;
+  padding: 18px;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.ingredientChecked {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #666;
+  opacity: 0.3;
+  letter-spacing: 1.5px;
+  padding: 18px;
+  border: 1px solid rgba(0,0,0,0.1);
+  text-decoration: line-through;
+}
+
+#ingredient {
+  font-size: 24px;
+  font-weight: 300;
+  margin-bottom: 12px;
+}
+
+#qty {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.ingredientCheckbox > button {
+  border-radius: 100%;
+  width: 46px;
+  height: 46px;
+  /* border: 1px #404040 solid; */
+  margin-right: 30px;
+}
+
+.ingredientChecked > button {
+  border-radius: 100%;
+  width: 46px;
+  height: 46px;
+  background: url('../../images/check.svg');
+  background-size: cover;
+  background-position: center;
+  border: none;
+  margin-right: 30px;
+}

@@ -4,7 +4,7 @@ import toast from '../../images/calum-lewis-390145-unsplash.jpg'
 
 //REDUX
 import {connect} from 'react-redux';
-import {updateUser} from '../../ducks/reducer';
+import {updateUser, updateModalOpen} from '../../ducks/reducer';
 
 class UserInfo extends Component {
   render(){
@@ -24,8 +24,8 @@ class UserInfo extends Component {
                           <span><p>24</p></span>
                       </div>
                       <div className='UserButtons'>
-                          <button id='ProfileButton'>Weekly Meal Plan</button> 
-                          <button id='ProfileButton'>Shopping List</button>
+                          {/* <button id='ProfileButton'>Weekly Meal Plan</button>  */}
+                          <button id='ProfileButton' onClick={()=>this.props.updateModalOpen('ShoppingList')}>Shopping List</button>
                       </div>
                   </div>
               </div>
@@ -57,4 +57,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {updateUser})(UserInfo);
+export default connect(mapStateToProps, {updateUser, updateModalOpen})(UserInfo);
