@@ -45,7 +45,7 @@ class ShoppingList extends Component {
     unCheck = (i_id) => {
         let unChecked = [...this.state.unChecked];
         let checked = [...this.state.checked];
-        let index = checked.findIndex(e => e.i_id === i_id);
+        let index = checked.findIndex(e => e.i_id === i_id)
         let item = checked.splice(index, 1);
         unChecked.push(item[0]);
         this.setState({
@@ -69,40 +69,44 @@ class ShoppingList extends Component {
                         finalArr[index].quantity += ingredient.quantity;
                     }
                 })
+                finalArr.map(e => {
+                    e.unChecked = false;
+                });
                 this.setState({unChecked: finalArr});
             });
     }
 
     render () {
-        console.table(this.state.unChecked);
         return (
             <div>
                 <div>ShoppingList</div>
                 <div>
+                <div>Unchecked Array</div>
                 {this.state.unChecked[0]
                 ?
                 this.state.unChecked.map((e) => (
                     <div key={e.i_id}>
                         <p>{e.ingredient}: {e.quantity} {e.unit}</p>
-                        <button onClick={this.checkOff}>done</button>
+                        <button onClick={() => this.checkOff(e.i_id)}>done</button>
                     </div>
                 ))
                 :
                 <div></div>}
-                </div>
                 <div>
-                    {this.state.checked[0]
+                {this.state.checked[0]
                     ?
                     <div>
+                        <div>Checked Array</div>
                         {this.state.checked.map((e) => (
                             <div key={e.i_id}>
                                 <p>{e.ingredient}: {e.quantity} {e.unit}</p>
-                                <button onClick={this.unCheck}>Undo</button>
+                                <button onClick={() => this.unCheck(e.i_id)}>Undo</button>
                             </div>
                         ))}
                     </div>
                     :
                     <div>No Items checked off yet.</div>}
+                </div>
                 </div>
             </div>
         )
