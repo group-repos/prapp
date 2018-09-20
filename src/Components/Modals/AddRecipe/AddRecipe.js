@@ -14,9 +14,6 @@ import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
-    button: {
-      margin: theme.spacing.unit,
-    },
     input: {
       display: 'none',
     },
@@ -27,8 +24,8 @@ const styles = theme => ({
     title: {
         fontSize: '20px',
         fontWeight: 600,
-        color: '#464646'
-    }
+        color: '#464646',
+    },
   });
   
 //MATERIAL-UI
@@ -153,7 +150,7 @@ class AddRecipe extends Component {
                                 <Button
                                     onClick={this.sendPhoto}
                                     variant='text'
-
+                                    color='primary'
                                 >
                                 Upload</Button>
                             </div>
