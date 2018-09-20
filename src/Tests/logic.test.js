@@ -57,7 +57,7 @@ describe('UserFirstName returns true', () => {
 
 describe('UserLastName returns true', () => {
    test('returns true', () => {
-       expect(getUserLastName(user.first_name)).toBe(true)
+       expect(getUserLastName(user.last_name)).toBe(true)
    })
 })
 

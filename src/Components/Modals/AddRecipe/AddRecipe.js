@@ -2,26 +2,54 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
-import { updateNewRecipe } from '../../../ducks/reducer';
+import { updateNewRecipe, updateModalClosed } from '../../../ducks/reducer';
 
 // CSS
-import './AddRecipe.css'
+import './AddRecipe.css';
+
+//MATERIAL-UI
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+    input: {
+      display: 'none',
+    },
+    displayFlex: {
+        display: 'flex',
+        justifyContent: 'space-around',
+    },
+    title: {
+        fontSize: '20px',
+        fontWeight: 600,
+        color: '#464646',
+    },
+  });
+  
+//MATERIAL-UI
+
 
 class AddRecipe extends Component {
-    state = {       
-        img: {
-            file: '',
-            filename: '',
-            filetype: '',
-            img: ''
-        },
-        u_id: 2,
-        r_name: '',
-        servings: '',
-        r_pics: '',
-        r_description: ''
+    constructor(){
+        super()
+        
+        this.state = {       
+            img: {
+                file: '',
+                filename: '',
+                filetype: '',
+                img: ''
+            },
+            u_id: 2,
+            r_name: '',
+            servings: '',
+            r_pics: '',
+            r_description: ''
+        }
     }
-
+        
     handlePhoto = (event) => {
         const reader = new FileReader();
         const file = event.target.files[0];
@@ -56,43 +84,104 @@ class AddRecipe extends Component {
             .then(res => {
                 console.log(res.data);
                 this.props.updateNewRecipe(res.data[0]);
+                this.props.updateModalClosed();
             })
     }
 
     render () {
+        console.log(this.state)
+        const { classes } = this.props;
         return (
             // <div>
             // {this.props.user.u_id 
             // ?
                 <div className='AddRecipe'>
-                    <div>AddRecipe</div>
+                    <div className={classes.title} style={{marginRight: '300px'}}>AddRecipe</div>
                     <div>
                         <div>
-                            <p>Recipe Name: </p>
-                            <input name='r_name' onChange={this.handleChange}/>
-                            <hr/>
+                            <TextField 
+                                name='r_name'
+                                onChange={this.handleChange}
+                                id='standard-full-width'
+                                label='Recipe Name'
+                                fullWidth
+                                margin='normal'
+                                inputProps={{
+                                    maxLength: 120
+                                }}
+                                helperText={120 - this.state.r_name.length}
+                                multiline
+                                rowsMax='3'
+                            />
                         </div>
                         <div>
-                            <p>Number of Servings:</p>
-                            <input name='servings' onChange={this.handleChange}/>
-                            <hr/>
+                            <TextField 
+                                name='servings'
+                                onChange={this.handleChange}
+                                id='standard-full-width'
+                                label='Number of Servings'
+                                fullWidth
+                                type='number'
+                                onInput={(e) => {      //sets max length of input to 2 characters
+                                    e.target.value = Math.max(0, parseInt(e.target.value,0) ).toString().slice(0,2)
+                                }}
+                                min={0}
+                                margin='normal'
+                                helperText={2 - this.state.servings.length}
+                            />
                         </div>
                         <div>
-                            <p>Upload Image:</p>
-                            <div>
-                                <input type='file' onChange={this.handlePhoto}/>
-                                <button onClick={this.sendPhoto}>Upload</button>
+                            <p className={classes.title} style={{marginTop: '20px'}}>Upload Image:</p>
+                            <img src={this.state.r_pics} alt='' />
+                            <div className={classes.displayFlex}>
+                                {/* <input type='file' onChange={this.handlePhoto}/> */}
+                                <input accept="image/*" className={classes.input} id="icon-button-file" type="file" onChange={this.handlePhoto} />
+                                <label htmlFor="icon-button-file">
+                                    <Button
+                                        variant='text'
+                                        color="primary" 
+                                        className={classes.button} 
+                                        component="span"
+                                    >
+                                        <PhotoCamera />
+                                    </Button>
+                                </label>
+
+                                <Button
+                                    onClick={this.sendPhoto}
+                                    variant='text'
+                                    color='primary'
+                                >
+                                Upload</Button>
                             </div>
                             <img src={this.state.r_pics} alt='' style={{width: '100px'}}/>
-                            <hr/>
                         </div>
                         <div>
-                            <p>Recipe Description:</p>
-                            <div>Remaining Characters: {120 - this.state.r_description.length}</div>
-                            <input name='r_description' maxLength='120' onChange={this.handleChange}/>
-                            <hr/>
+                            <TextField 
+                                name='r_description'
+                                onChange={this.handleChange}
+                                id='standard-full-width'
+                                label='Recipe Description'
+                                fullWidth
+                                margin='normal'
+                                inputProps={{
+                                    maxLength: 250
+                                }}
+                                helperText={250 - this.state.r_description.length}
+                                multiline
+                                rowsMax='5'
+                            />
                         </div>
-                        <button onClick={this.addRecipe}>Add Recipe</button>
+                        <Button 
+                            onClick={this.addRecipe}
+                            variant='outlined'
+                            color='default'
+                            style={{
+                                position: 'absolute',
+                                right: '49px',
+                                bottom: '24px',
+                            }}
+                        >Add Recipe</Button>
                     </div>
 
                 </div>
@@ -109,4 +198,4 @@ function mapStateToProps (state) {
     }
 }
 
-export default connect(mapStateToProps, { updateNewRecipe })(AddRecipe);
+export default withStyles(styles)(connect(mapStateToProps, { updateNewRecipe, updateModalClosed })(AddRecipe));

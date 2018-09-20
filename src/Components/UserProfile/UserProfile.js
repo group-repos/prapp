@@ -4,7 +4,7 @@ import UserSubmittedRecipes from '../UserSubmittedRecipes/UserSubmittedRecipes';
 import BrowseRecipes from '../BrowseRecipes/BrowseRecipes';
 
 import './UserProfile.css'
-import Calendar from '../Modals/Calendar/Calendar';
+// import Calendar from '../Modals/Calendar/Calendar';
 
 //REDUX
 import {connect} from 'react-redux';

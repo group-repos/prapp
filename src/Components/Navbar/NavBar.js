@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import NavDrawer from '../NavDrawer/NavDrawer';
-import Logo from '../../images/Logo.svg'
 import magnifyingGlass from '../../images/magnifyingGlass.svg'
 import {Link} from 'react-router-dom';
 
