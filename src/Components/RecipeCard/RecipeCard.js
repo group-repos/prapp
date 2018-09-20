@@ -2,23 +2,23 @@ import React, {Component} from 'react';
 
 import './RecipeCard.css'
 
-import addRecipeIcon from '../../images/Asset8.svg'
-import editRecipeIcon from '../../images/Asset7.svg'
+// import addRecipeIcon from '../../images/Asset8.svg'
+// import editRecipeIcon from '../../images/Asset7.svg'
 // import GlobalModal from '../Modals/GlobalModal';
 
 //MATERIAL-UI
 import PropTypes from 'prop-types';
-import IconButton from '@material-ui/core/IconButton';
-import Favorite from '@material-ui/icons/Favorite';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
+// import IconButton from '@material-ui/core/IconButton';
+// import Favorite from '@material-ui/icons/Favorite';
+// import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
 import {MuiThemeProvider, createMuiTheme, withStyles} from '@material-ui/core/styles';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
 import classNames from 'classnames'
 import red from '@material-ui/core/colors/red';
 import PlaylistAdd from '@material-ui/icons/PlaylistAdd'
-import Heart from '@material-ui/icons/FavoriteBorderOutlined'
+// import Heart from '@material-ui/icons/FavoriteBorderOutlined'
 
 //REDUX
 import {connect} from 'react-redux';
@@ -86,7 +86,7 @@ handleAddRecipe = (componentName) => {
 }
 
 render(){
-    let iconButtonStyling = {width: '20px'}
+    // let iconButtonStyling = {width: '20px'}
     let RecipePhotoWrapperClass = this.state.hover === 'open' ? 'RecipePhotoWrapper RecipePhotoWrapperHover' : 'RecipePhotoWrapper'
     let RecipeQuickViewClass = this.state.hover === 'open' ? 'recipeQuickView recipeQuickViewHover' : 'recipeQuickView'
     const { classes } = this.props;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './CalendarCard.css'
 
 // Material UI
@@ -7,10 +7,10 @@ import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
+// import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import red from '@material-ui/core/colors/red';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -66,7 +66,7 @@ class CalendarCard extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const {r_name, r_description, servings, rating, r_pics } = this.props.recipe
+    const {r_name, servings, r_pics } = this.props.recipe
     return (
       <div className='CalendarMaterialCard'>
         <Card className={classes.card}>

@@ -5,7 +5,10 @@ import { connect } from 'react-redux';
 import { updateNewRecipe } from '../../../ducks/reducer';
 
 // CSS
-import './AddRecipe.css'
+import './AddRecipe.css';
+
+//MATERIAL-UI
+import TextField from '@material-ui/core/TextField';
 
 class AddRecipe extends Component {
     state = {       
@@ -70,6 +73,13 @@ class AddRecipe extends Component {
                         <div>
                             <p>Recipe Name: </p>
                             <input name='r_name' onChange={this.handleChange}/>
+                            <TextField 
+                                id='standard-full-width'
+                                label='Recipe Name'
+                                // style={{ margin: 8 }}
+                                fullWidth
+                                margin='normal'
+                            />
                             <hr/>
                         </div>
                         <div>

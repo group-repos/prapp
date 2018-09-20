@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 //CSS
 import './ShoppingList.css';
-import { array } from 'prop-types';
+// import { array } from 'prop-types';
 
 class ShoppingList extends Component {
     state = {
