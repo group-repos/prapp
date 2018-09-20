@@ -3,7 +3,7 @@ import axios from 'axios';
 import { auth, googleProvider, facebookProvider } from '../../firebase';
 import { connect } from 'react-redux';
 
-import { updateUser } from '../../ducks/reducer';
+import { updateUser, updateModalClosed } from '../../ducks/reducer';
 import './Login.css'
 
 import facebook from '../../images/facebook-small.svg'
@@ -54,6 +54,7 @@ class Login extends Component {
             }
         })
         await this.addUser();
+        await this.props.updateModalClosed();
     }
 
     //Facebook Auth
@@ -71,6 +72,7 @@ class Login extends Component {
             }
         })
         await this.addUser();
+        await this.props.updateModalClosed()
     }
 
     //Create email/password account
@@ -127,4 +129,4 @@ class Login extends Component {
     }
 }
 
-export default connect(null, { updateUser })(Login);
+export default connect(null, { updateUser, updateModalClosed })(Login);

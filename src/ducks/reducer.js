@@ -13,6 +13,7 @@ const UPDATE_USER = 'UPDATE_USER';
 const UPDATE_MODAL_OPEN = 'UPDATE_MODAL_OPEN';
 const UPDATE_MODAL_CLOSED = 'UPDATE_MODAL_CLOSED';
 const UPDATE_NEWRECIPE = 'UPDATE_NEWRECIPE';
+const LOGOUT_USER = 'LOGOUT_USER';
 
 function reducer(state = initialState, action){
     switch( action.type ){
@@ -30,6 +31,9 @@ function reducer(state = initialState, action){
 
         case UPDATE_NEWRECIPE:
             return {...state, newRecipe: action.payload};
+
+        case LOGOUT_USER:
+            return {...state, user: initialState.user}
      
         default: return state
     }
@@ -74,4 +78,10 @@ export function updateNewRecipe (recipe) {
     }
 }
 
-export default reducer
+export function logoutUser () {
+    return {
+        type: LOGOUT_USER
+    }
+}
+
+export default reducer;

@@ -97,6 +97,11 @@ app.post('/api/user', async (req, res) => {
     }
 });
 
+app.get('/api/logout', async (req, res) => {
+    req.session.destroy();
+    res.redirect('/#/');
+})
+
 /////////////  recipes  /////////////
 
 //Test endpoint that gets one recipe

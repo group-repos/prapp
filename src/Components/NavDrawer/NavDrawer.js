@@ -2,6 +2,7 @@ import React from 'react';
 // import { mailFolderListItems, otherMailFolderListItems } from './tileData';
 import hamburgerImage from '../../images/hamburger.svg';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 import './NavDrawer.css';
 
 //IMAGES
@@ -27,7 +28,7 @@ import LogOut from '@material-ui/icons/ExitToApp';
 
 //REDUX
 import {connect} from 'react-redux';
-import {updateUser, updateModalOpen} from '../../ducks/reducer';
+import {updateUser, updateModalOpen, logoutUser} from '../../ducks/reducer';
 
 const styles = {
   list: {
@@ -64,6 +65,11 @@ class NavDrawer extends React.Component {
     });
   };
 
+  logout = () => {
+    axios.get('/api/logout')
+      .then(() => this.props.logoutUser());
+  }
+
   render() {
     const {user} = this.props
     return (
@@ -91,7 +97,9 @@ class NavDrawer extends React.Component {
                     <p>{user.username}</p>
                   </div>
                 </Link>
-                <Button type='text' >
+                <Button 
+                  type='text'
+                  onClick={() => this.logout()} >
                   <LogOut style={{color: '#666'}} />
                 </Button>
               </div>
@@ -137,4 +145,4 @@ NavDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(connect(mapStateToProps, {updateUser, updateModalOpen})(NavDrawer));
+export default withStyles(styles)(connect(mapStateToProps, {updateUser, updateModalOpen, logoutUser})(NavDrawer));
