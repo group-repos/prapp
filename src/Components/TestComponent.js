@@ -17,8 +17,8 @@ class Test extends Component {
         return (
             <div style={{marginTop: '50px'}}>
                 <ShoppingList/>
-                <Calendar />
-                <BrowseRecipes />
+                {/* <Calendar /> */}
+                {/* <BrowseRecipes /> */}
                 {/* <AddRecipe /> */}
                 {/* <AddIngredients /> */}
             </div>

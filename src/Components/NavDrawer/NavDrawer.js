@@ -24,6 +24,9 @@ import Drawer from '@material-ui/core/Drawer';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import LogOut from '@material-ui/icons/ExitToApp';
+import avatar from '../../images/Avatar.svg';
+import red from '@material-ui/core/colors/red';
+
 
 //REDUX
 import {connect} from 'react-redux';
@@ -36,16 +39,32 @@ const styles = {
   fullList: {
     width: 'auto',
   },
+  loginButton: {
+    width: '100%',
+    borderRadius: 0,
+    border: '1px solid rgba(0,0,0,0.1)'
+  },
+  menuItems: {
+    color: '#rgba(0,0,0,0.5)',
+    // textTransform: 'uppercase',
+    fontFamily: 'Open Sans',
+    fontSize: '16px',
+    fontWeight: '300',
+    letterSpacing: '2px',
+    margin: '25px',
+  },
+  menuImg: {
+    width: '50px',
+    marginRight: '15px',
+    padding: '5px'
+  }
 };
 
 const materialUiTheme = createMuiTheme({
-  overrides: {
-    MuiMenuItem: {
-      root: {
-        color: 'white',
+  palette: {
+        primary: {main:'#464646'},
+        secondary: {main: red[500]}
       }
-    }
-  }
 })
 
 const home = props => <Link to='/' {...props}></Link>
@@ -65,7 +84,7 @@ class NavDrawer extends React.Component {
   };
 
   render() {
-    const {user} = this.props
+    const {user, classes} = this.props
     return (
       <div>
         <button onClick={this.toggleDrawer('right', true)} className='hamburger'>
@@ -81,6 +100,8 @@ class NavDrawer extends React.Component {
             onKeyDown={this.toggleDrawer('right', false)}
           >
             { user.first_name ?
+
+            // If Logged In
               <div className='NavDrawerProfile'>
                 <Link to='/profile'>
                   <div className='ProfilePicWrapper'>
@@ -94,22 +115,52 @@ class NavDrawer extends React.Component {
                 <Button type='text' >
                   <LogOut style={{color: '#666'}} />
                 </Button>
+                {/* <hr/> */}
               </div>
             :
-            <button onClick={() => this.props.updateModalOpen('Login')} >Log In</button>
+
+            // If not logged in
+            <div className='NavDrawerProfile'>
+                <div className='ProfilePicWrapper'>
+                  <img src={avatar} alt=""/>
+                </div>
+                <MuiThemeProvider theme={materialUiTheme}>
+                  <Button 
+                    onClick={() => this.props.updateModalOpen('Login')}
+                    variant='text'
+                    color='primary'
+                    className={classes.loginButton}
+                    >
+                    Log In
+                  </Button>
+                </MuiThemeProvider>
+                {/* <hr/> */}
+              </div>
             }
 
             <div className='MenuItems'>
               <MuiThemeProvider theme={materialUiTheme}>
-                <MenuItem component={home}><img src={Icon1} alt='' style={{width: '35px'}} />Home</MenuItem>
-                <MenuItem component={recipe}><img src={Icon5} alt='' style={{width: '35px'}} />Browse Recipes</MenuItem>
-                <MenuItem component={about}><img src={Icon2} alt='' style={{width: '35px'}} />About</MenuItem>
-                <MenuItem component={contact}><img src={Icon3} alt='' style={{width: '35px'}} />Contact</MenuItem>
+                <MenuItem component={home} className={classes.menuItems}>
+                  <img src={Icon1} alt='' className={classes.menuImg} />
+                  Home
+                </MenuItem>
+                <MenuItem component={recipe} className={classes.menuItems}>
+                  <img src={Icon5} alt='' className={classes.menuImg} />
+                  Browse Recipes
+                </MenuItem>
+                <MenuItem component={about} className={classes.menuItems}>
+                  <img src={Icon2} alt='' className={classes.menuImg} />
+                  About
+                </MenuItem>
+                <MenuItem component={contact} className={classes.menuItems}>
+                  <img src={Icon3} alt='' className={classes.menuImg} />
+                  Contact
+                </MenuItem>
               </MuiThemeProvider>
             </div>
           
             <div className='Footer'>
-              <hr/>
+              {/* <hr/> */}
               <div className='FooterIcons'>
                 <img src={fbIcon} alt='' style={{width: '20px'}} />
                 <img src={twitterIcon} alt='' style={{width: '20px'}} />
