@@ -92,10 +92,10 @@ render(){
     const { classes } = this.props;
     return(
         <div>
-            <div className='favoriteWrapper'>
+            {/* <div className='favoriteWrapper'>
                 <Heart className={classNames(classes.favorite)}/>
                 <p>{this.props.recipe.rating}</p>
-            </div>
+            </div> */}
             {getRecipe(this.props.recipe)}
             {getRecipeId(this.props.recipe.r_id)}
             {getRecipeName(this.props.recipe.r_name)}
