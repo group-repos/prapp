@@ -25,6 +25,9 @@ import {connect} from 'react-redux';
 import {updateModalOpen, updateRecipe} from '../../ducks/reducer';
 // import {updateModalClosed} from '../../ducks/reducer';
 
+//TESTS
+import { getRecipe, getRecipeId, getRecipeName, getRecipeDescription, getRecipeServings } from '../../Logic/logic';
+
 const styles = theme => ({
     width: {
         width: '100%',
@@ -93,6 +96,12 @@ render(){
                 <Heart className={classNames(classes.favorite)}/>
                 <p>{this.props.recipe.rating}</p>
             </div>
+            {getRecipe(this.props.recipe)}
+            {getRecipeId(this.props.recipe.r_id)}
+            {getRecipeName(this.props.recipe.r_name)}
+            {getRecipeDescription(this.props.recipe.r_description)}
+            {getRecipeServings(this.props.recipe.servings)}
+
         <div className='RecipeCards' 
             onMouseOver={() => this.mouseEnter()} 
             onMouseLeave={() => this.mouseExit()}
@@ -105,7 +114,7 @@ render(){
             
             <div className={RecipeQuickViewClass}>
                 <div className='quickViewContent'>
-                    <h2 onClick={() => this.props.updateModalOpen('SingleRecipePage')}>{this.props.recipe.r_name}</h2>
+                    <h2 onClick={() => this.handleAddRecipe('SingleRecipePage')}>{this.props.recipe.r_name}</h2>
                     <p>{this.props.recipe.r_description}</p>
                     <p><span>Servings:</span> {this.props.recipe.servings} individuals</p>
                 </div>

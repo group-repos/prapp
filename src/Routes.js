@@ -5,7 +5,7 @@ import SingleRecipePage from './Components/SingleRecipePage/SingleRecipePage';
 import UserProfile from './Components/UserProfile/UserProfile';
 import About from './Components/About/About';
 import Contact from './Components/Contact/Contact';
-import Test from './Components/Test';
+import TestComponent from './Components/TestComponent';
 
 export default (
         <Switch>
@@ -14,6 +14,6 @@ export default (
             <Route path='/profile' component={UserProfile} />
             <Route path='/about' component={About} />
             <Route path='/contact' component={Contact} />
-            <Route path='/test' component={Test}/>
+            <Route path='/test' component={TestComponent}/>
         </Switch>
 )

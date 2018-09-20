@@ -9,6 +9,7 @@ require('dotenv').config();
 const sessionCtrl = require('./controllers/session_controller');
 
 const app = express();
+app.use( express.static( `${__dirname}/../build`) );
 
 //Destructuring from .env
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION, AWS_BUCKET} = process.env;
@@ -99,12 +100,12 @@ app.post('/api/user', async (req, res) => {
 /////////////  recipes  /////////////
 
 //Test endpoint that gets one recipe
-app.get('/api/recipe', async (req, res) => {
+app.post('/api/recipe', async (req, res) => {
     const dbInstance = req.app.get('db');
     let finalRecipe = [];
-    let recipe = await dbInstance.get_recipe_test()
-    let ingredients = await dbInstance.get_ingredient_test();
-    let steps = await dbInstance.get_steps_test();
+    let recipe = await dbInstance.get_recipe_test([req.body.r_id])
+    let ingredients = await dbInstance.get_ingredient_test([req.body.r_id]);
+    let steps = await dbInstance.get_steps_test([req.body.r_id]);
     finalRecipe = [...recipe, ingredients, steps]
     res.status(200).send(finalRecipe);
 });
@@ -300,6 +301,9 @@ app.delete('/api/weeklyplan/:wr_id', (req, res) => {
         });
 })
 
-
-
-
+/////////////  shopping list  /////////////
+app.post('/api/shoppinglist', async (req, res) => {
+    const dbInstance = req.app.get('db');
+    let ingredientList = await dbInstance.get_weekly_recipes_w_ingredients([req.body.u_id]);
+    await res.status(200).send(ingredientList)
+})
