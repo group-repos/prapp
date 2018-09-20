@@ -18,6 +18,7 @@ import Button from '@material-ui/core/Button';
 import classNames from 'classnames'
 import red from '@material-ui/core/colors/red';
 import PlaylistAdd from '@material-ui/icons/PlaylistAdd'
+import Heart from '@material-ui/icons/FavoriteBorderOutlined'
 
 //REDUX
 import {connect} from 'react-redux';
@@ -37,9 +38,13 @@ const styles = theme => ({
         // fontSize: '20px',
         letterSpacing: '2px',
         // marginTop: '10px'
+        borderTop: '1px solid rgba(0,0,0,0.1)',
     },
     icon: {
         width: '52px',
+    },
+    favorite: {
+
     }
 })
 
@@ -87,11 +92,16 @@ render(){
     const { classes } = this.props;
     return(
         <div>
+            <div className='favoriteWrapper'>
+                <Heart className={classNames(classes.favorite)}/>
+                <p>{this.props.recipe.rating}</p>
+            </div>
             {getRecipe(this.props.recipe)}
             {getRecipeId(this.props.recipe.r_id)}
             {getRecipeName(this.props.recipe.r_name)}
             {getRecipeDescription(this.props.recipe.r_description)}
             {getRecipeServings(this.props.recipe.servings)}
+
         <div className='RecipeCards' 
             onMouseOver={() => this.mouseEnter()} 
             onMouseLeave={() => this.mouseExit()}

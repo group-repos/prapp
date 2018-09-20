@@ -34,7 +34,7 @@ class UserProfile extends Component {
                     <img src={user.profile_pic} alt='' />
                 </header>
                 <UserInfo />
-                <Calendar />
+                {/* <Calendar /> */}
                 <BrowseRecipes BrowseRecipesMenu={ this.state.BrowseRecipesMenu}/>
                 <UserSubmittedRecipes />
             </div>

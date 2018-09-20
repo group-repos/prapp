@@ -1,11 +1,40 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
+// Redux
+import { connect } from 'react-redux'
+import { updateModalOpen } from '../../ducks/reducer'
+
 import RecipeCard from '../RecipeCard/RecipeCard';
 
+// Material UI
+import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
+import red from '@material-ui/core/colors/red';
+
+// CSS
 import './BrowseRecipes.css'
 
-export default class BrowseRecipes extends Component {
+const styles = theme => ({
+  button: {
+    position:'absolute',
+    zIndex: 10,
+    right: '20px',
+  },
+  extendedIcon: {
+    marginRight: theme.spacing.unit,
+  },
+});
+
+const materialUiTheme = createMuiTheme({
+  palette: {
+        primary: {main: red[500]},
+        secondary: {main: '#fff'}
+      }
+})
+
+class BrowseRecipes extends Component {
   constructor(){
     super()
     this.state = {
@@ -29,6 +58,7 @@ export default class BrowseRecipes extends Component {
   }
 
   render(){
+    const { classes } = this.props
     let recipe = this.state.recipes.map((recipe) => (
       <RecipeCard recipe={recipe} key={recipe.r_id}/>
   ))
@@ -48,6 +78,16 @@ export default class BrowseRecipes extends Component {
                 }):''}
               </div>
               <div className='recipeCardsWrapper'>
+                <MuiThemeProvider theme={materialUiTheme}>
+                  <Button 
+                    variant="fab" 
+                    color="secondary" 
+                    // aria-label="Add" 
+                    className={classes.button}
+                    onClick={() => this.props.updateModalOpen('AddRecipe')}>
+                    <AddIcon />
+                  </Button>
+                </MuiThemeProvider>
                 {this.state.recipes
                   ? 
                   recipe
@@ -58,3 +98,5 @@ export default class BrowseRecipes extends Component {
       )
   }
 }
+
+export default withStyles(styles)(connect(null, {updateModalOpen})(BrowseRecipes))

@@ -12,11 +12,13 @@ import {updateModalClosed} from '../../ducks/reducer';
 import Login from '../Login/Login'
 import Calendar from '../Modals/Calendar/Calendar'
 import SingleRecipePage from '../SingleRecipePage/SingleRecipePage'
+import AddRecipe from '../Modals/AddRecipe/AddRecipe'
 
 // Modal Descriptors
 const LOGIN = 'Login'
 const CALENDAR = 'Calendar'
 const SINGLERECIPEPAGE = 'SingleRecipePage'
+const ADDRECIPE = 'AddRecipe'
 
 function getModalStyle() {
   const top = 50
@@ -72,6 +74,9 @@ class SimpleModal extends React.Component {
 
       case SINGLERECIPEPAGE: 
         return(<SingleRecipePage/>)
+
+      case ADDRECIPE:
+        return(<AddRecipe/>)
 
       default: return(<div/>)
     }
