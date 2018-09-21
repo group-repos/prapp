@@ -138,7 +138,7 @@ class AddIngredient extends Component {
                     />
                     <Button 
                         onClick={() => this.addIngredient()}
-                        variant='outlined'
+                        variant='text'
                         color='default'
                         style={{
                             // position: 'absolute',
@@ -149,10 +149,16 @@ class AddIngredient extends Component {
                 </div>
                 {this.state.ingredients[0]
                 ?
-                <div className={classes.listText}>{ingredientsList}</div>
+                <div>
+                    <div className={classes.listText}>{ingredientsList}</div>
+                </div>
                 :
-                <p className={classes.title} style={{marginRight: '300px'}}>Add ingredients!</p>}
-                <button onClick={() => this.props.classSwitcher('ModalThree')}>Next</button>
+                <p className={classes.title} >Add ingredients!</p>}
+                <Button 
+                    onClick={() => this.props.classSwitcher('ModalThree')}
+                    variant='outlined'
+                    color='default'
+                >Next</Button>
             </div>
         )
     }
