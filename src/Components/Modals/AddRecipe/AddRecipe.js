@@ -133,7 +133,7 @@ class AddRecipe extends Component {
                         </div>
                         <div>
                             <p className={classes.title} style={{marginTop: '20px'}}>Upload Image:</p>
-                            <img src={this.state.r_pics} alt='' />
+                            {/* <img src={this.state.r_pics} alt='' id='uploadedImage'/> */}
                             <div className={classes.displayFlex}>
                                 {/* <input type='file' onChange={this.handlePhoto}/> */}
                                 <input accept="image/*" className={classes.input} id="icon-button-file" type="file" onChange={this.handlePhoto} />

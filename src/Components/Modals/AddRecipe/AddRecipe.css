@@ -3,3 +3,9 @@
   padding: 40px;
   border: 10px solid #f9f9f9;
 }
+
+#uploadedImage {
+  width: 75%;
+  height: 75%;
+  object-fit: cover;
+}
