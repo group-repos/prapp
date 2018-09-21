@@ -21,6 +21,10 @@ class Test extends Component {
                 <br></br>
                 <br></br>
                 <br></br>
+                <AddSteps />
+                <br></br>
+                <br></br>
+                <br></br>
                 <ShoppingList/>
                 <Calendar />
                 <BrowseRecipes />

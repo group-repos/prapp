@@ -8,7 +8,6 @@ import { getNewRecipe, getNewRecipeId, getNewRecipeName, getNewRecipeDescription
 //MATERIAL-UI
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -147,7 +146,7 @@ class AddIngredient extends Component {
                 </div>
                 {this.state.ingredients[0]
                 ?
-                <div className='listText'>{ingredientsList}</div>
+                <div className={classes.listText}>{ingredientsList}</div>
                 :
                 <p className={classes.title} style={{marginRight: '300px'}}>Add ingredients!</p>}
             </div>
