@@ -31,10 +31,10 @@ class Home extends Component {
                 </div>
               </div>
               <BrowseRecipes BrowseRecipesMenu={this.state.recipeMenu}/>
-              <div className='recipeCardsWrapper' >
+              {/* <div className='recipeCardsWrapper' >
                       
               </div>
-              {/* <RecipeCard /> */}
+              <RecipeCard /> */}
           </div>
       )
   }
