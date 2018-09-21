@@ -149,19 +149,19 @@ class NavDrawer extends React.Component {
             <div className='MenuItems'>
               <MuiThemeProvider theme={materialUiTheme}>
                 <MenuItem component={home} className={classes.menuItems}>
-                  <img src={Icon1} alt='' className={classes.menuImg} />
+                  {/* <img src={Icon1} alt='' className={classes.menuImg} /> */}
                   Home
                 </MenuItem>
                 <MenuItem component={recipe} className={classes.menuItems}>
-                  <img src={Icon5} alt='' className={classes.menuImg} />
+                  {/* <img src={Icon5} alt='' className={classes.menuImg} /> */}
                   Browse Recipes
                 </MenuItem>
                 <MenuItem component={about} className={classes.menuItems}>
-                  <img src={Icon2} alt='' className={classes.menuImg} />
+                  {/* <img src={Icon2} alt='' className={classes.menuImg} /> */}
                   About
                 </MenuItem>
                 <MenuItem component={contact} className={classes.menuItems}>
-                  <img src={Icon3} alt='' className={classes.menuImg} />
+                  {/* <img src={Icon3} alt='' className={classes.menuImg} /> */}
                   Contact
                 </MenuItem>
               </MuiThemeProvider>
