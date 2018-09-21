@@ -8,6 +8,32 @@ import './AddIngredients.css'
 //TESTS
 import { getNewRecipe, getNewRecipeId, getNewRecipeName, getNewRecipeDescription, getNewRecipeServings } from '../../../Logic/logic';
 
+//MATERIAL-UI
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+    input: {
+      display: 'none',
+    },
+    displayFlex: {
+        display: 'flex',
+        justifyContent: 'space-around',
+    },
+    title: {
+        fontSize: '20px',
+        fontWeight: 600,
+        color: '#464646',
+    },
+    listText: {
+        fontSize: '16px',
+        color: '#464646'
+    }
+  });
+  
+//MATERIAL-UI
+
 class AddIngredient extends Component {
     state = {
         ingredients: [],
@@ -54,6 +80,7 @@ class AddIngredient extends Component {
     
     render () {
         console.log(this.state);
+        const { classes } = this.props;
         let ingredientsList = this.state.ingredients.map(e => (
                 <p key={e.i_id}>{`${e.ingredient}: ${e.quantity} ${e.unit}`}</p>
         ))
@@ -64,18 +91,67 @@ class AddIngredient extends Component {
                 {getNewRecipeName(this.props.newRecipe.r_name)}
                 {getNewRecipeDescription(this.props.newRecipe.r_description)}
                 {getNewRecipeServings(this.props.newRecipe.servings)}
-                <div>AddIngredient</div>
+                <div className={classes.title} style={{marginRight: '300px'}}>AddIngredient</div>
                 <div>
-                    <input name='ingredient' onChange={this.handleChange} placeholder='ingredient'/>
-                    <input name='quantity' onChange={this.handleChange} placeholder='quantity' type='number'/>
-                    <input name='unit' onChange={this.handleChange} placeholder='unit'/>
-                    <button onClick={() => this.addIngredient()}>Add Ingredient</button>
+                    <TextField 
+                        name='ingredient' 
+                        onChange={this.handleChange} 
+                        id='standard-full-width'
+                        label='ingredient'
+                        fullWidth
+                        margin='normal'
+                        inputProps={{
+                            maxLength: 120
+                        }}
+                        helperText={120 - this.state.ingredient.length}
+                        multiline
+                        rowsMax='3'
+                    />
+                    <TextField 
+                        name='quantity' 
+                        onChange={this.handleChange} 
+                        label='quantity' 
+                        id='standard-full-width'
+                        fullWidth
+                        type='number'
+                        onInput={(e) => {      //sets max length of input to 2 characters
+                            e.target.value = Math.max(0, parseInt(e.target.value,0) ).toString().slice(0,2)
+                        }}
+                        min={0}
+                        margin='normal'
+                        helperText={2 - this.state.quantity.length}
+                    />
+                    <TextField 
+                        name='unit' 
+                        onChange={this.handleChange} 
+                        label='unit'
+                        id='standard-full-width'
+                        fullWidth
+                        margin='normal'
+                        inputProps={{
+                            maxLength: 30
+                        }}
+                        helperText={30 - this.state.unit.length}
+                        multiline
+                        rowsMax='3'
+
+                    />
+                    <Button 
+                        onClick={() => this.addIngredient()}
+                        variant='outlined'
+                        color='default'
+                        style={{
+                            // position: 'absolute',
+                            // right: '49px',
+                            // bottom: '24px',
+                        }}
+                    >Add Ingredient</Button>
                 </div>
                 {this.state.ingredients[0]
                 ?
-                <div>{ingredientsList}</div>
+                <div className={classes.listText}>{ingredientsList}</div>
                 :
-                <p>Add ingredients!</p>}
+                <p className={classes.title} style={{marginRight: '300px'}}>Add ingredients!</p>}
                 <button onClick={() => this.props.classSwitcher('ModalThree')}>Next</button>
             </div>
         )
@@ -88,4 +164,4 @@ function mapStateToProps (state) {
     }
 }
 
-export default connect(mapStateToProps)(AddIngredient);
+export default withStyles(styles)(connect(mapStateToProps)(AddIngredient));

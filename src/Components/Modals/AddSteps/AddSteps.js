@@ -5,6 +5,42 @@ import { updateModalClosed } from '../../../ducks/reducer'
 
 import './AddSteps.css'
 
+//MATERIAL-UI
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+    input: {
+      display: 'none',
+    },
+    displayFlex: {
+        display: 'flex',
+        justifyContent: 'space-around',
+    },
+    title: {
+        fontSize: '20px',
+        fontWeight: 600,
+        color: '#464646',
+    },
+    TextField: {
+        width: 50,
+        margin: '0 13px'
+    },
+    TextField2: {
+        width: 300,
+        margin: '0 13px'
+    },
+    listText: {
+        fontSize: '16px',
+        color: '#464646'
+    }
+  });
+  
+//MATERIAL-UI
+
+
 class AddSteps extends Component {
     state = {
         steps: [],
@@ -45,22 +81,58 @@ class AddSteps extends Component {
     }
 
     render () {
+        const { classes } = this.props;
         console.log(this.state)
         let step = this.state.steps.map(e => (
                 <p key={e.s_id}>{`Step ${e.step}: ${e.description}`}</p>
         ))
         return (
-            <div className='AddSteps'>
-                <div>AddSteps</div>
+            <div>
+                <div className={classes.title} style={{marginRight: '300px'}}>AddSteps</div>
                 <div>
-                    <p>Step <input name='step' type='number'/>: <input name='description' onChange={this.handleChange}/></p>
-                    <button onClick={this.addStep}>Add Step</button>
+                    <p>
+                        <TextField 
+                            className={classes.TextField}
+                            name='step' 
+                            type='number'
+                            id='standard-uncontrolled'
+                            margin='normal'
+                            label='Step'
+                            fullWidth
+                            type='number'
+                            onInput={(e) => {      //sets max length of input to 2 characters
+                                e.target.value = Math.max(0, parseInt(e.target.value,0) ).toString().slice(0,2)
+                            }}
+                            min={0}
+                            margin='normal'
+                        /> <span className={classes.title}>:</span> 
+                        <TextField 
+                            className={classes.TextField2}
+                            name='description' 
+                            onChange={this.handleChange}
+                            id='standard-full-width'
+                            label='Description'
+                            fullWidth
+                            margin='normal'
+                            inputProps={{
+                                maxLength: 300
+                            }}
+                            helperText={300 - this.state.description.length}
+                            multiline
+                            rowsMax='5'
+
+                        /></p>
+                    <Button 
+                        onClick={this.addStep}
+                        variant='outlined'
+                        color='default'
+                    >Add Step</Button>
                 </div>
                 {this.state.steps[0]
                 ?
-                <div>{step}</div>
+                <div className={classes.listText}>{step}</div>
                 :
-                <div>Add Steps!</div>}
+                <div className={classes.title}>Add Steps!</div>}
                 <button onClick={() => this.props.updateModalClosed()}>All Done!</button>
             </div>
         )
@@ -72,5 +144,4 @@ function mapStateToProps (state) {
         newRecipe: state.newRecipe
     };
 };
-
-export default connect(mapStateToProps, {updateModalClosed})(AddSteps);
+export default withStyles(styles)(connect(mapStateToProps, {updateModalClosed})(AddSteps));
