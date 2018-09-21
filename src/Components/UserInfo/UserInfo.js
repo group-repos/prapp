@@ -24,7 +24,7 @@ class UserInfo extends Component {
                           <span><p>24</p></span>
                       </div>
                       <div className='UserButtons'>
-                          {/* <button id='ProfileButton'>Weekly Meal Plan</button>  */}
+                          <button id='ProfileButton' onClick={()=>this.props.updateModalOpen('Calendar')}>Weekly Meal Plan</button> 
                           <button id='ProfileButton' onClick={()=>this.props.updateModalOpen('ShoppingList')}>Shopping List</button>
                       </div>
                   </div>
