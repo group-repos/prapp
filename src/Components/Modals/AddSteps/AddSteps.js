@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { updateModalClosed } from '../../../ducks/reducer'
+
+import './AddSteps.css'
 
 class AddSteps extends Component {
     state = {
@@ -47,7 +50,7 @@ class AddSteps extends Component {
                 <p key={e.s_id}>{`Step ${e.step}: ${e.description}`}</p>
         ))
         return (
-            <div>
+            <div className='AddSteps'>
                 <div>AddSteps</div>
                 <div>
                     <p>Step <input name='step' type='number'/>: <input name='description' onChange={this.handleChange}/></p>
@@ -58,6 +61,7 @@ class AddSteps extends Component {
                 <div>{step}</div>
                 :
                 <div>Add Steps!</div>}
+                <button onClick={() => this.props.updateModalClosed()}>All Done!</button>
             </div>
         )
     }
@@ -69,4 +73,4 @@ function mapStateToProps (state) {
     };
 };
 
-export default connect(mapStateToProps)(AddSteps);
+export default connect(mapStateToProps, {updateModalClosed})(AddSteps);
