@@ -29,7 +29,7 @@ const styles = theme => ({
         margin: '0 13px'
     },
     TextField2: {
-        width: 300,
+        width: 250,
         margin: '0 13px'
     },
     listText: {
@@ -124,7 +124,7 @@ class AddSteps extends Component {
                         /></p>
                     <Button 
                         onClick={this.addStep}
-                        variant='outlined'
+                        variant='text'
                         color='default'
                     >Add Step</Button>
                 </div>
@@ -133,7 +133,14 @@ class AddSteps extends Component {
                 <div className={classes.listText}>{step}</div>
                 :
                 <div className={classes.title}>Add Steps!</div>}
-                <button onClick={() => this.props.updateModalClosed()}>All Done!</button>
+                <Button 
+                    onClick={() => this.props.updateModalClosed()}
+                    variant='outlined'
+                    color='default'
+                    style={{
+                        marginTop: '10px'
+                    }}
+                >All Done!</Button>
             </div>
         )
     }

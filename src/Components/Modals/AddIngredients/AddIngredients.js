@@ -151,14 +151,17 @@ class AddIngredient extends Component {
                 ?
                 <div>
                     <div className={classes.listText}>{ingredientsList}</div>
+                    <Button 
+                        onClick={() => this.props.classSwitcher('ModalThree')}
+                        variant='outlined'
+                        color='default'
+                        style={{
+                            marginTop: '10px'
+                        }}
+                    >Next</Button>
                 </div>
                 :
                 <p className={classes.title} >Add ingredients!</p>}
-                <Button 
-                    onClick={() => this.props.classSwitcher('ModalThree')}
-                    variant='outlined'
-                    color='default'
-                >Next</Button>
             </div>
         )
     }

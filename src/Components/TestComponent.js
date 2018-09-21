@@ -22,13 +22,13 @@ class Test extends Component {
                 {/* <AddIngredients />
                 <br></br>
                 <br></br>
-                <br></br>
+                <br></br> */}
                 <AddSteps />
                 <br></br>
                 <br></br>
                 <br></br>
-                <ShoppingList/>
-                {/* <Calendar /> */}
+                {/* <ShoppingList/> */}
+                {/* <Calendar />
                 {/* <BrowseRecipes /> */}
                 {/* <AddRecipe /> */}
                 {/* <AddIngredients /> */}
