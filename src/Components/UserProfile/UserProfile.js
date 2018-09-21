@@ -18,7 +18,7 @@ class UserProfile extends Component {
     constructor(){
         super()
         this.state = {
-            BrowseRecipesMenu: ["Favorited Recipes", "Ashley's Recipes"]
+            BrowseRecipesMenu: ["Favorited Recipes", "Spencer's Recipes"]
         }
     }
     render(){
