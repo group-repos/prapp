@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { auth, googleProvider, facebookProvider } from './firebase';
+// import { auth, googleProvider, facebookProvider } from './firebase';
 import './reset.css'
 import './App.css';
-import axios from 'axios';
+// import axios from 'axios';
 
 // import _ from 'lodash';
 
@@ -22,39 +22,39 @@ class App extends Component {
   }
 
   //Gets all recipes, ingredients, and steps from the database
-  componentDidMount () {
-    axios.get('/api/getrecipes').then(res => this.setState({
-      recipes: res.data
-    }));
-  }
+  // componentDidMount () {
+  //   axios.get('/api/getrecipes').then(res => this.setState({
+  //     recipes: res.data
+  //   }));
+  // }
 
-  //Gets one recipe from the database
-  getRecipes = () => {
-    axios.get('/api/recipe').then(res => console.log('recipes', res.data));
-  }
+  // //Gets one recipe from the database
+  // getRecipes = () => {
+  //   axios.get('/api/recipe').then(res => console.log('recipes', res.data));
+  // }
 
-  //Google Auth
-  googleLogin = () => {
-   auth.signInWithPopup(googleProvider)
-    .then(result => {
-      console.log('user', result.user.uid);
-    })
-    .catch(err => {
-      console.log(err);
-    })
-  }
+  // //Google Auth
+  // googleLogin = () => {
+  //  auth.signInWithPopup(googleProvider)
+  //   .then(result => {
+  //     console.log('user', result.user.uid);
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   })
+  // }
 
-  //Facebook Auth
-  facebookLogin = () => {
-    auth.signInWithPopup(facebookProvider)
-      .then(res => {
-        var user = res.user;
-        console.log('user', user);
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }
+  // //Facebook Auth
+  // facebookLogin = () => {
+  //   auth.signInWithPopup(facebookProvider)
+  //     .then(res => {
+  //       var user = res.user;
+  //       console.log('user', user);
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     })
+  // }
 
   render() {
     return (

@@ -34,7 +34,7 @@ class Login extends Component {
         let user = this.state.user;
         axios.post('/api/user', {user: user})
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 this.props.updateUser(res.data)
             })
     }
@@ -77,8 +77,8 @@ class Login extends Component {
 
     //Create email/password account
     createAccount = async () => {
-        let createdUser = await auth.createUserWithEmailAndPassword(this.state.email, this.state.password)
-        console.log(createdUser)
+        // let createdUser = await auth.createUserWithEmailAndPassword(this.state.email, this.state.password)
+        // console.log(createdUser)
     };
 
     //Email Sign In

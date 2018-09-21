@@ -1,9 +1,9 @@
-const axios = require('axios');
+// const axios = require('axios');
 
 const logic = {
-    getRecipe(r_id){
-       return axios.post('/api/recipe', {r_id:r_id})
-    },
+    // getRecipe(r_id){
+    //    return axios.post('/api/recipe', {r_id:r_id})
+    // },
     //Spencer's Logic
     getUserId(id){
         return id ? true : false

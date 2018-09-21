@@ -8,7 +8,7 @@ import './AddSteps.css'
 //MATERIAL-UI
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import PhotoCamera from '@material-ui/icons/PhotoCamera';
+// import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -68,7 +68,7 @@ class AddSteps extends Component {
     getSteps = () => {
         axios.post(`/api/steps`, {r_id: this.state.r_id})
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 this.setState({steps: res.data});
             });
     };
@@ -82,7 +82,7 @@ class AddSteps extends Component {
 
     render () {
         const { classes } = this.props;
-        console.log(this.state)
+        // console.log(this.state)
         let step = this.state.steps.map(e => (
                 <p key={e.s_id}>{`Step ${e.step}: ${e.description}`}</p>
         ))
@@ -90,7 +90,7 @@ class AddSteps extends Component {
             <div className='AddSteps'>
                 <div className={classes.title} style={{marginRight: '300px'}}>AddSteps</div>
                 <div>
-                    <p>
+                    
                         <TextField 
                             className={classes.TextField}
                             name='step' 
@@ -99,12 +99,11 @@ class AddSteps extends Component {
                             margin='normal'
                             label='Step'
                             fullWidth
-                            type='number'
+                            onChange={this.handleChange}
                             onInput={(e) => {      //sets max length of input to 2 characters
                                 e.target.value = Math.max(0, parseInt(e.target.value,0) ).toString().slice(0,2)
                             }}
                             min={0}
-                            margin='normal'
                         /> <span className={classes.title}>:</span> 
                         <TextField 
                             className={classes.TextField2}
@@ -121,7 +120,7 @@ class AddSteps extends Component {
                             multiline
                             rowsMax='5'
 
-                        /></p>
+                        />
                     <Button 
                         onClick={this.addStep}
                         variant='text'

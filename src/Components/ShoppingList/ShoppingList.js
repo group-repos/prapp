@@ -70,7 +70,7 @@ class ShoppingList extends Component {
                     }
                 })
                 finalArr.map(e => {
-                    e.unChecked = false;
+                    return e.unChecked = false;
                 });
                 this.setState({unChecked: finalArr});
             });

@@ -82,7 +82,7 @@ class AddRecipe extends Component {
     addRecipe = () => {
         axios.post('/api/recipes',{u_id: this.state.u_id, servings: this.state.servings, r_name: this.state.r_name, r_pics: this.state.r_pics, r_description: this.state.r_description})
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 this.props.updateNewRecipe(res.data[0]);
                 // this.props.updateModalClosed();
                 this.props.classSwitcher('ModalTwo')
@@ -90,7 +90,7 @@ class AddRecipe extends Component {
     }
 
     render () {
-        console.log(this.state)
+        // console.log(this.state)
         const { classes } = this.props;
         return (
             // <div>

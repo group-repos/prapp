@@ -66,7 +66,7 @@ class AddIngredient extends Component {
     getIngredients = () => {
         axios.post(`/api/ingredients`, {r_id: this.state.r_id})
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 this.setState({ingredients: res.data})
             })
     }
@@ -79,7 +79,7 @@ class AddIngredient extends Component {
     }
     
     render () {
-        console.log(this.state);
+        // console.log(this.state);
         const { classes } = this.props;
         let ingredientsList = this.state.ingredients.map(e => (
                 <p key={e.i_id}>{`${e.ingredient}: ${e.quantity} ${e.unit}`}</p>

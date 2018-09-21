@@ -6,10 +6,10 @@ import axios from 'axios';
 import './NavDrawer.css';
 
 //IMAGES
-import Icon1 from '../../images/Asset 1.svg';
-import Icon2 from '../../images/Asset 2.svg';
-import Icon3 from '../../images/Asset 3.svg';
-import Icon5 from '../../images/Asset 5.svg';
+// import Icon1 from '../../images/Asset 1.svg';
+// import Icon2 from '../../images/Asset 2.svg';
+// import Icon3 from '../../images/Asset 3.svg';
+// import Icon5 from '../../images/Asset 5.svg';
 import fbIcon from '../../images/Facebook.svg';
 import instagramIcon from '../../images/Instagram.svg';
 import twitterIcon from '../../images/Twitter.svg';

@@ -5,7 +5,7 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 
 //TESTS
-import {getRecipe} from '../../Logic/logic';
+// import {getRecipe} from '../../Logic/logic';
 
 import './SingleRecipe.css'
 
@@ -29,7 +29,7 @@ class SingleRecipePage extends Component {
   }
 
   render(){
-    console.log(this.state.recipe[1])
+    // console.log(this.state.recipe[1])
     const recipe = this.state.recipe[0]
     return(
       <div className='SingleRecipePage'>
