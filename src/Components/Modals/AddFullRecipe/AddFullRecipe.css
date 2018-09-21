@@ -5,7 +5,7 @@
 
 .AddSwitcher-ModalOne {
   position: relative;
-  transform: translateX(20vw);
+  transform: translateX(45vw);
   transition: transform 0.5s ease-in-out;
 }
 
@@ -32,7 +32,7 @@
 .IngredientsSwitcher-ModalTwo {
   position: relative;
   right: 200px;
-  transform: translateX(0);
+  transform: translateX(16vw);
   transition: transform 0.5s ease-in-out;
 }
 
@@ -61,6 +61,6 @@
 .StepsSwitcher-ModalThree {
   position: relative;
   right: 438px;
-  transform: translateX(0);
+  transform: translateX(-6vw);
   transition: transform 0.5s ease-in-out;
 }

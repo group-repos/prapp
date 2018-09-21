@@ -87,7 +87,7 @@ class AddSteps extends Component {
                 <p key={e.s_id}>{`Step ${e.step}: ${e.description}`}</p>
         ))
         return (
-            <div>
+            <div className='AddSteps'>
                 <div className={classes.title} style={{marginRight: '300px'}}>AddSteps</div>
                 <div>
                     <p>
