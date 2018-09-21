@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 
 //REDUX
 import {connect} from 'react-redux';
@@ -20,7 +20,7 @@ class SingleRecipePage extends Component {
   }
 
   componentDidMount(){
-    getRecipe(this.props.recipe.r_id).then(res => {
+    axios.post('/api/recipe', {r_id: this.props.recipe.r_id}).then(res => {
       this.setState({
         recipe: res.data,
         loading: false
