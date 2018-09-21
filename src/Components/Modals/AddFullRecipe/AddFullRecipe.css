@@ -1,15 +1,66 @@
 .ModalSwitcher {
-
+  display: flex;
+  flex-direction: row;
 }
 
-.AddSwitcher {
-
+.AddSwitcher-ModalOne {
+  position: relative;
+  transform: translateX(20vw);
+  transition: transform 0.5s ease-in-out;
 }
 
-.IngredientsSwitcher {
-
+.IngredientsSwitcher-ModalOne {
+  position: relative;
+  transform: translateX(200vw);
+  transition: transform 0.5s ease-in-out;
 }
 
-.StepsSwitcher {
-  
+.StepsSwitcher-ModalOne {
+  position: relative;
+  transform: translateX(200vw);
+  transition: transform 0.5s ease-in-out;
+}
+
+/* MODAL TWO */
+
+.AddSwitcher-ModalTwo {
+  position: relative;
+  transform: translateX(-200vw);
+  transition: transform 0.5s ease-in-out;
+}
+
+.IngredientsSwitcher-ModalTwo {
+  position: relative;
+  right: 200px;
+  transform: translateX(0);
+  transition: transform 0.5s ease-in-out;
+}
+
+.StepsSwitcher-ModalTwo {
+  position: relative;
+  right: 438px;
+  transform: translateX(200vw);
+  transition: transform 0.5s ease-in-out;
+}
+
+/* MODAL THREE */
+
+.AddSwitcher-ModalThree {
+  position: relative;
+  transform: translateX(-200vw);
+  transition: transform 0.5s ease-in-out;
+}
+
+.IngredientsSwitcher-ModalThree {
+  position: relative;
+  right: 200px;
+  transform: translateX(-200vw);
+  transition: transform 0.5s ease-in-out;
+}
+
+.StepsSwitcher-ModalThree {
+  position: relative;
+  right: 438px;
+  transform: translateX(0);
+  transition: transform 0.5s ease-in-out;
 }

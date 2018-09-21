@@ -84,7 +84,8 @@ class AddRecipe extends Component {
             .then(res => {
                 console.log(res.data);
                 this.props.updateNewRecipe(res.data[0]);
-                this.props.updateModalClosed();
+                // this.props.updateModalClosed();
+                this.props.classSwitcher('ModalTwo')
             })
     }
 

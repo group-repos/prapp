@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
+// CSS
+import './AddIngredients.css' 
+
 //TESTS
 import { getNewRecipe, getNewRecipeId, getNewRecipeName, getNewRecipeDescription, getNewRecipeServings } from '../../../Logic/logic';
 
@@ -82,7 +85,7 @@ class AddIngredient extends Component {
                 <p key={e.i_id}>{`${e.ingredient}: ${e.quantity} ${e.unit}`}</p>
         ))
         return (
-            <div>
+            <div className='AddIngredients'>
                 {getNewRecipe(this.props.newRecipe)}  
                 {getNewRecipeId(this.props.newRecipe.r_id)}
                 {getNewRecipeName(this.props.newRecipe.r_name)}
@@ -149,6 +152,7 @@ class AddIngredient extends Component {
                 <div className={classes.listText}>{ingredientsList}</div>
                 :
                 <p className={classes.title} style={{marginRight: '300px'}}>Add ingredients!</p>}
+                <button onClick={() => this.props.classSwitcher('ModalThree')}>Next</button>
             </div>
         )
     }

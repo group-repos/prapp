@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { updateModalClosed } from '../../../ducks/reducer'
+
+import './AddSteps.css'
 
 //MATERIAL-UI
 import TextField from '@material-ui/core/TextField';
@@ -130,6 +133,7 @@ class AddSteps extends Component {
                 <div className={classes.listText}>{step}</div>
                 :
                 <div className={classes.title}>Add Steps!</div>}
+                <button onClick={() => this.props.updateModalClosed()}>All Done!</button>
             </div>
         )
     }
@@ -140,5 +144,4 @@ function mapStateToProps (state) {
         newRecipe: state.newRecipe
     };
 };
-
-export default withStyles(styles)(connect(mapStateToProps)(AddSteps));
+export default withStyles(styles)(connect(mapStateToProps, {updateModalClosed})(AddSteps));
